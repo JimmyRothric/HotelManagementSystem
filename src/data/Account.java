@@ -26,7 +26,7 @@ public class Account {
 	public Account() {
 		// TODO Auto-generated constructor stub
 	}
-	public Account(String id, String password,String name) {
+	public Account(String id, String password, String name) {
 		super();
 		this.id = id;
 		this.name = name;
