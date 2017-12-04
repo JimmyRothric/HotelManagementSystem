@@ -3,7 +3,6 @@ package servlets;
 import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -51,15 +50,12 @@ public class LoginServlet extends HttpServlet {
 //		AccountManager am = new AccountManager();
 		AccountDao dao = new AccountDao();
 		Account acc = dao.isValid(username, password);
-		Boolean flag = false;
 		if (acc != null) {
 			session.setAttribute("loggedin", Boolean.TRUE);
 			session.setAttribute("account", acc);
 			response.sendRedirect("main.jsp");
-			flag = true;
 			return;
-		}
-		if (!flag) {
+		}else {
 			request.setAttribute("loginError", "Wrong username or password.");
 			RequestDispatcher rd = request.getRequestDispatcher("/login.jsp");
 			rd.forward(request, response);

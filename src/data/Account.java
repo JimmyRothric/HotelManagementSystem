@@ -2,8 +2,9 @@ package data;
 
 public class Account {
 	private String id;
-	private String name;
 	private String password;
+	private String name;
+	
 	public String getId() {
 		return id;
 	}
@@ -27,7 +28,6 @@ public class Account {
 		// TODO Auto-generated constructor stub
 	}
 	public Account(String id, String password,String name) {
-		super();
 		this.id = id;
 		this.name = name;
 		this.password = password;

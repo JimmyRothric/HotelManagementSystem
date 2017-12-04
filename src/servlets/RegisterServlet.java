@@ -3,7 +3,6 @@ package servlets;
 import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -48,23 +47,36 @@ public class RegisterServlet extends HttpServlet {
 		String name = request.getParameter("name");
 		String password0 = request.getParameter("password0");
 		String password1 = request.getParameter("password1");
-
+		if (!username.matches("[0-9]{1,18}")) {
+			goError(request,response,"Id error.");
+			return;
+		}
 		if (dao.isValidUsername(username)) {
-			request.setAttribute("registerError0", "This account has existed.");
-			RequestDispatcher rd = request.getRequestDispatcher("/register.jsp");
-			rd.forward(request, response);
+			goError(request,response,"This account has existed.");
+			return;
+		}
+		if (!name.matches("^[\\u4E00-\\u9FA5A-Za-z0-9]+$")) {
+			goError(request,response,"Name Error.");
+			return;
+		}
+		if (!password0.matches("[A-Za-z0-9]{1,20}")) {
+			goError(request,response,"Password error.");
 			return;
 		}
 		if (password0.equals(password1)) {
-			Account a = new Account(username, password0, name);
-			dao.addAccount(a);//
+			Account acc = new Account(username, password0, name);
+			dao.addAccount(acc);
 			response.sendRedirect("login.jsp");
 			return;
 		} else {
-			request.setAttribute("registerError1", "Two input password must be consistent.");
-			RequestDispatcher rd = request.getRequestDispatcher("/register.jsp");
-			rd.forward(request, response);
+			goError(request,response,"Two input password must be consistent.");
+			return;
 		}
+	}
+	private void goError(HttpServletRequest request, HttpServletResponse response,String error) throws ServletException, IOException {
+		request.setAttribute("registerError", error);
+		RequestDispatcher rd = request.getRequestDispatcher("/register.jsp");
+		rd.forward(request, response);
 	}
 
 }

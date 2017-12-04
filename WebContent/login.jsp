@@ -31,9 +31,8 @@
 		alert("<%=errorInfo%>");
 	</script>
 <%
-	} else {
-		return;
 	}
+	request.removeAttribute("loginError");
 %>
 </form>
 </body>
