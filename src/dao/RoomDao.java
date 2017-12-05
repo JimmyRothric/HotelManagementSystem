@@ -13,9 +13,39 @@ public class RoomDao extends BaseDao {
 	public RoomDao() {
 		// TODO Auto-generated constructor stub
 	}
+	public ArrayList<Room> selectByCondition(String type, int price0, int price1) {
+		String sql = "select * from Room where type = ? and price between ? and ?";
+		ArrayList<Room> room = new ArrayList<Room>();
+		try {
+			Connection con = super.getConnection();
+			PreparedStatement stmt = con.prepareStatement(sql);
+			stmt.setString(1, type);
+			stmt.setInt(2, price0);
+			stmt.setInt(3, price1);
+			ResultSet rs = stmt.executeQuery();
+			while (rs.next()) {
+				Room r = new Room();
+				r.setId(rs.getString("Rid"));
+				r.setType(rs.getString("type"));
+				r.setFloor(rs.getInt("floor"));
+				r.setOrientation(rs.getString("orientation"));
+				r.setDescription(rs.getString("description"));
+				r.setIs_empty(rs.getBoolean("empty"));
+				room.add(r);
+			}
+			stmt.close();
+			con.close();
+			return room;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
 	public ArrayList<Room> displayAll() {
 		String sql = "select * from Room";
-		ArrayList<Room> room = null;
+		ArrayList<Room> room = new ArrayList<Room>();
 		try {
 			Connection con = super.getConnection();
 			PreparedStatement stmt = con.prepareStatement(sql);
@@ -26,7 +56,7 @@ public class RoomDao extends BaseDao {
 				r.setType(rs.getString("type"));
 				r.setFloor(rs.getInt("floor"));
 				r.setOrientation(rs.getString("orientation"));
-				r.setDiscription(rs.getString("discription"));
+				r.setDescription(rs.getString("description"));
 				r.setIs_empty(rs.getBoolean("empty"));
 				room.add(r);
 			}

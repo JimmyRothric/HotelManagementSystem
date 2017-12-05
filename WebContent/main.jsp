@@ -19,14 +19,15 @@
 </select>
 价格
 <select name="price">
-<option value="0">0~200</option>
-<option value="1">200~500</option>
-<option value="2">500~1000</option>
-<option value="3">1000~2000</option>
+<option value="0"></option>
+<option value="1">0~200</option>
+<option value="2">200~500</option>
+<option value="3">500~1000</option>
+<option value="4">1000~2000</option>
 </select>
 时间
 <input type="date" name="arrive" min="2017-12-04">
-<input type="date" name="depart" min="2000-12-04">
+<input type="date" name="depart" min="2017-12-04">
 <br/>
 请输入关键字：
 <input type = "text" name = "text">

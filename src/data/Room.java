@@ -5,17 +5,17 @@ public class Room {
 	private String type;
 	private int floor;
 	private String orientation;
-	private String discription;
+	private String description;
 	private boolean is_empty;
 	public Room() {
 		// TODO Auto-generated constructor stub
 	}
-	public Room(String id, String type, int floor, String orientation, String discription) {
+	public Room(String id, String type, int floor, String orientation, String description) {
 		this.id = id;
 		this.type = type;
 		this.floor = floor;
 		this.orientation = orientation;
-		this.discription = discription;
+		this.description = description;
 		this.is_empty = true;
 	}
 	public String getId() {
@@ -42,11 +42,11 @@ public class Room {
 	public void setOrientation(String orientation) {
 		this.orientation = orientation;
 	}
-	public String getDiscription() {
-		return discription;
+	public String getDescription() {
+		return description;
 	}
-	public void setDiscription(String discription) {
-		this.discription = discription;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 	public boolean isIs_empty() {
 		return is_empty;
