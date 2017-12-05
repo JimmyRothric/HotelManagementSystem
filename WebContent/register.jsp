@@ -33,23 +33,15 @@
 </form>
 
 <%	
-	String registerInfo0 = (String)request.getAttribute("registerError0");
-	String registerInfo1 = (String)request.getAttribute("registerError1");
-	if (registerInfo0 != null) {
+	String registerInfo = (String)request.getAttribute("registerError");
+	if (registerInfo != null) {
 	%>	
 	<script language="javascript">
-		alert("<%=registerInfo0%>");
+		alert("<%=registerInfo%>");
 	</script>
 <%
-	} else if (registerInfo1 != null){
-%>
-	<script language="javascript">
-		alert("<%=registerInfo1%>");
-	</script>
-<%
-	} else {
-		return;
 	}
+	request.removeAttribute("registerError");
 %>
 </body>
 </html>

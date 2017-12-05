@@ -1,6 +1,9 @@
 package dao;
 
 import java.sql.*;
+import java.util.ArrayList;
+
+
 import dao.BaseDao;
 import data.*;
 
@@ -44,9 +47,64 @@ public class AccountDao  extends BaseDao {
 		}
 		return false;
 	}
-	public boolean setName(String username) {
+	public boolean setName(String username,String name) {
+		String sql = "update Account set name = ? where Uid = ? ";
+		try {
+			Connection con = super.getConnection();
+			PreparedStatement stmt = con.prepareStatement(sql);
+			stmt.setString(1, name);
+			stmt.setString(2, username);
+			stmt.executeUpdate();
+			stmt.close();
+			con.close();
+			return true;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return false;
 		
+	}
+	public boolean setPassword(String username,String password) {
+		String sql = "update Account set password = ? where Uid = ? ";
+		try {
+			Connection con = super.getConnection();
+			PreparedStatement stmt = con.prepareStatement(sql);
+			stmt.setString(1, password);
+			stmt.setString(2, username);
+			stmt.executeUpdate();
+			stmt.close();
+			con.close();
+			return true;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return false;
+		
+	}
+	public ArrayList<Account> getAccountList() {
+		ArrayList<Account> list = new ArrayList<Account>();
+		String sql = "select * from Account order by Uid";
+		
+		try {
+			Connection con = super.getConnection();
+			PreparedStatement stmt = con.prepareStatement(sql);
+			ResultSet rs = stmt.executeQuery();
+			while (rs.next()) {
+				String id = rs.getString(1);
+				String password = rs.getString(2);
+				String name = rs.getString(3);
+				list.add(new Account(id,password,name));
+			}
+			stmt.close();
+			con.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	
+		return list;
 	}
 	
 

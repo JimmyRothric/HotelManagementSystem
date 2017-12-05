@@ -1,29 +1,25 @@
 package servlets;
 
 import java.io.IOException;
-
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import dao.AccountDao;
-import data.*;
 
 /**
- * Servlet implementation class LoginServlet
+ * Servlet implementation class AccountManagementServlet
  */
-@WebServlet("/LoginServlet")
-public class LoginServlet extends HttpServlet {
+@WebServlet("/AccountManagementServlet")
+public class AccountManagementServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public LoginServlet() {
+    public AccountManagementServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -42,24 +38,22 @@ public class LoginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("UTF-8");
-		response.setCharacterEncoding("UTF-8");
-		String username = request.getParameter("username");
-		String password = request.getParameter("password");
-
-		HttpSession session = request.getSession(true);
-//		AccountManager am = new AccountManager();
+		String cp = request.getParameter("cp");
+		String cn = request.getParameter("cn");
+		String dl = request.getParameter("dl");
+		String targetId = request.getParameter("targetId");
+		String targetString = request.getParameter("targetString");
 		AccountDao dao = new AccountDao();
-		Account acc = dao.isValid(username, password);
-		if (acc != null) {
-			session.setAttribute("loggedin", Boolean.TRUE);
-			session.setAttribute("account", acc);
-			response.sendRedirect("main.jsp");
-			return;
-		}else {
-			request.setAttribute("loginError", "Wrong username or password.");
-			RequestDispatcher rd = request.getRequestDispatcher("/login.jsp");
-			rd.forward(request, response);
+		if (cp != null) {
+			dao.setPassword(targetId, targetString);
 		}
+		if (cn != null) {
+			dao.setName(targetId, targetString);
+		}
+		if (dl != null) {
+			dao.delAccount(targetId);
+		}
+		response.sendRedirect("accmgr.jsp");
 	}
 
 }
