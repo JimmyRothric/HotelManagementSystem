@@ -8,9 +8,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<style type="text/css">
-.td td{width:120px;height:30px;text-align:center;}
-</style>
+<link rel="stylesheet" type="text/css" href="css/element_style.css" />
 
 <title>Details</title>
 </head>

@@ -3,7 +3,7 @@ package data;
 public class Account {
 	private String id;
 	private String password;
-<<<<<<< HEAD
+
 	public Account() {
 		// TODO Auto-generated constructor stub
 	}
@@ -13,10 +13,10 @@ public class Account {
 		this.name = name;
 		this.password = password;
 	}
-=======
+
 	private String name;
 	
->>>>>>> origin/master
+
 	public String getId() {
 		return id;
 	}
@@ -35,17 +35,5 @@ public class Account {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-<<<<<<< HEAD
-=======
-
-	public Account() {
-		// TODO Auto-generated constructor stub
-	}
-	public Account(String id, String password,String name) {
-		this.id = id;
-		this.name = name;
-		this.password = password;
-	}
->>>>>>> origin/master
 	
 }
