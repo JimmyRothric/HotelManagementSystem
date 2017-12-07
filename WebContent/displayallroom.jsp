@@ -17,27 +17,32 @@
 	RoomDao dao = new RoomDao();
 	ArrayList<Room> allRoomList = new ArrayList<Room>();
 	allRoomList = dao.displayAll();
+	int i = 0;
 	if (allRoomList != null) {
 %>
-<table border="1" cellspacing="0px" class="td">
+<table border="0" cellspacing="0px" class="td">
 	<tr>
 		<td>Room_ID</td>
 		<td>Room_Type</td>
 		<td>Floor</td>
 		<td>Orientation</td>
 		<td>Description</td>
+		<td></td>
 	</tr>
 <% 	
 		for (Room r:allRoomList) {
+			
 %>
 	<tr>
 		<td><%=r.getId() %></td>
 		<td><%=r.getType() %></td>	
 		<td><%=r.getFloor() %></td>	
 		<td><%=r.getOrientation() %></td>
-		<td><%=r.getDescription() %></td>		
+		<td><%=r.getDescription() %></td>
+		<td><input type="submit" name="reserveBtn" value="预订 "/></td>		
 	</tr>
 <%			
+			i++;
 		}
 %>
 </table>

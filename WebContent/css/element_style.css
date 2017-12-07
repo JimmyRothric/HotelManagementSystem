@@ -1,2 +1,45 @@
 @CHARSET "UTF-8";
 .td td{width:120px;height:30px;text-align:center;}
+
+.reserveBtn {
+	display: inline-block;
+	border-radius: 4px;
+	background-color: #0099FF;
+	border: none;
+	color: white;
+	text-align: center;
+	font-size: 16px;
+	padding: 20px;
+	width: 100px;
+	height: 30px;
+	transition: all 0.5s;
+	cursor: pointer;
+	margin: 5px;
+	style="vertical-align:middle";
+	padding-top: 5px;
+}
+.reserveBtn:hover {
+	opacity: 0.8;
+	color: white;
+}
+.reserveBtn span {
+	cursor: pointer;
+	display: inline-block;
+	position: relative;
+	transition: 0.5s;
+}
+.reserveBtn span:after {
+	content: '»';
+	position: absolute;
+	opacity: 0;
+	top: 0;
+	right: -20px;
+	transition: 0.5s;
+}
+.reserveBtn:hover span {
+	padding-right: 10px;
+}
+.reserveBtn:hover span:after {
+	opacity: 1;
+	right: 0;
+}
