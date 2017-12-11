@@ -9,7 +9,7 @@ create table Account
 create table RoomType
 (
 	type nvarchar(10),
-	price numeric(10,2) not null,
+	price int not null,
 	rest int not null
 	primary key (type)
 )

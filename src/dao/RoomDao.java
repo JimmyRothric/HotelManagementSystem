@@ -13,6 +13,28 @@ public class RoomDao extends BaseDao {
 	public RoomDao() {
 		// TODO Auto-generated constructor stub
 	}
+	public boolean addRoom(Room room) {
+		String sql = "insert into Room values(?, ?, ?, ?, ?, ?)";
+		try {
+			Connection con = super.getConnection();
+			PreparedStatement stmt = con.prepareStatement(sql);
+			stmt.setString(1, room.getId());
+			stmt.setString(2, room.getType());
+			stmt.setInt(3, room.getFloor());
+			stmt.setString(4, room.getOrientation());
+			stmt.setString(5, room.getDescription());
+			stmt.setBoolean(6, room.isIs_empty());
+			stmt.executeUpdate();
+			stmt.close();
+			con.close();
+			return true;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return false;
+	}
+	
 	public ArrayList<Room> selectByCondition(String type, int price0, int price1) {
 		String sql = "select * from Room where type = ? and price between ? and ?";
 		ArrayList<Room> room = new ArrayList<Room>();

@@ -10,13 +10,13 @@ public class Room {
 	public Room() {
 		// TODO Auto-generated constructor stub
 	}
-	public Room(String id, String type, int floor, String orientation, String description) {
+	public Room(String id, String type, int floor, String orientation, String description,Boolean is_empty) {
 		this.id = id;
 		this.type = type;
 		this.floor = floor;
 		this.orientation = orientation;
 		this.description = description;
-		this.is_empty = true;
+		this.is_empty = is_empty;
 	}
 	public String getId() {
 		return id;
