@@ -1,20 +1,3 @@
-create database HotelManagementDB
-on
-(
-	name = 'HotelManagementDBData',
-	filename = 'D:\database\HotelManagementDB_data.mdf',
-	size = 10MB,
-	maxsize = 100MB,
-	filegrowth = 10MB
-)
-log on
-(
-	name = 'HotelManagementDBLog',
-	filename = 'D:\database\HotelManagementDB_log.ldf',
-	size = 5MB,
-	maxsize = 50MB,
-	filegrowth = 5MB
-)
 use HotelManagementDB
 create table Account
 (
@@ -30,7 +13,7 @@ create table RoomType
 	rest int not null
 	primary key (type)
 )
-creare table Room
+create table Room
 (
 	Rid char(4),
 	type nvarchar(10) not null,
@@ -41,14 +24,14 @@ creare table Room
 	primary key (Rid),
 	foreign key (type) references RoomType
 )
-create table Order
+create table Reservation
 (
 	Oid char(20),
 	Uid char(18),
 	Rid char(4),
 	checkin datetime not null,
-	checkout datetiem not null,
-	primary key (Oid,Uid,Rid)
+	checkout datetime not null,
+	primary key (Oid,Uid,Rid),
 	foreign key (Uid) references Account,
 	foreign key (Rid) references Room,
 )
