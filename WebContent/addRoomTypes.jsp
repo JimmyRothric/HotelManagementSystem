@@ -19,7 +19,7 @@
 	</tr>
 	<tr>
 		<td>余量：</td>
-		<td><input type="password" name="room_rest"/> </td>
+		<td><input type="text" name="room_rest"/> </td>
 	</tr>
 </table>
 <input type ="submit" name = "addButton" value = "添加" style="font-size:20px">
