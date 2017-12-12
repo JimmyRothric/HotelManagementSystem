@@ -10,7 +10,7 @@ create table RoomType
 (
 	type nvarchar(10),
 	price int not null,
-	rest int not null
+	rest int not null,
 	primary key (type)
 )
 create table Room
@@ -20,7 +20,7 @@ create table Room
 	floor int not null,
 	orientation char(2) not null,
 	description nvarchar(20),
-	empty bit default(1),
+	state char(1) default('E') not null,
 	primary key (Rid),
 	foreign key (type) references RoomType
 )
@@ -32,6 +32,16 @@ create table Reservation
 	checkin datetime not null,
 	checkout datetime not null,
 	primary key (Oid,Uid,Rid),
+	foreign key (Uid) references Account,
+	foreign key (Rid) references Room,
+)
+create table Review
+(	
+	Uid char(18),
+	Rid char(4),
+	comment nvarchar(100),
+	rate int,
+	primary key (Uid, Rid),
 	foreign key (Uid) references Account,
 	foreign key (Rid) references Room,
 )
