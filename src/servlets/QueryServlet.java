@@ -81,7 +81,7 @@ public class QueryServlet extends HttpServlet {
 			RequestDispatcher rd = request.getRequestDispatcher("/main.jsp");
 			rd.forward(request, response);
 		}
-		response.sendRedirect("main.jsp");
+		//response.sendRedirect("main.jsp");
 		
 	}
 	

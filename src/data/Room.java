@@ -6,17 +6,17 @@ public class Room {
 	private int floor;
 	private String orientation;
 	private String description;
-	private boolean is_empty;
+	private String state;
 	public Room() {
 		// TODO Auto-generated constructor stub
 	}
-	public Room(String id, String type, int floor, String orientation, String description,Boolean is_empty) {
+	public Room(String id, String type, int floor, String orientation, String description) {
 		this.id = id;
 		this.type = type;
 		this.floor = floor;
 		this.orientation = orientation;
 		this.description = description;
-		this.is_empty = is_empty;
+		this.state = "E";
 	}
 	public String getId() {
 		return id;
@@ -48,12 +48,13 @@ public class Room {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public boolean isIs_empty() {
-		return is_empty;
+	public String getState() {
+		return state;
 	}
-	public void setIs_empty(boolean is_empty) {
-		this.is_empty = is_empty;
+	public void setState(String state) {
+		this.state = state;
 	}
+
 	
 
 }

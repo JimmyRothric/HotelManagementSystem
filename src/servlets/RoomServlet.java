@@ -46,18 +46,13 @@ public class RoomServlet extends HttpServlet {
 		String room_floor = request.getParameter("room_floor");
 		String room_ort = request.getParameter("room_ort");
 		String room_dspt = request.getParameter("room_dspt");
-		String room_empty = request.getParameter("room_empty");
-		if (room_id != "" && room_type != "" && room_floor != "" && room_ort != "" && room_empty != "") {
+		if (room_id != "" && room_type != "" && room_floor != "" && room_ort != "") {
 			try {
 				int floor = Integer.parseInt(room_floor);
 				RoomDao rd = new RoomDao();
-				Boolean empty = false;
-				if (room_empty.equals("是")) {
-					empty = true;
-				}
-				rd.addRoom(new Room(room_id,room_type,floor,room_ort,room_dspt,empty));
+				rd.addRoom(new Room(room_id,room_type,floor,room_ort,room_dspt));
 				
-			}catch (NumberFormatException e) {
+			}catch (Exception e) {
 				
 			}
 		}

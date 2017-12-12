@@ -3,7 +3,7 @@ package data;
 public class Account {
 	private String id;
 	private String password;
-
+	private String name;
 	public Account() {
 		// TODO Auto-generated constructor stub
 	}
@@ -13,9 +13,6 @@ public class Account {
 		this.name = name;
 		this.password = password;
 	}
-
-	private String name;
-	
 
 	public String getId() {
 		return id;

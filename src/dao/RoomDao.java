@@ -23,7 +23,7 @@ public class RoomDao extends BaseDao {
 			stmt.setInt(3, room.getFloor());
 			stmt.setString(4, room.getOrientation());
 			stmt.setString(5, room.getDescription());
-			stmt.setBoolean(6, room.isIs_empty());
+			stmt.setString(6, room.getState());
 			stmt.executeUpdate();
 			stmt.close();
 			con.close();
@@ -52,7 +52,7 @@ public class RoomDao extends BaseDao {
 				r.setFloor(rs.getInt("floor"));
 				r.setOrientation(rs.getString("orientation"));
 				r.setDescription(rs.getString("description"));
-				r.setIs_empty(rs.getBoolean("empty"));
+				r.setState(rs.getString("state"));
 				room.add(r);
 			}
 			stmt.close();
@@ -79,7 +79,7 @@ public class RoomDao extends BaseDao {
 				r.setFloor(rs.getInt("floor"));
 				r.setOrientation(rs.getString("orientation"));
 				r.setDescription(rs.getString("description"));
-				r.setIs_empty(rs.getBoolean("empty"));
+				r.setState(rs.getString("state"));
 				room.add(r);
 			}
 			stmt.close();

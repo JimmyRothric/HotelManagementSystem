@@ -45,10 +45,14 @@ public class AccountManagementServlet extends HttpServlet {
 		String targetString = request.getParameter("targetString");
 		AccountDao dao = new AccountDao();
 		if (cp != null) {
-			dao.setPassword(targetId, targetString);
+			if (targetString != "") {
+				dao.setPassword(targetId, targetString);
+			}
 		}
 		if (cn != null) {
-			dao.setName(targetId, targetString);
+			if (targetString != "") {
+				dao.setName(targetId, targetString);
+			}
 		}
 		if (dl != null) {
 			dao.delAccount(targetId);

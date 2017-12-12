@@ -45,14 +45,9 @@
 		<td>朝向：</td>
 		<td><input type="text" name="room_ort"/></td>
 	</tr>
-		<tr>
+	<tr>
 		<td>描述：</td>
 		<td><input type="text" name="room_dspt"/></td>
-	</tr>
-		<tr>
-		<td>是否空置：</td>
-		<td><input type = "radio" name = "room_empty" value = "是">是
-			<input type = "radio" name = "room_empty" value = "否">否</td>
 	</tr>
 	
 </table>
