@@ -24,7 +24,7 @@ import data.*;
 @WebServlet("/QueryServlet")
 public class QueryServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	static String[] type = {"单人间", "双人间", "商务间", "套间", "总统套房"};
+//	static String[] type = {"单人间", "双人间", "商务间", "套间", "总统套房"};
 	static int[] price = {0, 200, 500, 1000, 2000};
     /**
      * @see HttpServlet#HttpServlet()
@@ -49,7 +49,7 @@ public class QueryServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
-		int type_index = Integer.parseInt(request.getParameter("type"));
+		String type = request.getParameter("type");
 		int price_index = Integer.parseInt(request.getParameter("price"));
 //		String arrival_time = request.getParameter("arrive");
 //		String departure_time = request.getParameter("depart");
@@ -73,7 +73,7 @@ public class QueryServlet extends HttpServlet {
 		HttpSession session = request.getSession(true);
 		RoomDao dao = new RoomDao();
 		ArrayList<Room> roomList = new ArrayList<Room>();
-		roomList = dao.selectByCondition(type[type_index], price[price_index], price[price_index + 1]);
+		roomList = dao.selectByCondition(type, price[price_index], price[price_index + 1]);
 		if (roomList != null) {
 			session.setAttribute("roomList", roomList);
 		} else {
