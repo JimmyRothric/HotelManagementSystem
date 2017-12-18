@@ -21,7 +21,7 @@ import data.*;
 @WebServlet("/ReservationServlet")
 public class ReservationServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+ 
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -46,7 +46,7 @@ public class ReservationServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession(true);
-		String id = "0001";
+		
 		Account account = (Account)session.getAttribute("account");
 		if (account == null) {
 			return;
@@ -56,7 +56,7 @@ public class ReservationServlet extends HttpServlet {
 		String checkin = request.getParameter("checkin");
 		String checkout = request.getParameter("checkout");
 		OrderDao dao = new OrderDao();
-		Order o = new Order(id, acc_id, room_id, checkin, checkout);
+		Order o = new Order( acc_id, room_id, checkin, checkout);
 		dao.addOrder(o);
 		
 		

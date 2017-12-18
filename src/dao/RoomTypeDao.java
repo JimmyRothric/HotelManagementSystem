@@ -13,6 +13,26 @@ public class RoomTypeDao extends BaseDao {
 	public RoomTypeDao() {
 		
 	}
+	public int getPrice(String type) {
+		String sql = "select price from RoomType where type = ?";
+		int price = 0;
+		try {
+			Connection con = super.getConnection();
+			PreparedStatement stmt = con.prepareStatement(sql);
+			stmt.setString(1, type);
+			ResultSet rs = stmt.executeQuery();
+			while (rs.next()) {
+				price = rs.getInt(1);
+			}
+			stmt.close();
+			con.close();
+			return price;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return -1;
+	}
 	public boolean addRoomType(RoomType rt) {
 		String sql = "insert into RoomType values(?, ?, ?)";
 		try {

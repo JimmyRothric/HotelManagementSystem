@@ -2,25 +2,32 @@ package data;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 public class Order {
+	public static int order_id = 0;
 	private String id;
 	private String account_id;
 	private String room_id;
 	private String checkin;
 	private String checkout;
+	private String order_type;
+	private int price;
 	
 	public Order() {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public Order(String id, String account_id, String room_id, String checkin, String checkout) {
-		this.id = id;
+	public Order(String account_id, String room_id, String checkin, String checkout) {
+		SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMdd");
+		this.id = sdf.format(Calendar.getInstance().getTime()) + order_id++;
 		this.account_id = account_id;
 		this.room_id = room_id;
 		this.checkin = checkin;
 		this.checkout = checkout;
+		this.order_type = "R";
+		this.price = 0;
 	}
 
 	public int calDays(Date date0, Date date1) {

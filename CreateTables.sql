@@ -31,7 +31,9 @@ create table Reservation
 	Rid char(4),
 	checkin datetime not null,
 	checkout datetime not null,
-	primary key (Oid,Uid,Rid),
+	order_type char(1) not null,
+	price int,
+	primary key (Oid),
 	foreign key (Uid) references Account,
 	foreign key (Rid) references Room,
 )
