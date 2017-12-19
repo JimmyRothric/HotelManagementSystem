@@ -16,7 +16,8 @@
 <form action="ReservationServlet" method="post">
 入住时间<input type="date" name="checkin" value=${checkin} readonly="true">
 离店时间<input type="date" name="checkout" value=${checkout} readonly="true">
-房间类型：<%=request.getParameter("type")%>
+房间类型：<input type = "text" name = "room_type" value = <%=request.getParameter("type")%> readonly = "true">
+
 <button class="reserveBtn" style="vertical-align:middle"><span>预订</span></button>
 </form>
 </body>

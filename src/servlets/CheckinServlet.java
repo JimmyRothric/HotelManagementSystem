@@ -1,31 +1,31 @@
 package servlets;
 
 import java.io.IOException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.util.ArrayList;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import dao.OrderDao;
-import data.*;
+import dao.RoomDao;
+import data.Order;
+import data.Room;
 
 /**
- * Servlet implementation class ReservationServlet
+ * Servlet implementation class CheckinServlet
  */
-@WebServlet("/ReservationServlet")
-public class ReservationServlet extends HttpServlet {
+@WebServlet("/CheckinServlet")
+public class CheckinServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
- 
+       
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ReservationServlet() {
+    public CheckinServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -44,31 +44,27 @@ public class ReservationServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("UTF-8");
-		response.setCharacterEncoding("UTF-8");
-		HttpSession session = request.getSession(true);
-		
-		Account account = (Account)session.getAttribute("account");
-		if (account == null) {
-			return;
+		String rsearchBtn = request.getParameter("rsearchBtn");
+		if (rsearchBtn != null) {
+			String id = request.getParameter("id");
+			if (id != "") {
+				OrderDao dao = new OrderDao();
+				ArrayList<Order> orderList = dao.getROrder(id);
+				ArrayList<Room> validRoomList;
+				RoomDao rdao = new RoomDao();
+				if (orderList !=null && !orderList.isEmpty()) {
+					Order o = orderList.get(0);
+					validRoomList = rdao.selectByRoomTypeAndTime(o.getRoom_type(), o.getCheckin(), o.getCheckout());
+					request.setAttribute("orderList", orderList);
+					request.setAttribute("roomList", validRoomList);
+				}
+				RequestDispatcher rd = request.getRequestDispatcher("/rcheckin.jsp");
+				rd.forward(request, response);
+			}else {
+				//goto Error
+			}
 		}
-		String acc_id = account.getId();
-		String checkin = request.getParameter("checkin");
-		String checkout = request.getParameter("checkout");
-		OrderDao dao = new OrderDao();
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-		String type = request.getParameter("room_type");
-		try {
-			Order o = new Order(acc_id,type,sdf.parse(checkin), sdf.parse(checkout));
-			dao.addOrder(o);
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		
 		
 	}
-	
-	
 
 }

@@ -29,6 +29,7 @@ create table Reservation
 	Oid char(20),
 	Uid char(18),
 	Rid char(4),
+	room_type nvarchar(10) not null,
 	checkin datetime not null,
 	checkout datetime not null,
 	order_type char(1) not null,
@@ -36,6 +37,7 @@ create table Reservation
 	primary key (Oid),
 	foreign key (Uid) references Account,
 	foreign key (Rid) references Room,
+	foreign key (room_type) references RoomType
 )
 create table Review
 (	

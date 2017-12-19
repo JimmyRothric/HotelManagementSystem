@@ -10,8 +10,9 @@ public class Order {
 	private String id;
 	private String account_id;
 	private String room_id;
-	private String checkin;
-	private String checkout;
+	private String room_type;
+	private Date checkin;
+	private Date checkout;
 	private String order_type;
 	private int price;
 	
@@ -19,17 +20,31 @@ public class Order {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public Order(String account_id, String checkin, String checkout) {
+
+	public Order(String id, String account_id, String room_id, String room_type, Date checkin, Date checkout,
+			String order_type, int price) {
+		this.id = id;
+		this.account_id = account_id;
+		this.room_id = room_id;
+		this.room_type = room_type;
+		this.checkin = checkin;
+		this.checkout = checkout;
+		this.order_type = order_type;
+		this.price = price;
+	}
+
+	public Order(String account_id,String room_type, Date checkin, Date checkout) {
 		SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMdd");
 		this.id = sdf.format(Calendar.getInstance().getTime()) + String.format("%04d", order_id++);
 		this.account_id = account_id;
 		this.room_id = null;
+		this.room_type = room_type;
 		this.checkin = checkin;
 		this.checkout = checkout;
 		this.order_type = "R";
 		this.price = 0;
 	}
-
+/*
 	public int calDays(Date date0, Date date1) {
 		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
 		Date checkin_date = null;
@@ -44,6 +59,7 @@ public class Order {
 		int days = (int) ((date1.getTime() - date0.getTime()) / (1000*3600*24) + 1);
 		return days;
 	}
+*/
 	public String getId() {
 		return id;
 	}
@@ -62,18 +78,51 @@ public class Order {
 	public void setRoom_id(String room_id) {
 		this.room_id = room_id;
 	}
-	public String getCheckin() {
+
+
+	public Date getCheckin() {
 		return checkin;
 	}
-	public void setCheckin(String checkin) {
+
+
+
+	public void setCheckin(Date checkin) {
 		this.checkin = checkin;
 	}
-	public String getCheckout() {
+
+
+
+	public Date getCheckout() {
 		return checkout;
 	}
-	public void setCheckout(String checkout) {
+
+
+
+	public void setCheckout(Date checkout) {
 		this.checkout = checkout;
 	}
+
+
+
+	public String getRoom_type() {
+		return room_type;
+	}
+
+
+
+
+
+
+
+	public void setRoom_type(String room_type) {
+		this.room_type = room_type;
+	}
+
+
+
+
+
+
 
 	public String getOrder_type() {
 		return order_type;
