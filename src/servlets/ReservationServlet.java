@@ -52,11 +52,10 @@ public class ReservationServlet extends HttpServlet {
 			return;
 		}
 		String acc_id = account.getId();
-		String room_id = "0001";
 		String checkin = request.getParameter("checkin");
 		String checkout = request.getParameter("checkout");
 		OrderDao dao = new OrderDao();
-		Order o = new Order( acc_id, room_id, checkin, checkout);
+		Order o = new Order(acc_id, checkin, checkout);
 		dao.addOrder(o);
 		
 		

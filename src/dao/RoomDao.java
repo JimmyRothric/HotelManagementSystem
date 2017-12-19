@@ -37,8 +37,10 @@ public class RoomDao extends BaseDao {
 		return false;
 	}
 	
-	public ArrayList<Room> selectByCondition(String type, int price0, int price1) {
-		String sql = "select * from Room where type = ? and price between ? and ?";
+	public ArrayList<Room> selectByPriceorType(String type, int price0, int price1) {
+		String sql = "select * from Room ";
+		String sql1 = "where type = ?";
+		
 		ArrayList<Room> room = new ArrayList<Room>();
 		try {
 			Connection con = super.getConnection();

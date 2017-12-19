@@ -19,11 +19,11 @@ public class Order {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public Order(String account_id, String room_id, String checkin, String checkout) {
+	public Order(String account_id, String checkin, String checkout) {
 		SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMdd");
-		this.id = sdf.format(Calendar.getInstance().getTime()) + order_id++;
+		this.id = sdf.format(Calendar.getInstance().getTime()) + String.format("%04d", order_id++);
 		this.account_id = account_id;
-		this.room_id = room_id;
+		this.room_id = null;
 		this.checkin = checkin;
 		this.checkout = checkout;
 		this.order_type = "R";
@@ -73,6 +73,22 @@ public class Order {
 	}
 	public void setCheckout(String checkout) {
 		this.checkout = checkout;
+	}
+
+	public String getOrder_type() {
+		return order_type;
+	}
+
+	public void setOrder_type(String order_type) {
+		this.order_type = order_type;
+	}
+
+	public int getPrice() {
+		return price;
+	}
+
+	public void setPrice(int price) {
+		this.price = price;
 	}
 	
 }

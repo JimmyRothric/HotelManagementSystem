@@ -15,7 +15,6 @@
 </head>
 <body>
 <form action="" method="post">
-<input id="type" type="hidden" name="type">
 请选择查询方式：<br/>
 房间类型
 <select name="type">
@@ -50,7 +49,7 @@
 	<tr>
 		<td>${t}</td>
 		<td>${sessionScope.roomMap[t]}</td>
-		<td><input type="submit" name="reserveBtn" value="预订 " onclick="document.getElementById('type').value='${t}';this.form.action='reservation.jsp';this.form.submit()"/></td>		
+		<td><input type="submit" name="reserveBtn" value="预订 " onclick="this.form.action='reservation.jsp?type=${t}';this.form.submit()"/></td>		
 	</tr>
 </c:forEach>
 </table>

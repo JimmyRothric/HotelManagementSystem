@@ -52,14 +52,10 @@ public class QueryServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
-		String reserveBtn = request.getParameter("reserveBtn");
-		if (reserveBtn != null) {
-			request.getParameter("type");
-			return;
-		}
+		HttpSession session = request.getSession(true);
 		String checkin = request.getParameter("checkin");
 		String checkout = request.getParameter("checkout");
-		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		Date checkin_date = null;
 		Date checkout_date = null;
 		try {
@@ -69,7 +65,11 @@ public class QueryServlet extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		HttpSession session = request.getSession(true);
+		if (checkin_date.after(checkout_date)) {
+			
+		}
+		session.setAttribute("checkin", checkin);
+		session.setAttribute("checkout", checkout);
 		RoomTypeDao typedao = new RoomTypeDao();
 		RoomDao dao = new RoomDao();
 		ArrayList<Room> roomList = new ArrayList<Room>();

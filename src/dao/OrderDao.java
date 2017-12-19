@@ -13,7 +13,7 @@ public class OrderDao extends BaseDao {
 		// TODO Auto-generated constructor stub
 	}
 	public boolean addOrder(Order o) {
-		String sql = "insert into Account values(?, ?, ?)";
+		String sql = "insert into Reservation values(?, ?, ?, ?, ?, ?, ?)";
 		try {
 			Connection con = super.getConnection();
 			PreparedStatement stmt = con.prepareStatement(sql);
@@ -22,6 +22,8 @@ public class OrderDao extends BaseDao {
 			stmt.setString(3, o.getRoom_id());
 			stmt.setString(4, o.getCheckin());
 			stmt.setString(5, o.getCheckout());
+			stmt.setString(6, o.getOrder_type());
+			stmt.setInt(7, o.getPrice());
 			stmt.executeUpdate();
 			stmt.close();
 			con.close();
