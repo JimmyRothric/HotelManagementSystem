@@ -39,6 +39,18 @@ create table Reservation
 	foreign key (Rid) references Room,
 	foreign key (room_type) references RoomType
 )
+create table ReservationHistory
+(
+	Oid char(20),
+	Uid char(18),
+	Rid char(4),
+	room_type nvarchar(10),
+	checkin datetime,
+	checkout datetime,
+	order_type char(1),
+	price int,
+	primary key (Oid)
+)
 create table Review
 (	
 	Uid char(18),
