@@ -52,6 +52,23 @@ public class RoomDao extends BaseDao {
 		}
 		return false;
 	}
+	public boolean checkoutRoom(String rid) {
+		String sql = "update Room set state = 'E' where Rid = ?";
+		try {
+			Connection con = super.getConnection();
+			PreparedStatement stmt = con.prepareStatement(sql);
+			stmt.setString(1, rid);
+			stmt.executeUpdate();
+			stmt.close();
+			con.close();
+			return true;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return false;
+	}
+	
 	
 	public ArrayList<Room> selectByPriceorType(String type, int price0, int price1) {
 		String sql = "select * from Room ";

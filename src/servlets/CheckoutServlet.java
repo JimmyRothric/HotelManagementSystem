@@ -16,16 +16,16 @@ import data.Order;
 import data.Room;
 
 /**
- * Servlet implementation class CheckinServlet
+ * Servlet implementation class CheckoutServlet
  */
-@WebServlet("/CheckinServlet")
-public class CheckinServlet extends HttpServlet {
+@WebServlet("/CheckoutServlet")
+public class CheckoutServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public CheckinServlet() {
+    public CheckoutServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -44,23 +44,18 @@ public class CheckinServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("UTF-8");
-		String rsearchBtn = request.getParameter("rsearchBtn");
-		String allocateBtn = request.getParameter("allocateBtn");
-		if (rsearchBtn != null) {
+		String searchBtn = request.getParameter("searchBtn");
+		String updateInfoBtn = request.getParameter("updateInfoBtn");
+		String checkoutBtn = request.getParameter("checkoutBtn");
+		if (searchBtn != null) {
 			String id = request.getParameter("id");
 			if (id != "") {
 				OrderDao dao = new OrderDao();
-				ArrayList<Order> orderList = dao.getOrder(id,"R");
-				ArrayList<Room> validRoomList;
-				RoomDao rdao = new RoomDao();
+				ArrayList<Order> orderList = dao.getOrder(id,"S");
 				if (orderList !=null && !orderList.isEmpty()) {
-					Order o = orderList.get(0);
-					validRoomList = rdao.selectByRoomTypeAndTime(o.getRoom_type(), o.getCheckin(), o.getCheckout());
 					request.setAttribute("orderList", orderList);
-					request.setAttribute("roomList", validRoomList);
-					
 				}
-				RequestDispatcher rd = request.getRequestDispatcher("/rcheckin.jsp");
+				RequestDispatcher rd = request.getRequestDispatcher("/rcheckout.jsp");
 				rd.forward(request, response);
 				return;
 			}else {
@@ -68,19 +63,30 @@ public class CheckinServlet extends HttpServlet {
 				return;
 			}
 		}
-		
-		if (allocateBtn != null) {
-			String oid = request.getParameter("oid");
-			String rid = request.getParameter("rid");
-			
-			if (rid != null && oid != null) {
-				OrderDao odao = new OrderDao();
-				odao.checkinOrder(oid, rid);
-				RoomDao rdao = new RoomDao();
-				rdao.checkinRoom(rid);
+		String oid = request.getParameter("oid");
+		if (updateInfoBtn != null) {
+			if (oid != null) {
+				OrderDao dao = new OrderDao();
+				dao.updateCheckout(oid);
+				dao.updatePrice(oid);
 			}
+			RequestDispatcher rd = request.getRequestDispatcher("/rcheckout.jsp");
+			rd.forward(request, response);
+			return;
 		}
-		response.sendRedirect("rcheckin.jsp");
+		if (checkoutBtn != null) {
+			String rid = request.getParameter("rid");
+			if (oid != null && rid != null) {
+				OrderDao dao = new OrderDao();
+				dao.checkoutOrder(oid);
+				RoomDao rdao = new RoomDao();
+				rdao.checkoutRoom(rid);
+			}
+			RequestDispatcher rd = request.getRequestDispatcher("/rcheckout.jsp");
+			rd.forward(request, response);
+			return;
+		}
+		
 	}
 
 }

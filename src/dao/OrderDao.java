@@ -5,7 +5,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 import data.Account;
 import data.Order;
@@ -16,13 +19,14 @@ public class OrderDao extends BaseDao {
 	public OrderDao() {
 		// TODO Auto-generated constructor stub
 	}
-	public ArrayList<Order> getROrder(String id) {
-		String sql = "select * from Reservation where Uid = ? and order_type = 'R'";
+	public ArrayList<Order> getOrder(String id,String order_type) {
+		String sql = "select * from Reservation where Uid = ? and order_type = ?";
 		ArrayList<Order> orderList = new ArrayList<Order>();
 		try {
 			Connection con = super.getConnection();
 			PreparedStatement stmt = con.prepareStatement(sql);
 			stmt.setString(1, id);
+			stmt.setString(2, order_type);
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
 				Order o = new Order(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getDate(5),rs.getDate(6),rs.getString(7),rs.getInt(8));
@@ -36,6 +40,91 @@ public class OrderDao extends BaseDao {
 			e.printStackTrace();
 		}
 		return null;
+	}
+	public boolean updatePrice(String oid) {
+		String sql = "update Reservation set price = ? where Oid = ?";
+		try {
+			Connection con = super.getConnection();
+			PreparedStatement stmt = con.prepareStatement(sql);
+			stmt.setInt(1, getPrice(oid));
+			stmt.setString(2, oid);
+			stmt.executeUpdate();
+			stmt.close();
+			con.close();
+			return true;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return false;
+	}
+	public boolean updateCheckout(String oid) {
+		String sql = "update Reservation set checkout = ? where Oid = ?";
+		try {
+			Connection con = super.getConnection();
+			PreparedStatement stmt = con.prepareStatement(sql);
+			stmt.setTimestamp(1, new Timestamp(Calendar.getInstance().getTime().getTime()));
+			stmt.setString(2, oid);
+			stmt.executeUpdate();
+			stmt.close();
+			con.close();
+			return true;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return false;
+	}
+	
+	public int calDays(Date date0, Date date1) {
+		int days = (int) ((date1.getTime() - date0.getTime()) / (1000*3600*24) + 1);
+		return days;
+	}
+	public int getPrice(String oid) {
+		String sql = "select checkin,checkout,room_type from Reservation where Oid = ?";
+		int price = -1;
+		try {
+			Connection con = super.getConnection();
+			PreparedStatement stmt = con.prepareStatement(sql);
+			stmt.setString(1, oid);
+			ResultSet rs = stmt.executeQuery();
+			Date checkin = null;
+			Date checkout= null;
+			String room_type = null;
+			while (rs.next()) {
+				checkin = new Date(rs.getTimestamp(1).getTime());
+				checkout = new Date(rs.getTimestamp(2).getTime());
+				room_type = rs.getString(3);
+			}
+			RoomTypeDao dao = new RoomTypeDao();
+			int price_per_day = dao.getPrice(room_type);
+			price = price_per_day * calDays(checkin,checkout);
+			stmt.close();
+			con.close();
+			return price;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return price;
+	}
+	
+	public boolean checkoutOrder(String oid) {
+		String sql = "update Reservation set price = ? , order_type = 'F' where Oid = ?";
+		try {
+			Connection con = super.getConnection();
+			PreparedStatement stmt = con.prepareStatement(sql);
+			stmt.setInt(1, getPrice(oid));
+			stmt.setString(2, oid);
+			stmt.executeUpdate();
+			stmt.close();
+			con.close();
+			return true;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return false;
 	}
 	public boolean checkinOrder(String oid,String rid) {
 		String sql = "update Reservation set Rid = ? , order_type = 'S' where Oid = ?";
