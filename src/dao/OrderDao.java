@@ -37,6 +37,23 @@ public class OrderDao extends BaseDao {
 		}
 		return null;
 	}
+	public boolean checkinOrder(String oid,String rid) {
+		String sql = "update Reservation set Rid = ? , order_type = 'S' where Oid = ?";
+		try {
+			Connection con = super.getConnection();
+			PreparedStatement stmt = con.prepareStatement(sql);
+			stmt.setString(1, rid);
+			stmt.setString(2, oid);
+			stmt.executeUpdate();
+			stmt.close();
+			con.close();
+			return true;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return false;
+	}
 	public boolean addOrder(Order o) {
 		String sql = "insert into Reservation values(?, ?, ?, ?, ?, ?, ?, ?)";
 		try {

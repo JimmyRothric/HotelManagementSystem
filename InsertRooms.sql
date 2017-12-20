@@ -1,5 +1,6 @@
 insert into RoomType values ('单人间', 300, 2)
 insert into RoomType values ('双人间', 500, 2)
+insert into Room values ('0000', '单人间', 1, 'S', null, 'N')
 insert into Room values ('101', '单人间', 1, 'S', null, 'E')
 insert into Room values ('102', '单人间', 1, 'S', null, 'E')
 insert into Room values ('201', '双人间', 2, 'S', null, 'E')

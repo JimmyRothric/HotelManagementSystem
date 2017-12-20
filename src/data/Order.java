@@ -6,7 +6,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class Order {
-	public static int order_id = 0;
+	public static int order_id = 1;
 	private String id;
 	private String account_id;
 	private String room_id;
@@ -33,11 +33,12 @@ public class Order {
 		this.price = price;
 	}
 
+
 	public Order(String account_id,String room_type, Date checkin, Date checkout) {
-		SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMdd");
+		SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMddHHmmss");
 		this.id = sdf.format(Calendar.getInstance().getTime()) + String.format("%04d", order_id++);
 		this.account_id = account_id;
-		this.room_id = null;
+		this.room_id = "0000";
 		this.room_type = room_type;
 		this.checkin = checkin;
 		this.checkout = checkout;

@@ -35,13 +35,14 @@
 		  </tr>  
 </c:forEach>  
 </table>
-为订单分配房间：<br/>
+为订单${orderList[0].id}分配房间：<br/>
 <table border="1" cellspacing="0px" class="td">
 <th>id</th>
 <th>type</th>
 <th>floor</th>
 <th>orientation</th>
 <th>description</th>
+<th>function</th>
 <c:forEach items="${roomList}" var="item">  
 		  <tr>  
 		    <td>${item.id}</td>  
@@ -49,7 +50,7 @@
 		    <td>${item.floor}</td>
 		    <td>${item.orientation}</td>
 		    <td>${item.description}</td>
-		    <td><input type = "submit" name = "allocateBtn" value = "分配"></td> 
+		    <td><input type = "submit" name = "allocateBtn" value = "分配" onclick="this.form.action='CheckinServlet?oid=${orderList[0].id}&rid=${item.id}';this.form.submit()"></td> 
 		  </tr>  
 </c:forEach>  
 
