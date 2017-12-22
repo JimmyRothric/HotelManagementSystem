@@ -71,18 +71,10 @@ public class QueryServlet extends HttpServlet {
 		session.setAttribute("checkin", checkin);
 		session.setAttribute("checkout", checkout);
 		RoomTypeDao typedao = new RoomTypeDao();
-		RoomDao dao = new RoomDao();
-		ArrayList<Room> roomList = new ArrayList<Room>();
-		roomList = dao.selectByTime(checkin_date, checkout_date);
-		LinkedHashMap<String, Integer> roomMap = new LinkedHashMap<String, Integer>();
-		ArrayList<String> typeList;
-		if (roomList != null) {
-			for (Room r:roomList) {
-				roomMap.put(r.getType(), typedao.getPrice(r.getType()));
-			}
-			typeList = new ArrayList<String>(roomMap.keySet());
-			session.setAttribute("roomMap", roomMap);
-			session.setAttribute("typeList", typeList);
+		ArrayList<RoomType> roomtypesList;
+		roomtypesList = typedao.selectByTime(checkin_date, checkout_date);
+		if (roomtypesList != null) {
+			session.setAttribute("typeList", roomtypesList);
 			response.sendRedirect("displayroom.jsp");
 		} else {
 			request.setAttribute("queryErrorinfo", "NOT FOUND");

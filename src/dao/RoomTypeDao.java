@@ -4,7 +4,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Date;
 
 import data.Room;
 import data.RoomType;
@@ -65,6 +67,34 @@ public class RoomTypeDao extends BaseDao {
 			stmt.close();
 			con.close();
 			return rtList;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+	public ArrayList<RoomType> selectByTime(Date checkin, Date checkout) {
+		String sql = "select room_type,count(*) as room_count into #tmptable from Reservation where ? between checkin and checkout or ? between checkin and checkout or (? < checkin and ? > checkout) group by (room_type) " + 
+				"select type, price, room_count from RoomType left join #tmptable on type = room_type where rest > room_count or room_count is null";
+		ArrayList<RoomType> roomtypes = new ArrayList<RoomType>();
+		try {
+			Connection con = super.getConnection();
+			PreparedStatement stmt = con.prepareStatement(sql);
+			stmt.setTimestamp(1, new Timestamp(checkin.getTime()));
+			stmt.setTimestamp(2, new Timestamp(checkout.getTime()));
+			stmt.setTimestamp(3, new Timestamp(checkin.getTime()));
+			stmt.setTimestamp(4, new Timestamp(checkout.getTime()));
+			ResultSet rs = stmt.executeQuery();
+			while (rs.next()) {
+				RoomType rt = new RoomType();
+				rt.setType(rs.getString(1));
+				rt.setPrice(rs.getInt(2));
+				rt.setRest(rs.getInt(3));
+				roomtypes.add(rt);
+			}
+			stmt.close();
+			con.close();
+			return roomtypes;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

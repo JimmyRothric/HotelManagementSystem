@@ -6,6 +6,9 @@ public class RoomType {
 	private String type;
 	private int price;
 	private int rest;
+	public RoomType() {
+		
+	}
 	public RoomType(String type, int price, int rest) {
 		this.type = type;
 		this.price = price;

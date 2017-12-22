@@ -47,9 +47,9 @@
 	</tr>
 <c:forEach var="t" varStatus="i" items="${sessionScope.typeList}">
 	<tr>
-		<td>${t}</td>
-		<td>${sessionScope.roomMap[t]}</td>
-		<td><input type="submit" name="reserveBtn" value="预订 " onclick="this.form.action='reservation.jsp?type=${t}';this.form.submit()"/></td>		
+		<td>${t.type}</td>
+		<td>${t.price}</td>
+		<td><input type="submit" name="reserveBtn" value="预订 " onclick="this.form.action='reservation.jsp?type=${t.type}';this.form.submit()"/></td>		
 	</tr>
 </c:forEach>
 </table>
