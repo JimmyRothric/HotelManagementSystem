@@ -70,17 +70,15 @@ public class RoomDao extends BaseDao {
 	}
 	
 	
-	public ArrayList<Room> selectByPriceorType(String type, int price0, int price1) {
-		String sql = "select * from Room ";
-		String sql1 = "where type = ?";
-		
+/*	public ArrayList<Room> selectByRequirement(String type, int price) {
+		String sql = "declare @type nvarchar(10) declare @price int select @type = ? select @price = ? "
+				+ "select * from RoomType where (type = @type or @type = '') and (price between @price and @price + 300 or @price is null) ";
 		ArrayList<Room> room = new ArrayList<Room>();
 		try {
 			Connection con = super.getConnection();
 			PreparedStatement stmt = con.prepareStatement(sql);
 			stmt.setString(1, type);
-			stmt.setInt(2, price0);
-			stmt.setInt(3, price1);
+			stmt.setInt(2, price);
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
 				Room r = new Room();
@@ -101,6 +99,7 @@ public class RoomDao extends BaseDao {
 		}
 		return null;
 	}
+*/	
 	
 	public ArrayList<Room> selectByTime(Date checkin, Date checkout) {
 		String sql = "select * from Room where Rid not in(select Rid from Reservation where ? between checkin and checkout or ? between checkin and checkout or (? < checkin and ? > checkout))";

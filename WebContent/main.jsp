@@ -36,7 +36,7 @@ function isValid() {
 入住时间<input id="checkin_time" type="date" name="checkin" value=<%=today%> min=<%=today%>>
 离店时间<input id="checkout_time" type="date" name="checkout" value=<%=tomorrow%> min=<%=tomorrow%>>
 <br/>
-<input type = "submit" name = "searchButton" value = "查询">
+<input type="submit" name="searchButton" value="查询">
 <br/>
 </form>
 </body>

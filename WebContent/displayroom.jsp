@@ -14,10 +14,14 @@
 <title>Details</title>
 </head>
 <body>
-<form action="" method="post">
+<form action="RequirementServlet" method="post">
+<div style="float:right">
+<button onclick = "this.form.action='main.jsp';this.form.submit()">返回</button>
+</div>
 请选择查询方式：<br/>
 房间类型
 <select name="type">
+<option value="">ALL</option>
 		<%
 			RoomTypeDao rtd = new RoomTypeDao();
 			ArrayList<RoomType> rtList = rtd.getRoomTypes();
@@ -31,25 +35,25 @@
 </select>
 价格
 <select name="price">
-<option value="0"></option>
+<option value="0">ALL</option>
 <option value="1">0~200</option>
-<option value="2">200~500</option>
-<option value="3">500~1000</option>
-<option value="4">1000~2000</option>
+<option value="2">201~500</option>
+<option value="3">501~1000</option>
+<option value="4">1001~2000</option>
 </select>
-
+<input type="submit" name="searchBtn" value="查询">
 
 <table border="0" cellspacing="0px" class="td">
 	<tr>
 		<td>房型</td>
-		<td>房格</td>
+		<td>房价</td>
 		<td></td>
 	</tr>
 <c:forEach var="t" varStatus="i" items="${sessionScope.typeList}">
 	<tr>
 		<td>${t.type}</td>
 		<td>${t.price}</td>
-		<td><input type="submit" name="reserveBtn" value="预订 " onclick="this.form.action='reservation.jsp?type=${t.type}';this.form.submit()"/></td>		
+		<td><input type="submit" class="reserveBtn" name="reserveBtn" value="预订 " onclick="this.form.action='reservation.jsp?type=${t.type}';this.form.submit()"/></td>		
 	</tr>
 </c:forEach>
 </table>

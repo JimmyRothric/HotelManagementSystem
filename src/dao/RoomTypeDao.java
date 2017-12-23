@@ -53,7 +53,7 @@ public class RoomTypeDao extends BaseDao {
 		}
 		return false;
 	}
-	public ArrayList<RoomType> getRoomTypes(){
+	public ArrayList<RoomType> getRoomTypes() {
 		String sql = "select * from RoomType";
 		ArrayList<RoomType> rtList = new ArrayList<RoomType>();
 		try {
@@ -73,9 +73,58 @@ public class RoomTypeDao extends BaseDao {
 		}
 		return null;
 	}
+	
+	public ArrayList<RoomType> selectByRequirement(String type, int price0, int price1, Date checkin, Date checkout) {
+		String sql = "declare @type nvarchar(10) declare @price0 int declare @price1 int set @type = ? set @price0 = ? set @price1 = ?; " + 
+				"with tmp(type, room_count) as " + 
+				"(select room_type, count(*) from Reservation " +
+				"where ? between checkin and checkout " + 
+				"or ? between checkin and checkout " + 
+				"or (? < checkin and ? > checkout) " + 
+				"group by (room_type)) " +
+				"select RoomType.type, price, rest from RoomType left join tmp " +
+				"on RoomType.type = tmp.type " + 
+				"where (RoomType.type = @type or @type = '') " +
+				"and (price between @price0 and @price1 or @price0 is null) " + 
+				"and (rest > room_count or room_count is null)";	
+		ArrayList<RoomType> roomtypes = new ArrayList<RoomType>();
+		try {
+			Connection con = super.getConnection();
+			PreparedStatement stmt = con.prepareStatement(sql);
+			stmt.setString(1, type);
+			stmt.setInt(2, price0);
+			stmt.setInt(3, price1);
+			stmt.setTimestamp(4, new Timestamp(checkin.getTime()));
+			stmt.setTimestamp(5, new Timestamp(checkout.getTime()));
+			stmt.setTimestamp(6, new Timestamp(checkin.getTime()));
+			stmt.setTimestamp(7, new Timestamp(checkout.getTime()));
+			ResultSet rs = stmt.executeQuery();
+			while (rs.next()) {
+				RoomType rt = new RoomType();
+				rt.setType(rs.getString(1));
+				rt.setPrice(rs.getInt(2));
+				rt.setRest(rs.getInt(3));
+				roomtypes.add(rt);
+			}
+			stmt.close();
+			con.close();
+			return roomtypes;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
 	public ArrayList<RoomType> selectByTime(Date checkin, Date checkout) {
-		String sql = "select room_type,count(*) as room_count into #tmptable from Reservation where ? between checkin and checkout or ? between checkin and checkout or (? < checkin and ? > checkout) group by (room_type) " + 
-				"select type, price, room_count from RoomType left join #tmptable on type = room_type where rest > room_count or room_count is null";
+		String sql = "select room_type, count(*) as room_count into #tmptable from Reservation " + 
+				"where ? between checkin and checkout " + 
+				"or ? between checkin and checkout " + 
+				"or (? < checkin and ? > checkout) " + 
+				"group by (room_type) " + 
+				"select type, price, rest from RoomType left join #tmptable " + 
+				"on type = room_type " + 
+				"where rest > room_count or room_count is null";
 		ArrayList<RoomType> roomtypes = new ArrayList<RoomType>();
 		try {
 			Connection con = super.getConnection();

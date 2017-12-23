@@ -14,11 +14,15 @@
 </head>
 <body>
 <form action="ReservationServlet" method="post">
+<div style="float:right">
+<button onclick = "this.form.action='displayroom.jsp';this.form.submit()">返回</button>
+</div>
+<div style="text-align:center">
 入住时间<input type="date" name="checkin" value=${checkin} readonly="true">
 离店时间<input type="date" name="checkout" value=${checkout} readonly="true">
-房间类型：<input type = "text" name = "room_type" value = <%=request.getParameter("type")%> readonly = "true">
-
-<button class="reserveBtn" style="vertical-align:middle"><span>预订</span></button>
+房间类型：<input type="text" name="room_type" value =<%=request.getParameter("type")%> readonly="true"></p>
+<button class="reserveBtn" style="vertical-align:middle"><span>提交</span></button>
+</div>
 </form>
 </body>
 </html>
