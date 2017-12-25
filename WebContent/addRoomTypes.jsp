@@ -25,5 +25,16 @@
 <input type ="submit" name = "addButton" value = "添加" style="font-size:20px">
 <input type ="reset" value = "清空" style="font-size:20px">
 </form>
+
+<%	String errorInfo = (String)request.getAttribute("addRoomTypeInfo");
+	if (errorInfo != null) {
+	%>	
+	<script language="javascript">
+		alert("<%=errorInfo%>");
+	</script>
+<%
+	}
+	request.removeAttribute("addRoomTypeInfo");
+%>
 </body>
 </html>

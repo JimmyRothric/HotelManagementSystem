@@ -1,6 +1,8 @@
 package servlets;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -48,13 +50,19 @@ public class RoomTypeServlet extends HttpServlet {
 				int rest = Integer.parseInt(room_rest);
 				RoomType rt = new RoomType(room_type,price,rest);
 				RoomTypeDao rtd = new RoomTypeDao();
-				rtd.addRoomType(rt);
+				if (rtd.addRoomType(rt)) {
+					request.setAttribute("addRoomTypeInfo", "添加成功");
+					RequestDispatcher rd = request.getRequestDispatcher("/addRoomTypes.jsp");
+					rd.forward(request, response);
+					return;
+				}
 			}catch (NumberFormatException e) {
 				
 			}
 		}
-		
-		
+		request.setAttribute("addRoomTypeInfo", "添加失败");
+		RequestDispatcher rd = request.getRequestDispatcher("/addRoomTypes.jsp");
+		rd.forward(request, response);
 	}
 
 }

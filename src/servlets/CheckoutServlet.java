@@ -82,7 +82,8 @@ public class CheckoutServlet extends HttpServlet {
 				RoomDao rdao = new RoomDao();
 				rdao.checkoutRoom(rid);
 			}
-			RequestDispatcher rd = request.getRequestDispatcher("/rcheckout.jsp");
+			request.setAttribute("order_id", oid);
+			RequestDispatcher rd = request.getRequestDispatcher("/order.jsp");
 			rd.forward(request, response);
 			return;
 		}

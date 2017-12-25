@@ -1,6 +1,8 @@
 package servlets;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -50,12 +52,20 @@ public class RoomServlet extends HttpServlet {
 			try {
 				int floor = Integer.parseInt(room_floor);
 				RoomDao rd = new RoomDao();
-				rd.addRoom(new Room(room_id,room_type,floor,room_ort,room_dspt));
+				if(rd.addRoom(new Room(room_id,room_type,floor,room_ort,room_dspt))){
+					request.setAttribute("addRoomInfo", "添加成功");
+					RequestDispatcher rdp = request.getRequestDispatcher("/addRooms.jsp");
+					rdp.forward(request, response);
+					return;
+				}
 				
 			}catch (Exception e) {
 				
 			}
 		}
+		request.setAttribute("addRoomInfo", "添加失败");
+		RequestDispatcher rd = request.getRequestDispatcher("/addRooms.jsp");
+		rd.forward(request, response);
 	}
 
 }

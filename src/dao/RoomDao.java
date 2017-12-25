@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import data.Room;
+import data.RoomType;
 
 public class RoomDao extends BaseDao {
 
