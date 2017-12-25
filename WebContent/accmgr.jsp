@@ -38,6 +38,7 @@ function changeNm(){
 		<th>身份证号</th>
 		<th>密码</th>
 		<th>姓名</th>
+		<th>类别</th>
 		<th>修改密码</th>
 		<th>修改姓名</th>
 		<th>删除账号</th>
@@ -46,6 +47,7 @@ function changeNm(){
 		    <td>${item.id}</td>  
 		    <td>${item.password}</td>  
 		    <td>${item.name}</td>  
+		    <td>${item.group}</td> 
 		    <td><input type="submit" name = "cp" value="修改密码" onclick = "changePw();document.getElementById('uid').value = ${item.id}"></td>
 		    <td><input type="submit" name = "cn" value="修改姓名" onclick = "changeNm();document.getElementById('uid').value = ${item.id}"></td>
 		    <td><input type="submit" name = "dl" value="删除账号" onclick = "document.getElementById('uid').value = ${item.id}"></td>

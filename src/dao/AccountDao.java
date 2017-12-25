@@ -14,13 +14,14 @@ public class AccountDao  extends BaseDao {
 		super();
 	}
 	public boolean addAccount(Account acc) {
-		String sql = "insert into Account values(?, ?, ?)";
+		String sql = "insert into Account values(?, ?, ?, ?)";
 		try {
 			Connection con = super.getConnection();
 			PreparedStatement stmt = con.prepareStatement(sql);
 			stmt.setString(1, acc.getId());
 			stmt.setString(2, acc.getPassword());
 			stmt.setString(3, acc.getName());
+			stmt.setString(4, "User");
 			stmt.executeUpdate();
 			stmt.close();
 			con.close();
@@ -95,7 +96,8 @@ public class AccountDao  extends BaseDao {
 				String id = rs.getString(1);
 				String password = rs.getString(2);
 				String name = rs.getString(3);
-				list.add(new Account(id,password,name));
+				String group = rs.getString(4);
+				list.add(new Account(id,password,name,group));
 			}
 			stmt.close();
 			con.close();
@@ -146,7 +148,7 @@ public class AccountDao  extends BaseDao {
 			ResultSet rs = stmt.executeQuery();
 			Account acc = null;
 			if (rs.next()) {
-				acc = new Account(rs.getString(1), rs.getString(2), rs.getString(3));
+				acc = new Account(rs.getString(1), rs.getString(2), rs.getString(3),rs.getString(4));
 			}
 			stmt.close();
 			con.close();

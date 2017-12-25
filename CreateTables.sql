@@ -4,6 +4,7 @@ create table Account
 	Uid char(18),
 	password varchar(20) not null,
 	name nvarchar(20) not null,
+	acc_group nvarchar(20) not null,
 	primary key (Uid)
 )
 create table RoomType
