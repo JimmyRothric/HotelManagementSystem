@@ -5,6 +5,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -54,17 +55,31 @@ public class ReservationServlet extends HttpServlet {
 		String acc_id = account.getId();
 		String checkin = request.getParameter("checkin");
 		String checkout = request.getParameter("checkout");
+		String floor = request.getParameter("floor");
+		String orientation = request.getParameter("orientation");
 		OrderDao dao = new OrderDao();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		String type = request.getParameter("room_type");
+		boolean success = false;
+		Order o = null;
 		try {
-			Order o = new Order(acc_id,type,sdf.parse(checkin), sdf.parse(checkout));
-			dao.addOrder(o);
+			o = new Order(acc_id,type,sdf.parse(checkin), sdf.parse(checkout));
+			success = dao.addOrder(o);
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+		if (success) {
+			request.setAttribute("order", o);
+			request.setAttribute("ReservationInfo", "预订成功");
+			RequestDispatcher rd = request.getRequestDispatcher("/order.jsp");
+			rd.forward(request, response);
+		} else {
+			request.setAttribute("ReservationInfo", "预订失败");
+			RequestDispatcher rd = request.getRequestDispatcher("/displayroom.jsp");
+			rd.forward(request, response);
+		}
+
 		
 		
 	}

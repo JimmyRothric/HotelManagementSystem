@@ -20,7 +20,7 @@
 	<tr>
 		<td><input type="reset" value="重置"/></td>
 		<td align="right">
-		<input type="button" value="注册 " onclick = "this.form.action='register.jsp';this.form.submit()"/>
+		<input type="button" value="注册 " onclick="this.form.action='register.jsp';this.form.submit()"/>
 		<input type="submit" value="登录 "/></td>
 	</tr>
 </table>

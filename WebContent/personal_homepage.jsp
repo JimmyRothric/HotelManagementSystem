@@ -4,14 +4,14 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Order</title>
+<title>${account.id homepage}</title>
 </head>
 <body>
-订单号：${order.id }<br/>
-身份证号：${order.account_id }<br/>
-房间类型：${order.room_type }<br/>
-入住时间：${order.checkin }<br/>
-离店时间：${order.checkout }<br/>
-<b>总计：${order.price }¥</b><br/>
+<form action="" method="post">
+<div style="float:right">
+<button onclick="this.form.action='main.jsp';this.form.submit()">返回</button>
+</div>
+
+</form>
 </body>
 </html>

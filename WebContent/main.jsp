@@ -3,12 +3,14 @@
 <%@page import="data.RoomType"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="dao.RoomTypeDao"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="css/element_style.css" />
 <title>Trump Hotel</title>
 </head>
 <body>
@@ -24,8 +26,9 @@ function isValid() {
 	}
 }
 </script>
-
+<%@ include file = "head.jsp" %>
 <form action="QueryServlet" onsubmit="return isValid();" method="post">
+
 <%
 	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 	Calendar c = Calendar.getInstance();

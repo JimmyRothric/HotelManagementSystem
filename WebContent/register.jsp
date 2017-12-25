@@ -9,7 +9,7 @@
 <body>
 <form action="RegisterServlet" method="post">
 <div style="float:right">
-<input type="button" value="返回 " onclick = "this.form.action='login.jsp';this.form.submit()"/>
+<button onclick = "this.form.action='login.jsp';this.form.submit()">返回登录页面</button>
 </div>
 <table>
 	<tr>

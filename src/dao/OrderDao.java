@@ -204,4 +204,27 @@ public class OrderDao extends BaseDao {
 		}
 		return false;
 	}
+	
+	public ArrayList<Order> displayMyOwnOrder(String id) {
+		String sql = "select * from Reservation where Uid = ? " + 
+				"union select *from ReservationHistory where Uid = ?";
+		ArrayList<Order> orderList = new ArrayList<Order>();
+		try {
+			Connection con = super.getConnection();
+			PreparedStatement stmt = con.prepareStatement(sql);
+			stmt.setString(1, id);
+			ResultSet rs = stmt.executeQuery();
+			while (rs.next()) {
+				Order o = new Order(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getDate(5),rs.getDate(6),rs.getString(7),rs.getInt(8));
+				orderList.add(o);
+			}
+			stmt.close();
+			con.close();
+			return orderList;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
 }

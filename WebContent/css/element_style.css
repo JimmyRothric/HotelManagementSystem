@@ -43,3 +43,7 @@
 	opacity: 1;
 	right: 0;
 }
+
+a:link,a:visited {color:#080808;text-decoration:none;}
+a:hover,a:active {color:#A0A0A0;text-decoration:none;} 
+
