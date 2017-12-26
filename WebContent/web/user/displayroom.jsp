@@ -12,7 +12,7 @@
 <title>Details</title>
 </head>
 <body>
-<%@ include file = "head.jsp" %>
+<%@ include file = "../head.jsp" %>
 <form action="RequirementServlet" method="post">
 <div style="float:right">
 <button onclick="this.form.action='main.jsp';this.form.submit()">返回</button>

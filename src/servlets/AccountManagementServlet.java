@@ -57,7 +57,7 @@ public class AccountManagementServlet extends HttpServlet {
 		if (dl != null) {
 			dao.delAccount(targetId);
 		}
-		response.sendRedirect("accmgr.jsp");
+		response.sendRedirect("web/manager/accmgr.jsp");
 	}
 
 }

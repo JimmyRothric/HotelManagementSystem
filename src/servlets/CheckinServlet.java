@@ -60,7 +60,7 @@ public class CheckinServlet extends HttpServlet {
 					request.setAttribute("roomList", validRoomList);
 					
 				}
-				RequestDispatcher rd = request.getRequestDispatcher("/rcheckin.jsp");
+				RequestDispatcher rd = request.getRequestDispatcher("/web/receptionist/rcheckin.jsp");
 				rd.forward(request, response);
 				return;
 			}else {
@@ -80,7 +80,7 @@ public class CheckinServlet extends HttpServlet {
 				rdao.checkinRoom(rid);
 			}
 		}
-		response.sendRedirect("rcheckin.jsp");
+		response.sendRedirect("web/receptionist/rcheckin.jsp");
 	}
 
 }

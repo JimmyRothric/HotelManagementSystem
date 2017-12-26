@@ -76,10 +76,10 @@ public class RequirementServlet extends HttpServlet {
 		roomtypesList = typedao.selectByRequirement(type, price0, price1, checkin_date, checkout_date);
 		if (roomtypesList != null) {
 			session.setAttribute("typeList", roomtypesList);
-			response.sendRedirect("displayroom.jsp");
+			response.sendRedirect("web/user/displayroom.jsp");
 		} else {
 			request.setAttribute("queryErrorinfo", "NOT FOUND");
-			RequestDispatcher rd = request.getRequestDispatcher("/displayroom.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("/web/user/displayroom.jsp");
 			rd.forward(request, response);
 		}
 	}

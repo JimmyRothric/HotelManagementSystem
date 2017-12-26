@@ -72,11 +72,11 @@ public class ReservationServlet extends HttpServlet {
 		if (success) {
 			request.setAttribute("order", o);
 			request.setAttribute("ReservationInfo", "预订成功");
-			RequestDispatcher rd = request.getRequestDispatcher("/order.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("/web/user/order.jsp");
 			rd.forward(request, response);
 		} else {
 			request.setAttribute("ReservationInfo", "预订失败");
-			RequestDispatcher rd = request.getRequestDispatcher("/displayroom.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("/web/user/displayroom.jsp");
 			rd.forward(request, response);
 		}
 

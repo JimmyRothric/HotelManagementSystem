@@ -66,7 +66,7 @@ public class RegisterServlet extends HttpServlet {
 		if (password0.equals(password1)) {
 			Account acc = new Account(username, password0, name);
 			dao.addAccount(acc);
-			response.sendRedirect("login.jsp");
+			response.sendRedirect("web/login.jsp");
 			return;
 		} else {
 			goError(request,response,"Two input password must be consistent.");
@@ -75,7 +75,7 @@ public class RegisterServlet extends HttpServlet {
 	}
 	private void goError(HttpServletRequest request, HttpServletResponse response,String error) throws ServletException, IOException {
 		request.setAttribute("registerError", error);
-		RequestDispatcher rd = request.getRequestDispatcher("/register.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/web/register.jsp");
 		rd.forward(request, response);
 	}
 

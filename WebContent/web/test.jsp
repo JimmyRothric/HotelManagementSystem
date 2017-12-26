@@ -10,23 +10,23 @@
 <body>
 <p>
 经理功能：<br/>
-<a href = "accmgr.jsp">账号管理</a>
-<a href = "addRoomTypes.jsp">添加客房类型</a>
-<a href = "addRooms.jsp">添加客房</a>
-<a href = "">房态统计</a>
+<a href = "manager/accmgr.jsp">账号管理</a>
+<a href = "manager/addRoomTypes.jsp">添加客房类型</a>
+<a href = "manager/addRooms.jsp">添加客房</a>
+<a href = "manager/overall.jsp">房态统计</a>
 </p>
 <p>
 客户功能：<br/>
 <a href = "register.jsp">注册</a>
 <a href = "login.jsp">登录</a>
-<a href = "">显示房间信息</a>
-<a href = "main.jsp">查询房间信息</a>
-<a href = "order.jsp">预定</a>
+<a href = "user/displayroom.jsp">显示房间信息</a>
+<a href = "user/main.jsp">查询房间信息</a>
+<a href = "user/reservation.jsp">预定</a>
 </p>
 <p>
 前台接待员功能：<br/>
-<a href = "rcheckin.jsp">预定入住</a>
-<a href = "rcheckout.jsp">退房管理</a>
+<a href = "receptionist/rcheckin.jsp">预定入住</a>
+<a href = "receptionist/rcheckout.jsp">退房管理</a>
 <a href = "">可用房查询</a>
 </p>
 </body>

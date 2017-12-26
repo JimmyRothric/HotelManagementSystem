@@ -55,7 +55,7 @@ public class CheckoutServlet extends HttpServlet {
 				if (orderList !=null && !orderList.isEmpty()) {
 					request.setAttribute("orderList", orderList);
 				}
-				RequestDispatcher rd = request.getRequestDispatcher("/rcheckout.jsp");
+				RequestDispatcher rd = request.getRequestDispatcher("/web/receptionist/rcheckout.jsp");
 				rd.forward(request, response);
 				return;
 			}else {
@@ -70,7 +70,7 @@ public class CheckoutServlet extends HttpServlet {
 				dao.updateCheckout(oid);
 				dao.updatePrice(oid);
 			}
-			RequestDispatcher rd = request.getRequestDispatcher("/rcheckout.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("/web/receptionist/rcheckout.jsp");
 			rd.forward(request, response);
 			return;
 		}
@@ -83,7 +83,7 @@ public class CheckoutServlet extends HttpServlet {
 				rdao.checkoutRoom(rid);
 			}
 			request.setAttribute("order_id", oid);
-			RequestDispatcher rd = request.getRequestDispatcher("/order.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("/web/user/order.jsp");
 			rd.forward(request, response);
 			return;
 		}

@@ -73,10 +73,10 @@ public class QueryServlet extends HttpServlet {
 		roomtypesList = typedao.selectByTime(checkin_date, checkout_date);
 		if (roomtypesList != null) {
 			session.setAttribute("typeList", roomtypesList);
-			response.sendRedirect("displayroom.jsp");
+			response.sendRedirect("web/user/displayroom.jsp");
 		} else {
 			request.setAttribute("queryErrorinfo", "NOT FOUND");
-			RequestDispatcher rd = request.getRequestDispatcher("/main.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("/web/user/main.jsp");
 			rd.forward(request, response);
 		}
 		

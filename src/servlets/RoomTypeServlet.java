@@ -52,7 +52,7 @@ public class RoomTypeServlet extends HttpServlet {
 				RoomTypeDao rtd = new RoomTypeDao();
 				if (rtd.addRoomType(rt)) {
 					request.setAttribute("addRoomTypeInfo", "添加成功");
-					RequestDispatcher rd = request.getRequestDispatcher("/addRoomTypes.jsp");
+					RequestDispatcher rd = request.getRequestDispatcher("/web/manager/addRoomTypes.jsp");
 					rd.forward(request, response);
 					return;
 				}
@@ -61,7 +61,7 @@ public class RoomTypeServlet extends HttpServlet {
 			}
 		}
 		request.setAttribute("addRoomTypeInfo", "添加失败");
-		RequestDispatcher rd = request.getRequestDispatcher("/addRoomTypes.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/web/manager/addRoomTypes.jsp");
 		rd.forward(request, response);
 	}
 
