@@ -23,7 +23,7 @@ function changeNm(){
 <title>Account Management</title>
 </head>
 <body>
-<form action = "AccountManagementServlet" method = "post">
+<form action = "../../AccountManagementServlet" method = "post">
  <input id="str" type="hidden" name= "targetString">
  <input id="uid" type="hidden" name= "targetId">
 <%

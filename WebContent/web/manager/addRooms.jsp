@@ -18,7 +18,7 @@
 <title>Room Management</title>
 </head>
 <body>
-<form action = "RoomServlet" method = "post">
+<form action = "../../RoomServlet" method = "post">
 <table>
 	<tr>
 		<td>房号：</td>

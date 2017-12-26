@@ -7,7 +7,7 @@
 <title>Add RoomType</title>
 </head>
 <body>
-<form action = "RoomTypeServlet" method = "post">
+<form action = "../../RoomTypeServlet" method = "post">
 <table>
 	<tr>
 		<td>房间类型：</td>

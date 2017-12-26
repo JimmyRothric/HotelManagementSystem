@@ -13,7 +13,7 @@
 <title>Reservation</title>
 </head>
 <body>
-<form action="ReservationServlet" method="post">
+<form action="../../ReservationServlet" method="post">
 <div style="float:right">
 <button onclick="this.form.action='displayroom.jsp';this.form.submit()">返回</button>
 </div>

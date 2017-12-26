@@ -10,7 +10,7 @@
 </head>
 <body>
 
-<form action = "CheckinServlet" method = "post">
+<form action = "../../CheckinServlet" method = "post">
 <p>
 身份证号：
 <input type = "text"  name = "id">

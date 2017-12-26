@@ -4,11 +4,11 @@
 
 <div style="float:right">
 <c:if test = "${account.id eq null}">
-<a href="login.jsp">登录</a>|
-<a href="register.jsp">注册</a>
+<a href="/HotelManagementSystem/web/login.jsp">登录</a>|
+<a href="/HotelManagementSystem/web/register.jsp">注册</a>
 </c:if>
 <c:if test = "${account.id ne null}">
-<a href="personal_homepage.jsp" target="_blank">${account.id}</a>|
-<a href="login.jsp">注销</a>
+<a href="/HotelManagementSystem/web/user/personal_homepage.jsp" target="_blank">${account.id}</a>|
+<a href="/HotelManagementSystem/web/login.jsp">注销</a>
 </c:if>
 </div>

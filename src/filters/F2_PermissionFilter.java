@@ -45,7 +45,42 @@ public class F2_PermissionFilter implements Filter {
 		HttpServletResponse hresponse = (HttpServletResponse) response;
 		HttpSession session = hrequest.getSession();
 		String requestPath = hrequest.getServletPath();
+		String[] str = requestPath.split("/");
+		if (str.length < 2) {
+			hresponse.sendRedirect(hrequest.getHeader("referer"));
+			return;
+		}
+		String keyword = str[str.length - 2];
+		if (keyword.equals("web")) {
+			chain.doFilter(request, response);
+			return;
+		}
+		if(session.getAttribute("account") == null) {
+			//request.setAttribute("loginError", "请先登录");
+			request.getRequestDispatcher("/web/login.jsp").forward(request, response);
+			return;
+		}
+		Account account = (Account) session.getAttribute("account");
+		String userGroup = account.getGroup(); 
+		//Manager pass
+		if (userGroup.equals("Manager")) {
+			chain.doFilter(request, response);
+			return;
+		}
 		
+		//User pass
+		if (userGroup.equals("User") && keyword.equals("user")) {
+			chain.doFilter(request, response);
+			return;
+		}
+		
+		//Receptionist pass
+		if (userGroup.equals("Receptionist") && !keyword.equals("manager")) {
+			chain.doFilter(request, response);
+			return;
+		}
+		hresponse.sendRedirect(hrequest.getHeader("referer"));
+		/*
 
 		//always pass
 		if (requestPath.endsWith("login.jsp") || requestPath.endsWith("register.jsp") || 
@@ -84,7 +119,7 @@ public class F2_PermissionFilter implements Filter {
 		}
 		
 		hresponse.sendRedirect(hrequest.getHeader("referer"));
-		
+		*/
 		
 		
 	}

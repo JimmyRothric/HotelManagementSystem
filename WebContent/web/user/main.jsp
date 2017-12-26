@@ -27,7 +27,7 @@ function isValid() {
 }
 </script>
 <%@ include file = "../head.jsp" %>
-<form action="QueryServlet" onsubmit="return isValid();" method="post">
+<form action="../../QueryServlet" onsubmit="return isValid();" method="post">
 
 <%
 	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
