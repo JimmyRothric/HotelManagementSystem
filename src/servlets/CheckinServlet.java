@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dao.OrderDao;
 import dao.RoomDao;
@@ -46,29 +47,8 @@ public class CheckinServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		String rsearchBtn = request.getParameter("rsearchBtn");
 		String allocateBtn = request.getParameter("allocateBtn");
-		if (rsearchBtn != null) {
-			String id = request.getParameter("id");
-			if (id != "") {
-				OrderDao dao = new OrderDao();
-				ArrayList<Order> orderList = dao.getOrder(id,"R");
-				ArrayList<Room> validRoomList;
-				RoomDao rdao = new RoomDao();
-				if (orderList !=null && !orderList.isEmpty()) {
-					Order o = orderList.get(0);
-					validRoomList = rdao.selectByRoomTypeAndTime(o.getRoom_type(), o.getCheckin(), o.getCheckout());
-					request.setAttribute("orderList", orderList);
-					request.setAttribute("roomList", validRoomList);
-					
-				}
-				RequestDispatcher rd = request.getRequestDispatcher("/web/receptionist/rcheckin.jsp");
-				rd.forward(request, response);
-				return;
-			}else {
-				//goto Error
-				return;
-			}
-		}
-		
+		HttpSession session = request.getSession();
+		String id = null;
 		if (allocateBtn != null) {
 			String oid = request.getParameter("oid");
 			String rid = request.getParameter("rid");
@@ -79,8 +59,31 @@ public class CheckinServlet extends HttpServlet {
 				RoomDao rdao = new RoomDao();
 				rdao.checkinRoom(rid);
 			}
+			id = (String) session.getAttribute("user_id");
+			session.removeAttribute("user_id");
 		}
-		response.sendRedirect("web/receptionist/rcheckin.jsp");
+		
+		if (rsearchBtn != null) {
+			id = request.getParameter("id");
+		}
+		if (id != null && id != "") {
+				OrderDao dao = new OrderDao();
+				ArrayList<Order> orderList = dao.getOrder(id,"R");
+				ArrayList<Room> validRoomList;
+				RoomDao rdao = new RoomDao();
+				if (orderList !=null && !orderList.isEmpty()) {
+					Order o = orderList.get(0);
+					validRoomList = rdao.selectByRoomTypeAndTime(o.getRoom_type(), o.getCheckin(), o.getCheckout());
+					request.setAttribute("orderList", orderList);
+					request.setAttribute("roomList", validRoomList);
+					session.setAttribute("user_id", id);
+				}
+				RequestDispatcher rd = request.getRequestDispatcher("/web/receptionist/rcheckin.jsp");
+				rd.forward(request, response);
+				return;
+		}
+		
+	
 	}
 
 }

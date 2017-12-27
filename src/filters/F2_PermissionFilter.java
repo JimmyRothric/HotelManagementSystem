@@ -45,19 +45,27 @@ public class F2_PermissionFilter implements Filter {
 		HttpServletResponse hresponse = (HttpServletResponse) response;
 		HttpSession session = hrequest.getSession();
 		String requestPath = hrequest.getServletPath();
+		
+		if (requestPath.endsWith("css")) {
+			chain.doFilter(request, response);
+			return;
+		}
+		
 		String[] str = requestPath.split("/");
 		if (str.length < 2) {
 			hresponse.sendRedirect(hrequest.getHeader("referer"));
 			return;
 		}
 		String keyword = str[str.length - 2];
+	
 		if (keyword.equals("web")) {
 			chain.doFilter(request, response);
 			return;
 		}
 		if(session.getAttribute("account") == null) {
 			//request.setAttribute("loginError", "请先登录");
-			request.getRequestDispatcher("/web/login.jsp").forward(request, response);
+			//request.getRequestDispatcher("/web/login.jsp").forward(request, response);
+			hresponse.sendRedirect("/HotelManagementSystem/web/login.jsp");
 			return;
 		}
 		Account account = (Account) session.getAttribute("account");
