@@ -55,10 +55,12 @@ create table ReservationHistory
 create table Review
 (	
 	Uid char(18),
-	Rid char(4),
+	Oid char(20),
+	room_type nvarchar(10),
 	comment nvarchar(100),
 	rate int,
-	primary key (Uid, Rid),
+	primary key (Oid),
 	foreign key (Uid) references Account,
-	foreign key (Rid) references Room,
+	foreign key (Oid) references ReservationHistory,
+	foreign key (room_type) references RoomType
 )

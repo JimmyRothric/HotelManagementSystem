@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>${account.id homepage}</title>
+<title>${account.id}homepage</title>
 </head>
 <body>
 <form action="" method="post">

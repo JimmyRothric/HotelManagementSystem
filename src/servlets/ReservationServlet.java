@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import dao.AccountDao;
 import dao.OrderDao;
 import data.*;
 
@@ -47,12 +48,19 @@ public class ReservationServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession(true);
-		
+		String acc_id = null;
 		Account account = (Account)session.getAttribute("account");
-		if (account == null) {
-			return;
+		if (!account.getGroup().equals("User")) {
+			acc_id = request.getParameter("user_id");
+			AccountDao dao = new AccountDao();
+			if (!dao.isValidUsername(acc_id)) {
+				dao.addAccount(new Account(acc_id, acc_id, "Alpha", "User"));
+			}
+		}else {
+			acc_id = account.getId();
 		}
-		String acc_id = account.getId();
+	
+		
 		String checkin = request.getParameter("checkin");
 		String checkout = request.getParameter("checkout");
 		String floor = request.getParameter("floor");

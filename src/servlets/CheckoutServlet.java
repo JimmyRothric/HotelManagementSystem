@@ -55,13 +55,15 @@ public class CheckoutServlet extends HttpServlet {
 		
 		if (checkoutBtn != null) {
 			String rid = request.getParameter("rid");
+			OrderDao dao = new OrderDao();
 			if (oid != null && rid != null) {
-				OrderDao dao = new OrderDao();
 				dao.checkoutOrder(oid);
 				RoomDao rdao = new RoomDao();
 				rdao.checkoutRoom(rid);
 			}
-			request.setAttribute("order_id", oid);
+
+			Order o = dao.getSingleOrder(oid);
+			request.setAttribute("order", o);
 			RequestDispatcher rd = request.getRequestDispatcher("/web/user/order.jsp");
 			rd.forward(request, response);
 			id = (String) session.getAttribute("user_id");

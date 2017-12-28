@@ -5,6 +5,8 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+import dao.RoomTypeDao;
+
 public class Order {
 	public static int order_id = 1;
 	private String id;
@@ -43,7 +45,17 @@ public class Order {
 		this.checkin = checkin;
 		this.checkout = checkout;
 		this.order_type = "R";
-		this.price = 0;
+		RoomTypeDao dao = new RoomTypeDao();
+		int price_per_day = dao.getPrice(room_type);
+		this.price = price_per_day * Order.calDays(checkin,checkout);
+	}
+	
+	public static int calDays(Date date0, Date date1) {
+		int days = (int) ((date1.getTime() - date0.getTime()) / (1000*3600*24));
+		if (days <= 0) {
+			return 1;
+		}
+		return days;
 	}
 /*
 	public int calDays(Date date0, Date date1) {

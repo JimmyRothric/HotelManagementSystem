@@ -15,6 +15,7 @@
 <input type = "text"  name = "id">
 <input type = "submit" name = "searchBtn" value = "查询">
 </p>
+<c:if test = "${orderList ne null}"> 
 订单表：<br/>
 <table border="1" cellspacing="0px" class="td">
 <th>Oid</th>
@@ -38,9 +39,8 @@
 		        <input type = "submit" name = "checkoutBtn" value = "退房" onclick="this.form.action='CheckoutServlet?oid=${item.id}&rid=${item.room_id}';this.form.submit()"></td> 
 		  </tr>  
 </c:forEach>  
-<p>
-
-</p>
+</table>
+</c:if>
 </form>
 </body>
 </html>

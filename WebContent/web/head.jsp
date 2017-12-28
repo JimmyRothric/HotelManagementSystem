@@ -9,6 +9,6 @@
 </c:if>
 <c:if test = "${account.id ne null}">
 <a href="/HotelManagementSystem/web/user/personal_homepage.jsp" target="_blank">${account.id}</a>|
-<a href="/HotelManagementSystem/web/login.jsp">注销</a>
+<a href="/HotelManagementSystem/web/login.jsp?logout=true">注销</a>
 </c:if>
 </div>

@@ -4,6 +4,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<%
+	String logout = request.getParameter("logout");
+	if (logout != null && logout.equals("true")){
+		session.removeAttribute("account");
+	}
+%>
 <title>Login</title>
 </head>
 <body>

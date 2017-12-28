@@ -76,10 +76,7 @@ public class OrderDao extends BaseDao {
 		return false;
 	}
 	
-	public int calDays(Date date0, Date date1) {
-		int days = (int) ((date1.getTime() - date0.getTime()) / (1000*3600*24) + 1);
-		return days;
-	}
+
 	public int getPrice(String oid) {
 		String sql = "select checkin,checkout,room_type from Reservation where Oid = ?";
 		int price = -1;
@@ -98,7 +95,7 @@ public class OrderDao extends BaseDao {
 			}
 			RoomTypeDao dao = new RoomTypeDao();
 			int price_per_day = dao.getPrice(room_type);
-			price = price_per_day * calDays(checkin,checkout);
+			price = price_per_day * Order.calDays(checkin,checkout);
 			stmt.close();
 			con.close();
 			return price;
@@ -109,11 +106,13 @@ public class OrderDao extends BaseDao {
 		return price;
 	}
 	public Order getSingleOrder(String oid) {
-		String sql = "select * from Reservation where Oid = ?";
+		String sql = "select * from Reservation where Oid = ? union"
+				+ " select * from ReservationHistory where Oid = ? ";
 		try {
 			Connection con = super.getConnection();
 			PreparedStatement stmt = con.prepareStatement(sql);
 			stmt.setString(1, oid);
+			stmt.setString(2, oid);
 			ResultSet rs = stmt.executeQuery();
 			Order o = null;
 			while (rs.next()) {
@@ -128,40 +127,43 @@ public class OrderDao extends BaseDao {
 		}
 		return null;
 	}
+
+	
+	
 	public boolean checkoutOrder(String oid) {
-		if(updateCheckout(oid) && updatePrice(oid)) {
-			Order o = getSingleOrder(oid);
-			String sql1 = "update Reservation set order_type = 'F' where Oid = ?";
-			String sql2 = "insert into ReservationHistory values(?, ?, ?, ?, ?, ?, ?, ?)";
-			String sql3 = "delete from Reservation where Oid = ?";
-			try {
-				Connection con = super.getConnection();
-				PreparedStatement stmt1 = con.prepareStatement(sql1);
-				stmt1.setString(1, oid);
-				stmt1.executeUpdate();
-				stmt1.close();
-				PreparedStatement stmt2 = con.prepareStatement(sql2);
-				stmt2.setString(1, o.getId());
-				stmt2.setString(2, o.getAccount_id());
-				stmt2.setString(3, o.getRoom_id());
-				stmt2.setString(4, o.getRoom_type());
-				stmt2.setTimestamp(5, new Timestamp(o.getCheckin().getTime()));
-				stmt2.setTimestamp(6, new Timestamp(o.getCheckout().getTime()));
-				stmt2.setString(7, o.getOrder_type());
-				stmt2.setInt(8, o.getPrice());
-				stmt2.executeUpdate();
-				stmt2.close();
-				PreparedStatement stmt3 = con.prepareStatement(sql3);
-				stmt3.setString(1, oid);
-				stmt3.executeUpdate();
-				stmt3.close();
-				con.close();
-				return true;
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+	
+		Order o = getSingleOrder(oid);
+		String sql1 = "update Reservation set order_type = 'F' where Oid = ?";
+		String sql2 = "insert into ReservationHistory values(?, ?, ?, ?, ?, ?, ?, ?)";
+		String sql3 = "delete from Reservation where Oid = ?";
+		try {
+			Connection con = super.getConnection();
+			PreparedStatement stmt1 = con.prepareStatement(sql1);
+			stmt1.setString(1, oid);
+			stmt1.executeUpdate();
+			stmt1.close();
+			PreparedStatement stmt2 = con.prepareStatement(sql2);
+			stmt2.setString(1, o.getId());
+			stmt2.setString(2, o.getAccount_id());
+			stmt2.setString(3, o.getRoom_id());
+			stmt2.setString(4, o.getRoom_type());
+			stmt2.setTimestamp(5, new Timestamp(o.getCheckin().getTime()));
+			stmt2.setTimestamp(6, new Timestamp(o.getCheckout().getTime()));
+			stmt2.setString(7, o.getOrder_type());
+			stmt2.setInt(8, o.getPrice());
+			stmt2.executeUpdate();
+			stmt2.close();
+			PreparedStatement stmt3 = con.prepareStatement(sql3);
+			stmt3.setString(1, oid);
+			stmt3.executeUpdate();
+			stmt3.close();
+			con.close();
+			return true;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
+	
 		return false;
 	}
 	public boolean checkinOrder(String oid,String rid) {
