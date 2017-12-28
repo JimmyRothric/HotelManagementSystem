@@ -215,6 +215,7 @@ public class OrderDao extends BaseDao {
 			Connection con = super.getConnection();
 			PreparedStatement stmt = con.prepareStatement(sql);
 			stmt.setString(1, id);
+			stmt.setString(2, id);
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
 				Order o = new Order(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getDate(5),rs.getDate(6),rs.getString(7),rs.getInt(8));
