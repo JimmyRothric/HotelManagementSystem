@@ -19,8 +19,8 @@
 客户功能：<br/>
 <a href = "register.jsp">注册</a>
 <a href = "login.jsp">登录</a>
-<a href = "user/displayroom.jsp">显示房间信息</a>
-<a href = "user/main.jsp">查询房间信息</a>
+<a href = "displayroom.jsp">显示房间信息</a>
+<a href = "main.jsp">查询房间信息</a>
 <a href = "user/reservation.jsp">预定</a>
 </p>
 <p>

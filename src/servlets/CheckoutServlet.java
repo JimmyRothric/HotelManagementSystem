@@ -88,11 +88,10 @@ public class CheckoutServlet extends HttpServlet {
 			OrderDao dao = new OrderDao();
 			ArrayList<Order> orderList = dao.getOrder(id,"S");
 			if (orderList != null && !orderList.isEmpty()) {
-				request.setAttribute("orderList", orderList);
+				session.setAttribute("orderList", orderList);
 			}
 			session.setAttribute("user_id", id);
-			RequestDispatcher rd = request.getRequestDispatcher("/web/receptionist/rcheckout.jsp");
-			rd.forward(request, response);
+			response.sendRedirect("web/receptionist/rcheckout.jsp");
 			return;
 		};
 		

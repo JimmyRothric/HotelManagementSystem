@@ -16,7 +16,7 @@ public class ReviewDao extends BaseDao {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public boolean addOrder(Review r) {
+	public boolean addReview(Review r) {
 		String sql = "insert into Review values(?, ?, ?, ?, ?, ?)";
 		try {
 			Connection con = super.getConnection();

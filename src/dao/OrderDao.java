@@ -133,15 +133,10 @@ public class OrderDao extends BaseDao {
 	public boolean checkoutOrder(String oid) {
 	
 		Order o = getSingleOrder(oid);
-		String sql1 = "update Reservation set order_type = 'F' where Oid = ?";
 		String sql2 = "insert into ReservationHistory values(?, ?, ?, ?, ?, ?, ?, ?)";
 		String sql3 = "delete from Reservation where Oid = ?";
 		try {
 			Connection con = super.getConnection();
-			PreparedStatement stmt1 = con.prepareStatement(sql1);
-			stmt1.setString(1, oid);
-			stmt1.executeUpdate();
-			stmt1.close();
 			PreparedStatement stmt2 = con.prepareStatement(sql2);
 			stmt2.setString(1, o.getId());
 			stmt2.setString(2, o.getAccount_id());
@@ -149,7 +144,7 @@ public class OrderDao extends BaseDao {
 			stmt2.setString(4, o.getRoom_type());
 			stmt2.setTimestamp(5, new Timestamp(o.getCheckin().getTime()));
 			stmt2.setTimestamp(6, new Timestamp(o.getCheckout().getTime()));
-			stmt2.setString(7, o.getOrder_type());
+			stmt2.setString(7, "F");
 			stmt2.setInt(8, o.getPrice());
 			stmt2.executeUpdate();
 			stmt2.close();

@@ -74,12 +74,11 @@ public class CheckinServlet extends HttpServlet {
 				if (orderList !=null && !orderList.isEmpty()) {
 					Order o = orderList.get(0);
 					validRoomList = rdao.selectByRoomTypeAndTime(o.getRoom_type(), o.getCheckin(), o.getCheckout());
-					request.setAttribute("orderList", orderList);
-					request.setAttribute("roomList", validRoomList);
+					session.setAttribute("orderList", orderList);
+					session.setAttribute("roomList", validRoomList);
 					session.setAttribute("user_id", id);
 				}
-				RequestDispatcher rd = request.getRequestDispatcher("/web/receptionist/rcheckin.jsp");
-				rd.forward(request, response);
+				response.sendRedirect("web/receptionist/rcheckin.jsp");
 				return;
 		}
 		

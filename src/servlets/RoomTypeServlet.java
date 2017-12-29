@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dao.RoomTypeDao;
 import data.RoomType;
@@ -44,6 +45,7 @@ public class RoomTypeServlet extends HttpServlet {
 		String room_type = request.getParameter("room_type");
 		String room_price = request.getParameter("room_price");
 		String room_rest = request.getParameter("room_rest");
+		HttpSession session = request.getSession();
 		if (room_type != "" && room_price != "" && room_rest != "") {
 			try {
 				int price = Integer.parseInt(room_price);
@@ -51,18 +53,16 @@ public class RoomTypeServlet extends HttpServlet {
 				RoomType rt = new RoomType(room_type,price,rest);
 				RoomTypeDao rtd = new RoomTypeDao();
 				if (rtd.addRoomType(rt)) {
-					request.setAttribute("addRoomTypeInfo", "添加成功");
-					RequestDispatcher rd = request.getRequestDispatcher("/web/manager/addRoomTypes.jsp");
-					rd.forward(request, response);
+					session.setAttribute("addRoomTypeInfo", "添加成功");
+					response.sendRedirect("web/manager/addRoomTypes.jsp");
 					return;
 				}
 			}catch (NumberFormatException e) {
 				
 			}
 		}
-		request.setAttribute("addRoomTypeInfo", "添加失败");
-		RequestDispatcher rd = request.getRequestDispatcher("/web/manager/addRoomTypes.jsp");
-		rd.forward(request, response);
+		session.setAttribute("addRoomTypeInfo", "添加失败");
+		response.sendRedirect("web/manager/addRoomTypes.jsp");
 	}
 
 }

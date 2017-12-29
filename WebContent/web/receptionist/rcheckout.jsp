@@ -41,6 +41,7 @@
 </c:forEach>  
 </table>
 </c:if>
+<c:remove var="orderList"/>
 </form>
 </body>
 </html>

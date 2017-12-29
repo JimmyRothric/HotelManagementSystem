@@ -14,7 +14,7 @@
 <title>${account.name} Homepage</title>
 </head>
 <body>
-<form action="../../CheckoutServlet" method="post">
+<form action="" method="post">
 <div style="float:right">
 <button onclick="this.form.action='main.jsp';this.form.submit()">返回</button>
 
@@ -47,8 +47,8 @@
 	    <td>${item.checkin}</td>  
 	    <td>${item.checkout}</td>  
 	    <td>${item.price}</td>
-	    <c:if test = "${item.order_type eq 'S'}">
-	    	<td><button onclick="this.form.action='review.jsp?oid=${item.id}&acc_id=${item.account_id}&type=?${item.room_type}';this.form.submit()">评论</button></td>
+	    <c:if test = "${item.order_type eq 'F'}">
+	    	<td><button name = "btn" onclick="this.form.action='review.jsp?oid=${item.id}&acc_id=${item.account_id}&type=${item.room_type}';this.form.submit()">评论</button></td>
 	    </c:if> 
 	  </tr>  
 </c:forEach>  

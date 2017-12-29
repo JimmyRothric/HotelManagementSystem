@@ -34,7 +34,7 @@
 	</script>
 <%
 	}
-	request.removeAttribute("addRoomTypeInfo");
+	session.removeAttribute("addRoomTypeInfo");
 %>
 </body>
 </html>

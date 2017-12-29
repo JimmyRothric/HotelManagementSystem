@@ -8,12 +8,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" type="text/css" href="../../css/element_style.css" />
+<link rel="stylesheet" type="text/css" href="../css/element_style.css" />
 <title>Details</title>
 </head>
 <body>
-<%@ include file = "../head.jsp" %>
-<form action="../../RequirementServlet" method="post">
+<%@ include file = "head.jsp" %>
+<form action="../RequirementServlet" method="post">
 <div style="float:right">
 <button onclick="this.form.action='main.jsp';this.form.submit()">返回</button>
 </div>
@@ -53,7 +53,7 @@
 	<tr>
 		<td>${t.type}</td>
 		<td>${t.price}</td>
-		<td><input type="submit" class="reserveBtn" name="reserveBtn" value="预订 " onclick="this.form.action='reservation.jsp?type=${t.type}';this.form.submit()"/></td>		
+		<td><input type="submit" class="reserveBtn" name="reserveBtn" value="预订 " onclick="this.form.action='user/reservation.jsp?type=${t.type}';this.form.submit()"/></td>		
 	</tr>
 </c:forEach>
 </table>

@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dao.RoomDao;
 import dao.RoomTypeDao;
@@ -48,14 +49,14 @@ public class RoomServlet extends HttpServlet {
 		String room_floor = request.getParameter("room_floor");
 		String room_ort = request.getParameter("room_ort");
 		String room_dspt = request.getParameter("room_dspt");
+		HttpSession session = request.getSession();
 		if (room_id != "" && room_type != "" && room_floor != "" && room_ort != "") {
 			try {
 				int floor = Integer.parseInt(room_floor);
 				RoomDao rd = new RoomDao();
 				if(rd.addRoom(new Room(room_id,room_type,floor,room_ort,room_dspt))){
-					request.setAttribute("addRoomInfo", "添加成功");
-					RequestDispatcher rdp = request.getRequestDispatcher("/web/manager/addRooms.jsp");
-					rdp.forward(request, response);
+					session.setAttribute("addRoomInfo", "添加成功");
+					response.sendRedirect("web/manager/addRooms.jsp");
 					return;
 				}
 				
@@ -63,9 +64,8 @@ public class RoomServlet extends HttpServlet {
 				
 			}
 		}
-		request.setAttribute("addRoomInfo", "添加失败");
-		RequestDispatcher rd = request.getRequestDispatcher("/web/manager/addRooms.jsp");
-		rd.forward(request, response);
+		session.setAttribute("addRoomInfo", "添加失败");
+		response.sendRedirect("web/manager/addRooms.jsp");
 	}
 
 }

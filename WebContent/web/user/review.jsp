@@ -7,6 +7,13 @@
 <title>Insert title here</title>
 </head>
 <body>
+<% 
+	String order = request.getParameter("oid");
+	String account = request.getParameter("acc_id");
+	String type = request.getParameter("type");
+
+%>
+
 <form action="../../ReviewServlet" method="post">
 
 <table>
@@ -17,7 +24,7 @@
 		<td><textarea name="rate" style="height: 30px; width: 400px; resize: none;" /></textarea></td>
 	</tr>
 	<tr>
-		<td align="right"><input type="submit" value="提交 " onclick="this.form.action='ReviewServlet?oid=${item.id}&acc_id=${item.account_id}&type=?${item.room_type}';this.form.submit()"/></td>
+		<td align="right"><input type="submit" value="提交 " onclick="this.form.action='../../ReviewServlet?oid=<%=order%>&acc_id=<%=account%>&type=<%=type%>';this.form.submit()"/></td>
 	</tr>
 </table>
 </form>

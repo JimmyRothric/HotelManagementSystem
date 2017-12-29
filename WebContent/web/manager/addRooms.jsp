@@ -66,7 +66,7 @@
 	</script>
 <%
 	}
-	request.removeAttribute("addRoomInfo");
+	session.removeAttribute("addRoomInfo");
 %>
 
 
