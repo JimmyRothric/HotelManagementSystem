@@ -51,7 +51,7 @@
 		    <td>${item.floor}</td>
 		    <td>${item.orientation}</td>
 		    <td>${item.description}</td>
-		    <td><input type = "submit" name = "allocateBtn" value = "分配" onclick="this.form.action='CheckinServlet?oid=${orderList[0].id}&rid=${item.id}';this.form.submit()"></td> 
+		    <td><input type = "submit" name = "allocateBtn" value = "分配" onclick="this.form.action='../../CheckinServlet?oid=${orderList[0].id}&rid=${item.id}';this.form.submit()"></td> 
 		  </tr>  
 </c:forEach>  
 

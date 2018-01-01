@@ -58,12 +58,12 @@ public class OrderDao extends BaseDao {
 		}
 		return false;
 	}
-	public boolean updateCheckout(String oid) {
+	public boolean updateCheckout(String oid,Date time) {
 		String sql = "update Reservation set checkout = ? where Oid = ?";
 		try {
 			Connection con = super.getConnection();
 			PreparedStatement stmt = con.prepareStatement(sql);
-			stmt.setTimestamp(1, new Timestamp(Calendar.getInstance().getTime().getTime()));
+			stmt.setTimestamp(1, new Timestamp(time.getTime()));
 			stmt.setString(2, oid);
 			stmt.executeUpdate();
 			stmt.close();

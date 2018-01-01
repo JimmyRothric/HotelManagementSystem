@@ -1,7 +1,10 @@
 package servlets;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -55,6 +58,7 @@ public class CheckoutServlet extends HttpServlet {
 		
 		if (checkoutBtn != null) {
 			String rid = request.getParameter("rid");
+			
 			OrderDao dao = new OrderDao();
 			if (oid != null && rid != null) {
 				dao.checkoutOrder(oid);
@@ -72,9 +76,21 @@ public class CheckoutServlet extends HttpServlet {
 		}
 		
 		if (updateInfoBtn != null) {
-			if (oid != null) {
+			String checkout_time = request.getParameter("checkout_time");
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+			Date d = null;
+			if (checkout_time != null && checkout_time != "") {
+				try {
+					d = sdf.parse(checkout_time);
+				} catch (ParseException e) {
+				// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+
+			if (oid != null && d != null) {
 				OrderDao dao = new OrderDao();
-				dao.updateCheckout(oid);
+				dao.updateCheckout(oid,d);
 				dao.updatePrice(oid);
 			}
 			id = (String) session.getAttribute("user_id");
@@ -94,10 +110,5 @@ public class CheckoutServlet extends HttpServlet {
 			response.sendRedirect("web/receptionist/rcheckout.jsp");
 			return;
 		};
-		
-
-
-		
 	}
-
 }
