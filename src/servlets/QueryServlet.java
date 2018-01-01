@@ -63,9 +63,7 @@ public class QueryServlet extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		if (checkin_date.after(checkout_date)) {
-			
-		}
+		
 		session.setAttribute("checkin", checkin);
 		session.setAttribute("checkout", checkout);
 		RoomTypeDao typedao = new RoomTypeDao();

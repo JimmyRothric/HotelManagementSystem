@@ -4,32 +4,39 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="../css/element_style.css" />
+<script src="../js/bootstrap.min.js"></script>
 <title>Register</title>
 </head>
 <body>
 <form action="../RegisterServlet" method="post">
-<div style="float:right">
-<button onclick = "this.form.action='login.jsp';this.form.submit()">返回登录页面</button>
+<div style="float:right; margin-top:-100px;">
+<button class="btn btn-link" onclick="this.form.action='login.jsp';this.form.submit()">返回登录页面</button>
 </div>
-<table>
-	<tr>
-		<td>身份证号：</td>
-		<td><input type="text" name="username"/></td>
-	</tr>
-	<tr>
-		<td>姓名：</td>
-		<td><input type="text" name="name"/></td>
-	</tr>
-	<tr>
-		<td>设置密码：</td>
-		<td><input type="password" name="password0"/> </td>
-	</tr>
-	<tr>
-		<td>确认密码：</td>
-		<td><input type="password" name="password1"/> </td>
-	</tr>
-</table>
-<input type="submit" value="注册 " style="width:252px;height:30px;"/>
+<div class="mycenter">
+<div class="mysign">
+   	<div class="col-lg-10">
+       	<input type="text" class="form-control" name="username" placeholder="身份证号" required autofocus/>
+   	</div>
+   	  	<div class="col-lg-10"></div>
+   	<div class="col-lg-10">
+       	<input type="text" class="form-control" name="name" placeholder="姓名" required autofocus/>
+   	</div>
+   	  	<div class="col-lg-10"></div>
+   	<div class="col-lg-10">
+       	<input type="password" class="form-control" name="password0" placeholder="密码" required autofocus/>
+   	</div>
+   	<div class="col-lg-10"></div>
+   	<div class="col-lg-10">
+       	<input type="password" class="form-control" name="password1" placeholder="确认密码" required autofocus/>
+   	</div>
+   	<div class="col-lg-10"></div>
+   	<div class="col-lg-10">
+       	<input type="submit" class="btn btn-primary col-lg-12" value="注册  "/></td>
+   	</div>
+</div>
+</div>
 </form>
 
 <%	
