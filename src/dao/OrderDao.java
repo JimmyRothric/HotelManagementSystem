@@ -188,8 +188,46 @@ public class OrderDao extends BaseDao {
 		}
 		return null;
 	}
-
-	
+	public Order getOrder(String oid) {
+		String sql = "select * from Reservation where Oid = ?";
+		try {
+			Connection con = super.getConnection();
+			PreparedStatement stmt = con.prepareStatement(sql);
+			stmt.setString(1, oid);
+			ResultSet rs = stmt.executeQuery();
+			Order o = null;
+			while (rs.next()) {
+				o = new Order(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getDate(5),rs.getDate(6),rs.getString(7),rs.getInt(8));
+			}
+			stmt.close();
+			con.close();
+			return o;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+	public Order getHistoryOrder(String oid) {
+		String sql = "select * from ReservationHistory where Oid = ?";
+		try {
+			Connection con = super.getConnection();
+			PreparedStatement stmt = con.prepareStatement(sql);
+			stmt.setString(1, oid);
+			ResultSet rs = stmt.executeQuery();
+			Order o = null;
+			while (rs.next()) {
+				o = new Order(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getDate(5),rs.getDate(6),rs.getString(7),rs.getInt(8));
+			}
+			stmt.close();
+			con.close();
+			return o;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
 	
 	public boolean checkoutOrder(String oid) {
 	

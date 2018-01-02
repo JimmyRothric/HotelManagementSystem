@@ -9,8 +9,13 @@
 <body>
 <%@ include file="mhead.jsp" %>
 <form action = "../../RoomTypeServlet" method = "post">
+<<<<<<< HEAD
 <div style="margin-top: 100px; margin-left: 150px; margin-right: 150px;">
 <table class="table table-bordered table-hover" style="text-align:center">
+=======
+<div style="margin-top:100px;">
+<table>
+>>>>>>> origin/master
 	<tr>
 		<td>房间类型：</td>
 		<td><input type="text" name="room_type"/></td>

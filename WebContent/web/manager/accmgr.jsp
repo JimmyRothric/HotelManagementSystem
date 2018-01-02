@@ -24,10 +24,18 @@ function changeNm(){
 </head>
 <body>
 <%@ include file="mhead.jsp" %>
+<<<<<<< HEAD
 <form action = "../../AccountManagementServlet" method = "post">
 <div style="margin-top: 100px; margin-left: 150px; margin-right: 150px;">
 <input id="str" type="hidden" name= "targetString">
 <input id="uid" type="hidden" name= "targetId">
+=======
+
+<form action = "../../AccountManagementServlet" method = "post">
+ <div style="margin-top:100px;">
+ <input id="str" type="hidden" name= "targetString">
+ <input id="uid" type="hidden" name= "targetId">
+>>>>>>> origin/master
 <%
 	AccountDao dao = new AccountDao();
 	request.setAttribute("accList", dao.getAccountList());

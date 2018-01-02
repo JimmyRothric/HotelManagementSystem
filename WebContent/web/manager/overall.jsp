@@ -15,8 +15,13 @@
 	RoomDao dao = new RoomDao();
 	pageContext.setAttribute("roomList", dao.displayAll());
 %>
+<<<<<<< HEAD
 <div style="margin-top: 100px; margin-left: 150px; margin-right: 150px;">
 <table class="table table-bordered table-hover" style="text-align:center">
+=======
+ <div style="margin-top:100px;">
+<table border="0" cellspacing="0px" class="td">
+>>>>>>> origin/master
 	<tr>
 		<td>房间号</td>
 		<td>房型</td>

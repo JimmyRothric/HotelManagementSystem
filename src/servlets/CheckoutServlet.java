@@ -90,6 +90,7 @@ public class CheckoutServlet extends HttpServlet {
 			}
 			OrderDao dao = new OrderDao();
 			Order o = dao.getOrder(oid);
+<<<<<<< HEAD
 			if (oid != null && d != null) {
 				Date checkin = o.getCheckin();
  				Date checkout = o.getCheckout();
@@ -110,6 +111,30 @@ public class CheckoutServlet extends HttpServlet {
  						}
  					}
  				}
+=======
+
+			if (oid != null && d != null) {
+				Date checkin = o.getCheckin();
+				Date checkout = o.getCheckout();
+				if (d.after(checkin) && d.before(checkout)) {
+					dao.updateCheckout(oid,d);
+					dao.updatePrice(oid);
+				}else if (d.after(checkout)) {
+					RoomDao rd = new RoomDao();
+					Calendar tmp = Calendar.getInstance();
+					tmp.setTime(checkout);
+					tmp.add(Calendar.DATE, 1);
+					Date dplusone = tmp.getTime();
+					ArrayList<Room> roomList = rd.selectByRoomTypeAndTime(o.getRoom_type(), dplusone, d);
+					for (Room r : roomList) {
+						if (r.getId().equals(o.getRoom_id())){
+							dao.updateCheckout(oid,d);
+							dao.updatePrice(oid);
+						}
+					}
+				}
+
+>>>>>>> origin/master
 			}
 			id = (String) session.getAttribute("user_id");
 			session.removeAttribute("user_id");
