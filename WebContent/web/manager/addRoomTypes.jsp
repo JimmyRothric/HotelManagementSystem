@@ -7,7 +7,9 @@
 <title>Add RoomType</title>
 </head>
 <body>
+<%@ include file="mhead.jsp" %>
 <form action = "../../RoomTypeServlet" method = "post">
+<div style="margin-top:100px;">
 <table>
 	<tr>
 		<td>房间类型：</td>
@@ -24,6 +26,7 @@
 </table>
 <input type ="submit" name = "addButton" value = "添加" style="font-size:20px">
 <input type ="reset" value = "清空" style="font-size:20px">
+</div>
 </form>
 
 <%	String errorInfo = (String)request.getAttribute("addRoomTypeInfo");

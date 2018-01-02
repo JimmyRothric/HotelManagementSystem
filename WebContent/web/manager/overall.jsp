@@ -10,11 +10,12 @@
 <title>Insert title here</title>
 </head>
 <body>
+<%@ include file="mhead.jsp" %>
 <%
 	RoomDao dao = new RoomDao();
 	pageContext.setAttribute("roomList", dao.displayAll());
 %>
-
+ <div style="margin-top:100px;">
 <table border="0" cellspacing="0px" class="td">
 	<tr>
 		<td>房间号</td>
@@ -35,5 +36,6 @@
 	</tr>
 </c:forEach>
 </table>
+</div>
 </body>
 </html>

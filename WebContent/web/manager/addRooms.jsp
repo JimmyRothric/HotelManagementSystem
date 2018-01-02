@@ -18,7 +18,9 @@
 <title>Room Management</title>
 </head>
 <body>
+<%@ include file="mhead.jsp" %>
 <form action = "../../RoomServlet" method = "post">
+<div style="margin-top:100px;">
 <table>
 	<tr>
 		<td>房号：</td>
@@ -69,7 +71,7 @@
 	session.removeAttribute("addRoomInfo");
 %>
 
-
+</div>
 </form>
 
 

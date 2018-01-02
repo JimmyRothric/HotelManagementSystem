@@ -59,7 +59,7 @@ public class LoginServlet extends HttpServlet {
 			} else if (group.equals("Receptionist")) {
 				response.sendRedirect("web/receptionist/rconsole.jsp");
 			} else if (group.equals("Manager")) {
-				//
+				response.sendRedirect("web/manager/mconsole.jsp");
 			}
 			return;
 		}else {

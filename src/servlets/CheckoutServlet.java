@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 
 import javax.servlet.RequestDispatcher;
@@ -87,11 +88,30 @@ public class CheckoutServlet extends HttpServlet {
 					e.printStackTrace();
 				}
 			}
+			OrderDao dao = new OrderDao();
+			Order o = dao.getOrder(oid);
 
 			if (oid != null && d != null) {
-				OrderDao dao = new OrderDao();
-				dao.updateCheckout(oid,d);
-				dao.updatePrice(oid);
+				Date checkin = o.getCheckin();
+				Date checkout = o.getCheckout();
+				if (d.after(checkin) && d.before(checkout)) {
+					dao.updateCheckout(oid,d);
+					dao.updatePrice(oid);
+				}else if (d.after(checkout)) {
+					RoomDao rd = new RoomDao();
+					Calendar tmp = Calendar.getInstance();
+					tmp.setTime(checkout);
+					tmp.add(Calendar.DATE, 1);
+					Date dplusone = tmp.getTime();
+					ArrayList<Room> roomList = rd.selectByRoomTypeAndTime(o.getRoom_type(), dplusone, d);
+					for (Room r : roomList) {
+						if (r.getId().equals(o.getRoom_id())){
+							dao.updateCheckout(oid,d);
+							dao.updatePrice(oid);
+						}
+					}
+				}
+
 			}
 			id = (String) session.getAttribute("user_id");
 			session.removeAttribute("user_id");

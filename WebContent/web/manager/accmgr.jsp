@@ -23,7 +23,10 @@ function changeNm(){
 <title>Account Management</title>
 </head>
 <body>
+<%@ include file="mhead.jsp" %>
+
 <form action = "../../AccountManagementServlet" method = "post">
+ <div style="margin-top:100px;">
  <input id="str" type="hidden" name= "targetString">
  <input id="uid" type="hidden" name= "targetId">
 <%
@@ -55,6 +58,7 @@ function changeNm(){
 		</c:forEach>  
 		</table>
 		</c:if>
+</div>
 </form>
 </body>
 </html>
