@@ -50,6 +50,17 @@ public class RoomServlet extends HttpServlet {
 		String room_ort = request.getParameter("room_ort");
 		String room_dspt = request.getParameter("room_dspt");
 		HttpSession session = request.getSession();
+		String changeBtn = request.getParameter("changeBtn");
+		if (changeBtn != null) {
+			String rid = request.getParameter("rid");
+			String c_state = request.getParameter("c_state");
+			if (c_state.length() == 1) {
+				RoomDao dao = new RoomDao();
+				dao.changeState(rid, c_state);
+			}
+			response.sendRedirect("web/manager/overall.jsp");
+			return;
+		}
 		if (room_id != "" && room_type != "" && room_floor != "" && room_ort != "") {
 			try {
 				int floor = Integer.parseInt(room_floor);

@@ -33,6 +33,7 @@
 			<td>checkout</td>
 			<td>demand</td>
 			<td>price</td>
+			<td>order_type</td>
 		</tr>
 	</thead>
 	<c:forEach items="${orderList}" var="item">
@@ -46,6 +47,7 @@
 		    <td>${item.checkout}</td>
 		    <td>${item.demand}</td>  
 		    <td>￥${item.price}</td>
+		    <td>${item.order_type}</td>
 		</tr>  
 	</tbody>
 	</c:forEach>  

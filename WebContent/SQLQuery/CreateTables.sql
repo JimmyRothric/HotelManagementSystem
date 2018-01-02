@@ -27,7 +27,7 @@ create table Room
 )
 create table Reservation
 (
-	Oid char(20),
+	Oid char(18),
 	Uid char(18),
 	Rid char(4),
 	room_type nvarchar(10) not null,
@@ -43,7 +43,7 @@ create table Reservation
 )
 create table ReservationHistory
 (
-	Oid char(20),
+	Oid char(18),
 	Uid char(18),
 	Rid char(4),
 	room_type nvarchar(10),
@@ -56,7 +56,7 @@ create table ReservationHistory
 )
 create table Review
 (	
-	Oid char(20),
+	Oid char(18),
 	Uid char(18) not null,
 	room_type nvarchar(10) not null,
 	comment nvarchar(100),

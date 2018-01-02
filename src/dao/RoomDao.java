@@ -37,6 +37,23 @@ public class RoomDao extends BaseDao {
 		}
 		return false;
 	}
+	public boolean changeState(String rid,String state) {
+		String sql = "update Room set state = ? where Rid = ?";
+		try {
+			Connection con = super.getConnection();
+			PreparedStatement stmt = con.prepareStatement(sql);
+			stmt.setString(1, state);
+			stmt.setString(2, rid);
+			stmt.executeUpdate();
+			stmt.close();
+			con.close();
+			return true;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return false;
+	}
 	public boolean checkinRoom(String rid) {
 		String sql = "update Room set state = 'F' where Rid = ?";
 		try {
@@ -103,7 +120,7 @@ public class RoomDao extends BaseDao {
 */	
 	
 	public ArrayList<Room> selectByTime(Date checkin, Date checkout) {
-		String sql = "select * from Room where Rid not in(select Rid from Reservation where ? between checkin and checkout or ? between checkin and checkout or (? < checkin and ? > checkout))";
+		String sql = "select * from Room where state = 'E' and Rid not in(select Rid from Reservation where ? between checkin and checkout or ? between checkin and checkout or (? < checkin and ? > checkout))";
 		ArrayList<Room> room = new ArrayList<Room>();
 		try {
 			Connection con = super.getConnection();
@@ -133,7 +150,7 @@ public class RoomDao extends BaseDao {
 		return null;
 	}
 	public ArrayList<Room> selectByRoomTypeAndTime(String type,Date checkin, Date checkout) {
-		String sql = "select * from Room where type = ? and Rid not in(select Rid from Reservation where ? between checkin and checkout or ? between checkin and checkout or (? < checkin and ? > checkout))";
+		String sql = "select * from Room where state = 'E' and type = ? and Rid not in(select Rid from Reservation where ? between checkin and checkout or ? between checkin and checkout or (? < checkin and ? > checkout))";
 		ArrayList<Room> room = new ArrayList<Room>();
 		try {
 			Connection con = super.getConnection();
