@@ -9,13 +9,15 @@
 <title>Reservations Check In</title>
 </head>
 <body>
-
+<%@ include file="rhead.jsp" %>
 <form action = "../../CheckinServlet" method = "post">
+<div style="margin-top:100px;">
 <p>
 身份证号：
 <input type = "text"  name = "id">
 <input type = "submit" name = "rsearchBtn" value = "查询">
 </p>
+
 <c:if test = "${orderList ne null}"> 
 订单表：<br/>
 <table border="1" cellspacing="0px" class="td">
@@ -25,6 +27,7 @@
 <th>type</th>
 <th>checkin</th>
 <th>checkout</th>
+<th>function</th>
 <c:forEach items="${orderList}" var="item">  
 		  <tr>  
 		    <td>${item.id}</td>  
@@ -32,7 +35,8 @@
 		    <td>${item.room_id}</td>
 		    <td>${item.room_type}</td>
 		    <td>${item.checkin}</td>  
-		    <td>${item.checkout}</td>  
+		    <td>${item.checkout}</td>
+		    <td><input type = "submit" name = "deleteBtn" value = "删除" onclick="this.form.action='../../CheckinServlet?oid=${item.id}';this.form.submit()"></td>  
 		  </tr>  
 </c:forEach>  
 </table>
@@ -59,6 +63,7 @@
 
 </c:if>
 <c:remove var="orderList"/>
+</div>
 </form>
 </body>
 </html>

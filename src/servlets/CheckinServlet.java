@@ -47,8 +47,20 @@ public class CheckinServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		String rsearchBtn = request.getParameter("rsearchBtn");
 		String allocateBtn = request.getParameter("allocateBtn");
+		String deleteBtn = request.getParameter("deleteBtn");
 		HttpSession session = request.getSession();
 		String id = null;
+		if (rsearchBtn != null) {
+			id = request.getParameter("id");
+		}else{
+			id = (String) session.getAttribute("user_id");
+			session.removeAttribute("user_id");
+		}
+		if (deleteBtn != null){
+			String oid = request.getParameter("oid");
+			OrderDao odao = new OrderDao();
+			odao.delOrder(oid);
+		}
 		if (allocateBtn != null) {
 			String oid = request.getParameter("oid");
 			String rid = request.getParameter("rid");
@@ -59,13 +71,10 @@ public class CheckinServlet extends HttpServlet {
 				RoomDao rdao = new RoomDao();
 				rdao.checkinRoom(rid);
 			}
-			id = (String) session.getAttribute("user_id");
-			session.removeAttribute("user_id");
+
 		}
 		
-		if (rsearchBtn != null) {
-			id = request.getParameter("id");
-		}
+	
 		if (id != null && id != "") {
 				OrderDao dao = new OrderDao();
 				ArrayList<Order> orderList = dao.getOrder(id,"R");

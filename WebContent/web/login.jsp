@@ -23,8 +23,9 @@
 <div class="mysign">
 	<!-- LOGO -->
 	<div class="col-lg-11 text-center text-info">
-		<img src="../img/logo.jpg" />
+		<img src="../img/logo-m.jpg" alt="logo" class="img-circle"/>
 	</div>
+	<br/>
  	<!-- LOGIN -->
    	<div class="col-lg-10">
        	<input type="text" class="form-control" name="username" placeholder="请输入身份证号" required autofocus/>
@@ -43,7 +44,7 @@
    	</div>
 </div>
 </div>
-<%	String errorInfo = (String)request.getAttribute("loginError");
+<%	String errorInfo = (String)session.getAttribute("loginError");
 	if (errorInfo != null) {
 	%>	
 	<script language="javascript">
@@ -51,7 +52,7 @@
 	</script>
 <%
 	}
-	request.removeAttribute("loginError");
+	session.removeAttribute("loginError");
 %>
 </form>
 </body>

@@ -21,8 +21,10 @@ function changeCheckOut(){
 <title>Check out</title>
 </head>
 <body>
+<%@ include file="rhead.jsp" %>
 <form action = "../../CheckoutServlet" method = "post">
  <input id="str" type="hidden" name= "checkout_time">
+ <div style="margin-top:100px;">
 <p>
 身份证号：
 <input type = "text"  name = "id">
@@ -55,6 +57,7 @@ function changeCheckOut(){
 </table>
 </c:if>
 <c:remove var="orderList"/>
+</div>
 </form>
 </body>
 </html>

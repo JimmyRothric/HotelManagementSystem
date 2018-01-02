@@ -19,6 +19,26 @@ public class OrderDao extends BaseDao {
 	public OrderDao() {
 		// TODO Auto-generated constructor stub
 	}
+	public ArrayList<Order> getAllOrder() {
+		String sql = "select * from Reservation";
+		ArrayList<Order> orderList = new ArrayList<Order>();
+		try {
+			Connection con = super.getConnection();
+			PreparedStatement stmt = con.prepareStatement(sql);
+			ResultSet rs = stmt.executeQuery();
+			while (rs.next()) {
+				Order o = new Order(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getDate(5),rs.getDate(6),rs.getString(7),rs.getInt(8));
+				orderList.add(o);
+			}
+			stmt.close();
+			con.close();
+			return orderList;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
 	public ArrayList<Order> getOrder(String id,String order_type) {
 		String sql = "select * from Reservation where Uid = ? and order_type = ?";
 		ArrayList<Order> orderList = new ArrayList<Order>();
@@ -191,6 +211,22 @@ public class OrderDao extends BaseDao {
 			stmt.setTimestamp(6, new Timestamp(o.getCheckout().getTime()));
 			stmt.setString(7, o.getOrder_type());
 			stmt.setInt(8, o.getPrice());
+			stmt.executeUpdate();
+			stmt.close();
+			con.close();
+			return true;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return false;
+	}
+	public boolean delOrder(String oid) {
+		String sql = "delete from Reservation where oid = ?";
+		try {
+			Connection con = super.getConnection();
+			PreparedStatement stmt = con.prepareStatement(sql);
+			stmt.setString(1, oid);
 			stmt.executeUpdate();
 			stmt.close();
 			con.close();

@@ -53,12 +53,18 @@ public class LoginServlet extends HttpServlet {
 		if (acc != null) {
 			session.setAttribute("loggedin", Boolean.TRUE);
 			session.setAttribute("account", acc);
-			response.sendRedirect("web/main.jsp");
+			String group = acc.getGroup();
+			if (group.equals("User")) {
+				response.sendRedirect("web/main.jsp");
+			} else if (group.equals("Receptionist")) {
+				response.sendRedirect("web/receptionist/rconsole.jsp");
+			} else if (group.equals("Manager")) {
+				//
+			}
 			return;
 		}else {
-			request.setAttribute("loginError", "Wrong username or password.");
-			RequestDispatcher rd = request.getRequestDispatcher("/web/login.jsp");
-			rd.forward(request, response);
+			session.setAttribute("loginError", "Wrong username or password.");
+			response.sendRedirect("web/login.jsp");
 		}
 	}
 

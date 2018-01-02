@@ -6,14 +6,23 @@
 <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <div style="float:right">
 <c:if test = "${account.id eq null}">
-<a href="/HotelManagementSystem/web/login.jsp">登录</a>|
-<a href="/HotelManagementSystem/web/register.jsp">注册</a>
+<div class="btn-group">
+	<button type="button" class="btn btn-default btn-sm" onclick="window.location.href='/HotelManagementSystem/web/login.jsp'">
+		登录
+	</button>
+	<button type="button" class="btn btn-default btn-sm" onclick="window.location.href='/HotelManagementSystem/web/register.jsp'">
+		注册
+	</button>
+</div>
 </c:if>
 <c:if test = "${account.id ne null}">
-<button type="button" class="btn btn-primary btn-sm">
-  <span class="glyphicon glyphicon-user"></span> ${account.name}
-</button>
-<!--  <a href="/HotelManagementSystem/web/user/personal_homepage.jsp" target="_blank">${account.name}</a>-->|
-<a href="/HotelManagementSystem/web/login.jsp?logout=true">注销</a>
+<div class="btn-group">
+	<button type="button" class="btn btn-default btn-sm" onclick="window.location.href='/HotelManagementSystem/web/user/personal_homepage.jsp'">
+  	<span class="glyphicon glyphicon-user"></span> ${account.name}
+	</button>
+	<button type="button" class="btn btn-warning btn-sm" onclick="window.location.href='/HotelManagementSystem/web/login.jsp?logout=true'">
+		注销
+	</button>
+</div>
 </c:if>
 </div>

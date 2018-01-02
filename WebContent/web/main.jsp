@@ -26,7 +26,7 @@ function isValid() {
 	}
 }
 </script>
-<%@ include file = "head.jsp" %>
+<%@ include file="head.jsp" %>
 <form action="../QueryServlet" onsubmit="return isValid();" method="post">
 
 <%
