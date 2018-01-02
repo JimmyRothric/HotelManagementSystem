@@ -4,9 +4,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" href="../css/bootstrap.min.css" />
 <link rel="stylesheet" type="text/css" href="../css/element_style.css" />
-<script src="../js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
 <title>Register</title>
 </head>
 <body>
@@ -14,6 +15,30 @@
 <div style="float:right; margin-top:-100px;">
 <button class="btn btn-link" onclick="this.form.action='login.jsp';this.form.submit()">返回登录页面</button>
 </div>
+<!--  
+<div style="float:left;">
+	<ol class="carousel-indicators">
+		<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+		<li data-target="#myCarousel" data-slide-to="1"></li>
+		<li data-target="#myCarousel" data-slide-to="2"></li>
+	</ol>   
+	<div class="carousel-inner">
+		<div class="item active">
+			<img src="../img/hotel-1.jpg" alt="First slide">
+		</div>
+		<div class="item">
+			<img src="../img/hotel-2.jpg" alt="Second slide">
+		</div>
+		<div class="item">
+			<img src="../img/hotel-3.jpg" alt="Third slide">
+		</div>
+	</div>
+	<a class="carousel-control left" href="#myCarousel" 
+	   data-slide="prev">&lsaquo;</a>
+	<a class="carousel-control right" href="#myCarousel" 
+	   data-slide="next">&rsaquo;</a>
+</div>
+-->
 <div class="mycenter">
 <div class="mysign">
    	<div class="col-lg-10">

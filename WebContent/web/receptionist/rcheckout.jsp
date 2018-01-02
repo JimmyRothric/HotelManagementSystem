@@ -23,25 +23,31 @@ function changeCheckOut(){
 <body>
 <%@ include file="rhead.jsp" %>
 <form action = "../../CheckoutServlet" method = "post">
- <input id="str" type="hidden" name= "checkout_time">
- <div style="margin-top:100px;">
+<input id="str" type="hidden" name= "checkout_time">
+<div style="margin-top: 100px; margin-left: 150px; margin-right: 150px;">
+<h3>退房管理</h3>
 <p>
 身份证号：
-<input type = "text"  name = "id">
-<input type = "submit" name = "searchBtn" value = "查询">
+<input type="text"  name="id">
+<input type="submit" name="searchBtn" value="查询">
 </p>
 <c:if test = "${orderList ne null}"> 
 订单表：<br/>
-<table border="1" cellspacing="0px" class="td">
-<th>Oid</th>
-<th>Uid</th>
-<th>Rid</th>
-<th>type</th>
-<th>checkin</th>
-<th>checkout</th>
-<th>price</th>
-<th>function</th>
-<c:forEach items="${orderList}" var="item">  
+<table class="table table-bordered table-hover" style="text-align:center">
+	<thead>
+		<tr>
+			<td>Oid</td>
+			<td>Uid</td>
+			<td>Rid</td>
+			<td>type</td>
+			<td>checkin</td>
+			<td>checkout</td>
+			<td>price</td>
+			<td>function</td>
+		</tr>
+	</thead>
+	<c:forEach items="${orderList}" var="item">  
+	<tbody>
 		  <tr>  
 		    <td>${item.id}</td>  
 		    <td>${item.account_id}</td>  
@@ -50,10 +56,15 @@ function changeCheckOut(){
 		    <td>${item.checkin}</td>  
 		    <td>${item.checkout}</td>  
 		    <td>${item.price}</td>
-		    <td><input type = "submit" name = "updateInfoBtn" value = "更新退房时间" onclick="changeCheckOut();this.form.action='../../CheckoutServlet?oid=${item.id}';this.form.submit()">
-		        <input type = "submit" name = "checkoutBtn" value = "退房" onclick="this.form.action='../../CheckoutServlet?oid=${item.id}&rid=${item.room_id}';this.form.submit()"></td> 
-		  </tr>  
-</c:forEach>  
+		    <td><table>
+		    	<tr>
+		    		<td><input type="submit" name="updateInfoBtn" class="btn btn-warning" value="更新退房时间" onclick="changeCheckOut();this.form.action='../../CheckoutServlet?oid=${item.id}';this.form.submit()"></td>
+		        	<td><input type="submit" name="checkoutBtn" class="btn btn-danger" value="退房" onclick="this.form.action='../../CheckoutServlet?oid=${item.id}&rid=${item.room_id}';this.form.submit()"></td> 
+		  		</tr>
+		  	</table></td>
+		  </tr> 
+	</tbody> 
+	</c:forEach>  
 </table>
 </c:if>
 <c:remove var="orderList"/>

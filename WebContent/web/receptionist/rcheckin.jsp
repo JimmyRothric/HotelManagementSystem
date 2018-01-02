@@ -11,7 +11,8 @@
 <body>
 <%@ include file="rhead.jsp" %>
 <form action = "../../CheckinServlet" method = "post">
-<div style="margin-top:100px;">
+<div style="margin-top: 100px; margin-left: 150px; margin-right: 150px;">
+<h3>预订入住</h3>
 <p>
 身份证号：
 <input type = "text"  name = "id">
@@ -20,45 +21,57 @@
 
 <c:if test = "${orderList ne null}"> 
 订单表：<br/>
-<table border="1" cellspacing="0px" class="td">
-<th>Oid</th>
-<th>Uid</th>
-<th>Rid</th>
-<th>type</th>
-<th>checkin</th>
-<th>checkout</th>
-<th>function</th>
-<c:forEach items="${orderList}" var="item">  
+<table class="table table-bordered table-hover" style="text-align:center">
+	<thead>
+		<tr>
+			<td>Oid</td>
+			<td>Uid</td>
+			<td>type</td>
+			<td>checkin</td>
+			<td>checkout</td>
+			<td>function</td>
+		</tr>
+	</thead>
+	<c:forEach items="${orderList}" var="item"> 
+	<tbody>  
 		  <tr>  
 		    <td>${item.id}</td>  
 		    <td>${item.account_id}</td>  
-		    <td>${item.room_id}</td>
 		    <td>${item.room_type}</td>
 		    <td>${item.checkin}</td>  
 		    <td>${item.checkout}</td>
-		    <td><input type = "submit" name = "deleteBtn" value = "删除" onclick="this.form.action='../../CheckinServlet?oid=${item.id}';this.form.submit()"></td>  
+		    <td> <button type="submit" name="deleteBtn" class="btn btn-danger" onclick="this.form.action='../../CheckinServlet?oid=${item.id}';this.form.submit()">
+		   			<span class="glyphicon glyphicon-remove"></span>
+		   		</button>
+		    </td>
 		  </tr>  
-</c:forEach>  
+	</tbody>
+	</c:forEach>  
 </table>
 为订单${orderList[0].id}分配房间：<br/>
-<table border="1" cellspacing="0px" class="td">
-<th>id</th>
-<th>type</th>
-<th>floor</th>
-<th>orientation</th>
-<th>description</th>
-<th>function</th>
-<c:forEach items="${roomList}" var="item">  
+<table class="table table-bordered table-hover" style="text-align:center">
+	<thead>
+		<tr>
+			<td>id</td>
+			<td>type</td>
+			<td>floor</td>
+			<td>orientation</td>
+			<td>description</td>
+			<td>function</td>
+		</tr>
+	</thead>
+	<c:forEach items="${roomList}" var="item">  
+	<tbody>
 		  <tr>  
 		    <td>${item.id}</td>  
 		    <td>${item.type}</td>  
 		    <td>${item.floor}</td>
 		    <td>${item.orientation}</td>
 		    <td>${item.description}</td>
-		    <td><input type = "submit" name = "allocateBtn" value = "分配" onclick="this.form.action='../../CheckinServlet?oid=${orderList[0].id}&rid=${item.id}';this.form.submit()"></td> 
+		    <td><input type="submit" name="allocateBtn" class="btn btn-default" value="分配" onclick="this.form.action='../../CheckinServlet?oid=${orderList[0].id}&rid=${item.id}';this.form.submit()"></td> 
 		  </tr>  
-</c:forEach>  
-
+	</tbody>
+	</c:forEach>
 </table>
 
 </c:if>

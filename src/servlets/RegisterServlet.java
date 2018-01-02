@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dao.AccountDao;
 import data.*;
@@ -42,6 +43,7 @@ public class RegisterServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
+		HttpSession session = request.getSession(true);
 		AccountDao dao = new AccountDao();
 		String username = request.getParameter("username");
 		String name = request.getParameter("name");
@@ -74,9 +76,8 @@ public class RegisterServlet extends HttpServlet {
 		}
 	}
 	private void goError(HttpServletRequest request, HttpServletResponse response,String error) throws ServletException, IOException {
-		request.setAttribute("registerError", error);
-		RequestDispatcher rd = request.getRequestDispatcher("/web/register.jsp");
-		rd.forward(request, response);
+		request.getSession().setAttribute("registerError", error);
+		response.sendRedirect("web/register.jsp");
 	}
 
 }

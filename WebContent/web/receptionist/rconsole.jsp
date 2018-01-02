@@ -19,30 +19,34 @@
 	OrderDao dao = new OrderDao();
 	request.setAttribute("orderList", dao.getAllOrder());
 %>
-<div style="margin-top:100px;">
+<div style="margin-top: 100px; margin-left: 150px; margin-right: 150px;">
 <c:if test="${orderList ne null}">
-订单表：<br/>
-<table border="1" cellspacing="0px" class="td">
-	<tr>
-		<td>Oid</td>
-		<td>Uid</td>
-		<td>Rid</td>
-		<td>type</td>
-		<td>checkin</td>
-		<td>checkout</td>
-		<td>price</td>
-	</tr>
-<c:forEach items="${orderList}" var="item">  
-	  <tr>  
-	    <td>${item.id}</td>  
-	    <td>${item.account_id}</td>  
-	    <td>${item.room_id}</td>
-	    <td>${item.room_type}</td>
-	    <td>${item.checkin}</td>  
-	    <td>${item.checkout}</td>  
-	    <td>${item.price}</td>
-	  </tr>  
-</c:forEach>  
+<h3>订单表：</h3><br/>
+<table class="table table-bordered table-hover" style="text-align:center">
+	<thead>
+		<tr>
+			<td>Oid</td>
+			<td>Uid</td>
+			<td>Rid</td>
+			<td>type</td>
+			<td>checkin</td>
+			<td>checkout</td>
+			<td>price</td>
+		</tr>
+	</thead>
+	<c:forEach items="${orderList}" var="item">
+	<tbody>  
+		<tr>  
+		    <td>${item.id}</td>  
+		    <td>${item.account_id}</td>  
+		    <td>${item.room_id}</td>
+		    <td>${item.room_type}</td>
+		    <td>${item.checkin}</td>  
+		    <td>${item.checkout}</td>  
+		    <td>￥${item.price}</td>
+		</tr>  
+	</tbody>
+	</c:forEach>  
 </table>
 </c:if>
 </div>

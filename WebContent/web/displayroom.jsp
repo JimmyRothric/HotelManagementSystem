@@ -14,11 +14,7 @@
 <body>
 <%@ include file="head.jsp" %>
 <form action="../RequirementServlet" method="post">
-<div>
-<div style="float:right">
-	<button class=" " onclick="this.form.action='main.jsp';this.form.submit()">返回</button>
-</div>
-
+<div style="margin-top:80px;">
 请选择查询方式：<br/>
 房间类型
 <select name="type">
@@ -44,18 +40,23 @@
 </select>
 <input type="submit" name="searchBtn" value="查询">
 
-<table border="0" cellspacing="0px" class="td">
-	<tr>
-		<td>房型</td>
-		<td>房价</td>
-		<td></td>
-	</tr>
-<c:forEach var="t" varStatus="i" items="${sessionScope.typeList}">
-	<tr>
-		<td>${t.type}</td>
-		<td>${t.price}</td>
-		<td><input type="submit" class="reserveBtn" name="reserveBtn" value="预订 " onclick="this.form.action='user/reservation.jsp?type=${t.type}';this.form.submit()"/></td>		
-	</tr>
+
+<table class="table table-hover">
+	<thead>
+		<tr>
+			<td>房型</td>
+			<td>房价</td>
+			<td></td>
+		</tr>
+	</thead>
+	<c:forEach var="t" varStatus="i" items="${sessionScope.typeList}">
+	<tbody>
+		<tr>
+			<td>${t.type}</td>
+			<td>${t.price}</td>
+			<td><input type="submit" class="reserveBtn" name="reserveBtn" value="预订 " onclick="this.form.action='user/reservation.jsp?type=${t.type}';this.form.submit()"/></td>		
+		</tr>
+	</tbody>
 </c:forEach>
 </table>
 </div>

@@ -23,7 +23,7 @@
 <div class="mysign">
 	<!-- LOGO -->
 	<div class="col-lg-11 text-center text-info">
-		<img src="../img/logo-m.jpg" alt="logo" class="img-circle"/>
+		<img src="../img/logo-M.png" alt="logo" class="img-circle"/>
 	</div>
 	<br/>
  	<!-- LOGIN -->
