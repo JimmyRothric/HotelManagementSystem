@@ -16,6 +16,7 @@ public class Order {
 	private Date checkin;
 	private Date checkout;
 	private String order_type;
+	private String demand;
 	private int price;
 	
 	public Order() {
@@ -24,7 +25,7 @@ public class Order {
 	
 
 	public Order(String id, String account_id, String room_id, String room_type, Date checkin, Date checkout,
-			String order_type, int price) {
+			String order_type, String demand, int price) {
 		this.id = id;
 		this.account_id = account_id;
 		this.room_id = room_id;
@@ -32,11 +33,12 @@ public class Order {
 		this.checkin = checkin;
 		this.checkout = checkout;
 		this.order_type = order_type;
+		this.demand = demand;
 		this.price = price;
 	}
 
 
-	public Order(String account_id,String room_type, Date checkin, Date checkout) {
+	public Order(String account_id,String room_type, Date checkin, Date checkout, String demand) {
 		SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMddHHmmss");
 		this.id = sdf.format(Calendar.getInstance().getTime()) + String.format("%04d", order_id++);
 		this.account_id = account_id;
@@ -45,6 +47,7 @@ public class Order {
 		this.checkin = checkin;
 		this.checkout = checkout;
 		this.order_type = "R";
+		this.demand = demand;
 		RoomTypeDao dao = new RoomTypeDao();
 		int price_per_day = dao.getPrice(room_type);
 		this.price = price_per_day * Order.calDays(checkin,checkout);
@@ -57,22 +60,7 @@ public class Order {
 		}
 		return days;
 	}
-/*
-	public int calDays(Date date0, Date date1) {
-		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
-		Date checkin_date = null;
-		Date checkout_date = null;
-		try {
-			checkin_date = sdf.parse(checkin);
-			checkout_date = sdf.parse(checkout);
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		int days = (int) ((date1.getTime() - date0.getTime()) / (1000*3600*24) + 1);
-		return days;
-	}
-*/
+
 	public String getId() {
 		return id;
 	}
@@ -92,7 +80,10 @@ public class Order {
 		this.room_id = room_id;
 	}
 
-
+	public String getCheckinString() {
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		return sdf.format(checkin);
+	}
 	public Date getCheckin() {
 		return checkin;
 	}
@@ -103,7 +94,10 @@ public class Order {
 		this.checkin = checkin;
 	}
 
-
+	public String getCheckoutString() {
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		return sdf.format(checkout);
+	}
 
 	public Date getCheckout() {
 		return checkout;
@@ -144,6 +138,16 @@ public class Order {
 	public void setOrder_type(String order_type) {
 		this.order_type = order_type;
 	}
+
+	public String getDemand() {
+		return demand;
+	}
+
+
+	public void setDemand(String demand) {
+		this.demand = demand;
+	}
+
 
 	public int getPrice() {
 		return price;

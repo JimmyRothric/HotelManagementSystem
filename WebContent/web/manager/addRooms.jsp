@@ -9,17 +9,15 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-
-
-
-
 <link rel="stylesheet" type="text/css" href="css/element_style.css" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Room Management</title>
 </head>
 <body>
+<%@ include file="mhead.jsp" %>
 <form action = "../../RoomServlet" method = "post">
-<table>
+<div style="margin-top: 100px; margin-left: 150px; margin-right: 150px;">
+<table class="table table-bordered table-hover" style="text-align:center">
 	<tr>
 		<td>房号：</td>
 		<td><input type="text" name="room_id"/></td>
@@ -69,7 +67,7 @@
 	session.removeAttribute("addRoomInfo");
 %>
 
-
+</div>
 </form>
 
 

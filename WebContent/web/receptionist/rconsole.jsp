@@ -31,6 +31,7 @@
 			<td>type</td>
 			<td>checkin</td>
 			<td>checkout</td>
+			<td>demand</td>
 			<td>price</td>
 		</tr>
 	</thead>
@@ -42,7 +43,8 @@
 		    <td>${item.room_id}</td>
 		    <td>${item.room_type}</td>
 		    <td>${item.checkin}</td>  
-		    <td>${item.checkout}</td>  
+		    <td>${item.checkout}</td>
+		    <td>${item.demand}</td>  
 		    <td>￥${item.price}</td>
 		</tr>  
 	</tbody>

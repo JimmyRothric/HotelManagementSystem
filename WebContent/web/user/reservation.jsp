@@ -27,11 +27,11 @@
 </c:if>
 
 其他要求：<br/>
-<input type="radio" name="floor" value="higherfloor" checked>高楼层<br/>
-<input type="radio" name="floor" value="lowerfloor">低楼层</p>
-<input type="radio" name="orientation" value="facesouth" checked>朝南<br/>
-<input type="radio" name="orientation" value="notfacesouth">不朝南</p>
-
+<input type="radio" name="floor" value="高楼层" checked>高楼层<br/>
+<input type="radio" name="floor" value="低楼层">低楼层</p>
+<input type="radio" name="orientation" value="朝南" checked>朝南<br/>
+<input type="radio" name="orientation" value="不朝南">不朝南<br/>
+<input type="text" name="demand"/></p>
 <button class="reserveBtn" style="vertical-align:middle"><span>提交</span></button>
 </div>
 </form>

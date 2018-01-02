@@ -34,6 +34,7 @@ create table Reservation
 	checkin datetime not null,
 	checkout datetime not null,
 	order_type char(1) not null,
+	demand nvarchar(50),
 	price int,
 	primary key (Oid),
 	foreign key (Uid) references Account,
@@ -49,6 +50,7 @@ create table ReservationHistory
 	checkin datetime,
 	checkout datetime,
 	order_type char(1),
+	demand nvarchar(50),
 	price int,
 	primary key (Oid)
 )

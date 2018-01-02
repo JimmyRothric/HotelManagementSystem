@@ -53,7 +53,7 @@
 	<tbody>
 		<tr>
 			<td>${t.type}</td>
-			<td>${t.price}</td>
+			<td>￥${t.price}</td>
 			<td><input type="submit" class="reserveBtn" name="reserveBtn" value="预订 " onclick="this.form.action='user/reservation.jsp?type=${t.type}';this.form.submit()"/></td>		
 		</tr>
 	</tbody>

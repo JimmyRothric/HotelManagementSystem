@@ -65,13 +65,15 @@ public class ReservationServlet extends HttpServlet {
 		String checkout = request.getParameter("checkout");
 		String floor = request.getParameter("floor");
 		String orientation = request.getParameter("orientation");
+		String demand = request.getParameter("demand");
+		String str = floor + "," + orientation + "," + demand;
 		OrderDao dao = new OrderDao();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		String type = request.getParameter("room_type");
 		boolean success = false;
 		Order o = null;
 		try {
-			o = new Order(acc_id,type,sdf.parse(checkin), sdf.parse(checkout));
+			o = new Order(acc_id,type,sdf.parse(checkin), sdf.parse(checkout), str);
 			success = dao.addOrder(o);
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block

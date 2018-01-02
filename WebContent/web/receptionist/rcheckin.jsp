@@ -29,6 +29,7 @@
 			<td>type</td>
 			<td>checkin</td>
 			<td>checkout</td>
+			<td>demand</td>
 			<td>function</td>
 		</tr>
 	</thead>
@@ -40,6 +41,7 @@
 		    <td>${item.room_type}</td>
 		    <td>${item.checkin}</td>  
 		    <td>${item.checkout}</td>
+		    <td>${item.demand}</td>
 		    <td> <button type="submit" name="deleteBtn" class="btn btn-danger" onclick="this.form.action='../../CheckinServlet?oid=${item.id}';this.form.submit()">
 		   			<span class="glyphicon glyphicon-remove"></span>
 		   		</button>

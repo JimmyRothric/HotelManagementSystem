@@ -17,7 +17,8 @@
 房间类型：${order.room_type }<br/>
 入住时间：${order.checkin }<br/>
 离店时间：${order.checkout }<br/>
-<b>总计：¥${order.price }</b><br/>
+备注：${order.demand }<br/>
+<b>总计：￥${order.price }</b><br/>
 
 <script language="javascript">
 function custom_close(){

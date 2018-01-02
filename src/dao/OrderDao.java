@@ -19,6 +19,47 @@ public class OrderDao extends BaseDao {
 	public OrderDao() {
 		// TODO Auto-generated constructor stub
 	}
+	public Order getOrder(String oid) {
+ 		String sql = "select * from Reservation where Oid = ?";
+ 		try {
+ 			Connection con = super.getConnection();
+ 			PreparedStatement stmt = con.prepareStatement(sql);
+ 			stmt.setString(1, oid);
+ 			ResultSet rs = stmt.executeQuery();
+ 			Order o = null;
+ 			while (rs.next()) {
+ 				o = new Order(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getDate(5),rs.getDate(6),rs.getString(7), rs.getString(8), rs.getInt(9));
+ 			}
+ 			stmt.close();
+ 			con.close();
+ 			return o;
+ 		} catch (SQLException e) {
+ 			// TODO Auto-generated catch block
+ 			e.printStackTrace();
+ 		}
+ 		return null;
+ 	}
+ 	public Order getHistoryOrder(String oid) {
+ 		String sql = "select * from ReservationHistory where Oid = ?";
+ 		try {
+ 			Connection con = super.getConnection();
+ 			PreparedStatement stmt = con.prepareStatement(sql);
+ 			stmt.setString(1, oid);
+ 			ResultSet rs = stmt.executeQuery();
+ 			Order o = null;
+ 			while (rs.next()) {
+ 				o = new Order(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getDate(5),rs.getDate(6),rs.getString(7), rs.getString(8), rs.getInt(9));
+ 			}
+ 			stmt.close();
+ 			con.close();
+ 			return o;
+ 		} catch (SQLException e) {
+ 			// TODO Auto-generated catch block
+ 			e.printStackTrace();
+ 		}
+ 		return null;
+ 	}
+
 	public ArrayList<Order> getAllOrder() {
 		String sql = "select * from Reservation";
 		ArrayList<Order> orderList = new ArrayList<Order>();
@@ -27,7 +68,7 @@ public class OrderDao extends BaseDao {
 			PreparedStatement stmt = con.prepareStatement(sql);
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
-				Order o = new Order(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getDate(5),rs.getDate(6),rs.getString(7),rs.getInt(8));
+				Order o = new Order(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getDate(5),rs.getDate(6),rs.getString(7), rs.getString(8), rs.getInt(9));
 				orderList.add(o);
 			}
 			stmt.close();
@@ -49,7 +90,7 @@ public class OrderDao extends BaseDao {
 			stmt.setString(2, order_type);
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
-				Order o = new Order(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getDate(5),rs.getDate(6),rs.getString(7),rs.getInt(8));
+				Order o = new Order(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getDate(5),rs.getDate(6),rs.getString(7), rs.getString(8), rs.getInt(9));
 				orderList.add(o);
 			}
 			stmt.close();
@@ -136,7 +177,7 @@ public class OrderDao extends BaseDao {
 			ResultSet rs = stmt.executeQuery();
 			Order o = null;
 			while (rs.next()) {
-				o = new Order(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getDate(5),rs.getDate(6),rs.getString(7),rs.getInt(8));
+				o = new Order(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getDate(5),rs.getDate(6),rs.getString(7), rs.getString(8), rs.getInt(9));
 			}
 			stmt.close();
 			con.close();
@@ -153,7 +194,7 @@ public class OrderDao extends BaseDao {
 	public boolean checkoutOrder(String oid) {
 	
 		Order o = getSingleOrder(oid);
-		String sql2 = "insert into ReservationHistory values(?, ?, ?, ?, ?, ?, ?, ?)";
+		String sql2 = "insert into ReservationHistory values(?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		String sql3 = "delete from Reservation where Oid = ?";
 		try {
 			Connection con = super.getConnection();
@@ -165,7 +206,8 @@ public class OrderDao extends BaseDao {
 			stmt2.setTimestamp(5, new Timestamp(o.getCheckin().getTime()));
 			stmt2.setTimestamp(6, new Timestamp(o.getCheckout().getTime()));
 			stmt2.setString(7, "F");
-			stmt2.setInt(8, o.getPrice());
+			stmt2.setString(8, o.getDemand());
+			stmt2.setInt(9, o.getPrice());
 			stmt2.executeUpdate();
 			stmt2.close();
 			PreparedStatement stmt3 = con.prepareStatement(sql3);
@@ -199,7 +241,7 @@ public class OrderDao extends BaseDao {
 		return false;
 	}
 	public boolean addOrder(Order o) {
-		String sql = "insert into Reservation values(?, ?, ?, ?, ?, ?, ?, ?)";
+		String sql = "insert into Reservation values(?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		try {
 			Connection con = super.getConnection();
 			PreparedStatement stmt = con.prepareStatement(sql);
@@ -210,7 +252,8 @@ public class OrderDao extends BaseDao {
 			stmt.setTimestamp(5, new Timestamp(o.getCheckin().getTime()));
 			stmt.setTimestamp(6, new Timestamp(o.getCheckout().getTime()));
 			stmt.setString(7, o.getOrder_type());
-			stmt.setInt(8, o.getPrice());
+			stmt.setString(8, o.getDemand());
+			stmt.setInt(9, o.getPrice());
 			stmt.executeUpdate();
 			stmt.close();
 			con.close();
@@ -249,7 +292,7 @@ public class OrderDao extends BaseDao {
 			stmt.setString(2, id);
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
-				Order o = new Order(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getDate(5),rs.getDate(6),rs.getString(7),rs.getInt(8));
+				Order o = new Order(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getDate(5),rs.getDate(6),rs.getString(7), rs.getString(8), rs.getInt(9));
 				orderList.add(o);
 			}
 			stmt.close();

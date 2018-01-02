@@ -23,9 +23,11 @@ function changeNm(){
 <title>Account Management</title>
 </head>
 <body>
+<%@ include file="mhead.jsp" %>
 <form action = "../../AccountManagementServlet" method = "post">
- <input id="str" type="hidden" name= "targetString">
- <input id="uid" type="hidden" name= "targetId">
+<div style="margin-top: 100px; margin-left: 150px; margin-right: 150px;">
+<input id="str" type="hidden" name= "targetString">
+<input id="uid" type="hidden" name= "targetId">
 <%
 	AccountDao dao = new AccountDao();
 	request.setAttribute("accList", dao.getAccountList());
@@ -34,15 +36,20 @@ function changeNm(){
 		没有账号数据
 		</c:if>
 		<c:if test = "${accList != null && !accList.isEmpty()}">
-		<table border="1" cellspacing="0px" class="td">
-		<th>身份证号</th>
-		<th>密码</th>
-		<th>姓名</th>
-		<th>类别</th>
-		<th>修改密码</th>
-		<th>修改姓名</th>
-		<th>删除账号</th>
+		<table class="table table-bordered table-hover" style="text-align:center">
+		<thead>
+		<tr>
+			<td>身份证号</td>
+			<td>密码</td>
+			<td>姓名</td>
+			<td>类别</td>
+			<td>修改密码</td>
+			<td>修改姓名</td>
+			<td>删除账号</td>
+		</tr>
+		</thead>
 		<c:forEach items="${accList}" var="item">  
+		<tbody>
 		  <tr>  
 		    <td>${item.id}</td>  
 		    <td>${item.password}</td>  
@@ -52,9 +59,11 @@ function changeNm(){
 		    <td><input type="submit" name = "cn" value="修改姓名" onclick = "changeNm();document.getElementById('uid').value = ${item.id}"></td>
 		    <td><input type="submit" name = "dl" value="删除账号" onclick = "document.getElementById('uid').value = ${item.id}"></td>
 		  </tr>  
-		</c:forEach>  
+		  </tbody>
+		</c:forEach> 
 		</table>
 		</c:if>
+</div>
 </form>
 </body>
 </html>
