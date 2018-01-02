@@ -14,51 +14,67 @@
 <body>
 <%@ include file="head.jsp" %>
 <form action="../RequirementServlet" method="post">
-<div style="margin-top:80px;">
-请选择查询方式：<br/>
-房间类型
-<select name="type">
-<option value="">ALL</option>
-		<%
-			RoomTypeDao rtd = new RoomTypeDao();
-			ArrayList<RoomType> rtList = rtd.getRoomTypes();
-			if (rtList != null){
-				for (int i = 0; i < rtList.size(); i++){
-					String type = rtList.get(i).getType();
-					out.print("<option value=\""+ type +"\">"+ type +"</option>");
-				}
-			}
-		%>
-</select>
-价格
-<select name="price">
-<option value="0">ALL</option>
-<option value="1">0~200</option>
-<option value="2">201~500</option>
-<option value="3">501~1000</option>
-<option value="4">1001~2000</option>
-</select>
-<input type="submit" name="searchBtn" value="查询">
-
-
-<table class="table table-hover">
-	<thead>
-		<tr>
-			<td>房型</td>
-			<td>房价</td>
-			<td></td>
-		</tr>
-	</thead>
-	<c:forEach var="t" varStatus="i" items="${sessionScope.typeList}">
-	<tbody>
-		<tr>
-			<td>${t.type}</td>
-			<td>￥${t.price}</td>
-			<td><input type="submit" class="reserveBtn" name="reserveBtn" value="预订 " onclick="this.form.action='user/reservation.jsp?type=${t.type}';this.form.submit()"/></td>		
-		</tr>
-	</tbody>
-</c:forEach>
-</table>
+<div style="margin-top: 60px; margin-left: 150px; margin-right: 150px;">
+<div class="container">
+	<h3>请选择查询方式</h3><br/>
+	<div class="row">
+		<div class="col-md-2">
+			<div class="row">
+				房间类型
+				<select class="form-control" style="width: 150px;" name="type">
+					<option value="">ALL</option>
+						<%
+							RoomTypeDao rtd = new RoomTypeDao();
+							ArrayList<RoomType> rtList = rtd.getRoomTypes();
+							if (rtList != null){
+								for (int i = 0; i < rtList.size(); i++){
+									String type = rtList.get(i).getType();
+									out.print("<option value=\""+ type +"\">"+ type +"</option>");
+								}
+							}
+						%>
+				</select>
+			</div>
+		</div>
+		<div class="col-md-2">
+			<div class="row">
+				价格
+				<select class="form-control" style="width: 150px;" name="price">
+					<option value="0">ALL</option>
+					<option value="1">0~200</option>
+					<option value="2">201~500</option>
+					<option value="3">501~1000</option>
+					<option value="4">1001~2000</option>
+				</select>
+			</div>
+		</div>
+		<div class="col-md-2">
+			<div class="row">
+				<input type="submit" name="searchBtn" class="reserveBtn" style="border-radius: 2px; height: 33px; width: 150px; margin-top: 20px" value="查询">
+			</div>
+		</div>
+	</div>
+</div>
+<br/>
+	<table class="table table-hover">
+		<thead>
+			<tr>
+				<td>房型</td>
+				<td>房价</td>
+				<td></td>
+			</tr>
+		</thead>
+		<c:forEach var="t" varStatus="i" items="${sessionScope.typeList}">
+		<tbody>
+			<tr>
+				<td><p style="margin-top: 10px;">${t.type}</p></td>
+				<td><p style="margin-top: 10px;">￥${t.price}</p></td>
+				<td><input type="submit" class="reserveBtn" name="reserveBtn" value="预订 " onclick="this.form.action='user/reservation.jsp?type=${t.type}';this.form.submit()"/></td>		
+			</tr>
+		</tbody>
+	</c:forEach>
+	</table>
+	
 </div>
 </form>
 </body>

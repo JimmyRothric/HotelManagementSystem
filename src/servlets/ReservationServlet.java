@@ -49,12 +49,14 @@ public class ReservationServlet extends HttpServlet {
 		response.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession(true);
 		String acc_id = null;
+		String acc_name = null;
 		Account account = (Account)session.getAttribute("account");
 		if (!account.getGroup().equals("User")) {
 			acc_id = request.getParameter("user_id");
+			acc_name = request.getParameter("user_name");
 			AccountDao dao = new AccountDao();
 			if (!dao.isValidUsername(acc_id)) {
-				dao.addAccount(new Account(acc_id, acc_id, "Alpha", "User"));
+				dao.addAccount(new Account(acc_id, acc_name, "Alpha", "User"));
 			}
 		}else {
 			acc_id = account.getId();

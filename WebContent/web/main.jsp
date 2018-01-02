@@ -14,9 +14,9 @@
 <script src="https://cdn.bootcss.com/moment.js/2.18.1/moment-with-locales.min.js"></script>  
 <link href="https://cdn.bootcss.com/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css" rel="stylesheet">  
 <script src="https://cdn.bootcss.com/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
-<title>Trump Hotel</title>
+<title>Mario Hotel</title>
 </head>
-<body>
+<body background="../img/grey-bg.png">
 <script>
 function isValid() {
 	var checkin = document.getElementById("checkin_time").value;
@@ -39,19 +39,27 @@ function isValid() {
 	c.add(Calendar.DAY_OF_MONTH, 1);
 	String tomorrow = sdf.format(c.getTime());
 %>
-<div id="form" style="margin-top:80px;">
-	<div class="row">  
-	    <div class='col-sm-2'>  
-	     	  入住时间<input id="checkin_time" type="date" name="checkin" value=<%=today%> min=<%=today%>>
-	    </div>  
-	    <div class='col-sm-2'>  
-	       	 离店时间<input id="checkout_time" type="date" name="checkout" value=<%=tomorrow%> min=<%=tomorrow%>>
-	    </div>  
-	     <div class='col-sm-2'>  
-	       	<input type="submit" name="searchButton" class="btn btn-primary col-lg-1" value="查询">
-	    </div>
-	</div>  
-</div>
+<div class="container" style="margin-top: 350px;margin-left: 350px; margin-right: 150px;">
+	<div class="row" style="margin-top: 60px">
+		<div class="col-md-2">
+			<div class="row">
+			<h5>入住时间</h5>
+			<input id="checkin_time" class="form-control" type="date" name="checkin" style="height: 30px; width: 175px;" value=<%=today%> min=<%=today%>>
+			</div>
+		</div>
+		<div class="col-md-2">
+			<div class="row">
+			<h5>离店时间</h5>
+			<input id="checkout_time" type="date" name="checkout" style="height: 30px; width: 175px;" value=<%=tomorrow%> min=<%=tomorrow%>>
+			</div>
+		</div>
+		<div class="col-md-2">
+			<div class="row">
+				<input type="submit" name="searchButton" class="reserveBtn" style="border-radius: 2px; height: 33px; width: 175px; margin-top: 33px;" value="查询">
+			</div>
+		</div>
+	</div>
+</div>	
 </form>
 </body>
 </html>

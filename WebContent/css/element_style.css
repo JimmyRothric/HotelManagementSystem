@@ -4,7 +4,7 @@
 .reserveBtn {
 	display: inline-block;
 	border-radius: 4px;
-	background-color: #0099FF;
+	background-color: #e7b94b;
 	border: none;
 	color: white;
 	text-align: center;
@@ -19,7 +19,7 @@
 	padding-top: 5px;
 }
 .reserveBtn:hover {
-	opacity: 0.8;
+	background-color: #e8b336;
 	color: white;
 }
 .reserveBtn span {
@@ -32,7 +32,7 @@
 	content: '»';
 	position: absolute;
 	opacity: 0;
-	top: 1px;
+	top: 0px;
 	right: -20px;
 	transition: 0.5s;
 }

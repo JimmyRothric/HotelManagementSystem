@@ -7,7 +7,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="../css/bootstrap.min.css" />
 <link rel="stylesheet" type="text/css" href="../css/element_style.css" />
-<script src="../js/bootstrap.min.js"></script>
 <%
 	String logout = request.getParameter("logout");
 	if (logout != null && logout.equals("true")){
@@ -16,7 +15,6 @@
 %>
 <title>Login</title>
 </head>
-<body>
 <body background="../img/login.jpg">
 <form action="../LoginServlet" method="post">
 <div class="mycenter">
