@@ -9,28 +9,23 @@
 <body>
 <%@ include file="mhead.jsp" %>
 <form action = "../../RoomTypeServlet" method = "post">
-<<<<<<< HEAD
 <div style="margin-top: 100px; margin-left: 150px; margin-right: 150px;">
-<table class="table table-bordered table-hover" style="text-align:center">
-=======
-<div style="margin-top:100px;">
-<table>
->>>>>>> origin/master
-	<tr>
-		<td>房间类型：</td>
-		<td><input type="text" name="room_type"/></td>
-	</tr>
-	<tr>
-		<td>价格：</td>
-		<td><input type="text" name="room_price"/></td>
-	</tr>
-	<tr>
-		<td>余量：</td>
-		<td><input type="text" name="room_rest"/> </td>
-	</tr>
-</table>
-<input type ="submit" name = "addButton" value = "添加" style="font-size:20px">
-<input type ="reset" value = "清空" style="font-size:20px">
+	<table class="table table-bordered table-hover" style="text-align:center">
+		<tr>
+			<td>房间类型：</td>
+			<td><input type="text" name="room_type"/></td>
+		</tr>
+		<tr>
+			<td>价格：</td>
+			<td><input type="text" name="room_price"/></td>
+		</tr>
+		<tr>
+			<td>余量：</td>
+			<td><input type="text" name="room_rest"/> </td>
+		</tr>
+	</table>
+	<input type="submit" name="addButton" value="添加" style="font-size:20px">
+	<input type="reset" value="清空" style="font-size:20px">
 </div>
 </form>
 

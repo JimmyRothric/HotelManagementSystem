@@ -3,7 +3,7 @@
 <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<<<<<<< HEAD
+
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation"> 
     <div class="container-fluid"> 
     <div class="navbar-header"> 
@@ -28,7 +28,7 @@
     </div> 
     </div> 
 </nav>
-=======
+
 <nav class="navbar navbar-default navbar-fixed-top" role="navigation"> 
     <div class="container-fluid"> 
     <div class="navbar-header"> 
@@ -45,4 +45,4 @@
     </div> 
     </div> 
 </nav>
->>>>>>> origin/master
+

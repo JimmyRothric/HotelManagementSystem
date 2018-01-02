@@ -15,31 +15,30 @@
 	RoomDao dao = new RoomDao();
 	pageContext.setAttribute("roomList", dao.displayAll());
 %>
-<<<<<<< HEAD
 <div style="margin-top: 100px; margin-left: 150px; margin-right: 150px;">
-<table class="table table-bordered table-hover" style="text-align:center">
-=======
- <div style="margin-top:100px;">
-<table border="0" cellspacing="0px" class="td">
->>>>>>> origin/master
-	<tr>
-		<td>房间号</td>
-		<td>房型</td>
-		<td>楼层</td>
-		<td>朝向</td>
-		<td>描述</td>
-		<td>状态</td>
-	</tr>
-<c:forEach var="r" varStatus="i" items="${roomList}">
-	<tr>
-		<td>${r.id}</td>
-		<td>${r.type}</td>
-		<td>${r.floor}</td>
-		<td>${r.orientation}</td>
-		<td>${r.description}</td>
-		<td>${r.state}</td>
-	</tr>
-</c:forEach>
+	<table class="table table-bordered table-hover" style="text-align:center">
+	<thead>
+		<tr>
+			<td>房间号</td>
+			<td>房型</td>
+			<td>楼层</td>
+			<td>朝向</td>
+			<td>描述</td>
+			<td>状态</td>
+		</tr>
+	</thead>
+	<c:forEach var="r" varStatus="i" items="${roomList}">
+	<tbody>
+		<tr>
+			<td>${r.id}</td>
+			<td>${r.type}</td>
+			<td>${r.floor}</td>
+			<td>${r.orientation}</td>
+			<td>${r.description}</td>
+			<td>${r.state}</td>
+		</tr>
+	</tbody>
+	</c:forEach>
 </table>
 </div>
 </body>
