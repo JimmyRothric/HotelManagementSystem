@@ -55,9 +55,9 @@ function changeCheckOut(){
 		    <td>${item.room_id}</td>
 		    <td>${item.room_type}</td>
 		    <td>${item.checkin}</td>  
-		    <td>${item.checkout}</td>  
+		    <td>${item.checkout}</td> 
+		    <td>￥${item.price}</td> 
 		    <td>${item.demand}</td>
-		    <td>￥${item.price}</td>
 		    <td><table>
 		    	<tr>
 		    		<td><input type="submit" name="updateInfoBtn" class="btn btn-warning" value="更新退房时间" onclick="changeCheckOut();this.form.action='../../CheckoutServlet?oid=${item.id}';this.form.submit()"></td>
