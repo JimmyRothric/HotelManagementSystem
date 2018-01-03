@@ -108,6 +108,7 @@ public class CheckoutServlet extends HttpServlet {
  						if (r.getId().equals(o.getRoom_id())){
  							dao.updateCheckout(oid,d);
  							dao.updatePrice(oid);
+ 							break;
  						}
  					}
  				}

@@ -120,7 +120,7 @@ public class RoomDao extends BaseDao {
 */	
 	
 	public ArrayList<Room> selectByTime(Date checkin, Date checkout) {
-		String sql = "select * from Room where state = 'E' and Rid not in(select Rid from Reservation where ? between checkin and checkout or ? between checkin and checkout or (? < checkin and ? > checkout))";
+		String sql = "select * from Room where Rid not in(select Rid from Reservation where ? between checkin and checkout or ? between checkin and checkout or (? < checkin and ? > checkout))";
 		ArrayList<Room> room = new ArrayList<Room>();
 		try {
 			Connection con = super.getConnection();
@@ -150,7 +150,7 @@ public class RoomDao extends BaseDao {
 		return null;
 	}
 	public ArrayList<Room> selectByRoomTypeAndTime(String type,Date checkin, Date checkout) {
-		String sql = "select * from Room where state = 'E' and type = ? and Rid not in(select Rid from Reservation where ? between checkin and checkout or ? between checkin and checkout or (? < checkin and ? > checkout))";
+		String sql = "select * from Room where type = ? and Rid not in(select Rid from Reservation where ? between checkin and checkout or ? between checkin and checkout or (? < checkin and ? > checkout))";
 		ArrayList<Room> room = new ArrayList<Room>();
 		try {
 			Connection con = super.getConnection();
