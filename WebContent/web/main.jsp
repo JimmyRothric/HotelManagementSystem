@@ -36,7 +36,7 @@ function isValid() {
 	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 	Calendar c = Calendar.getInstance();
 	String today = sdf.format(c.getTime());
-	c.add(Calendar.DAY_OF_MONTH, 1);
+	c.add(Calendar.DATE, 1);
 	String tomorrow = sdf.format(c.getTime());
 %>
 <div class="container" style="margin-top: 350px;margin-left: 350px; margin-right: 150px;">

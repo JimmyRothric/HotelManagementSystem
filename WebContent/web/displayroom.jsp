@@ -67,7 +67,7 @@
 		<c:forEach var="t" varStatus="i" items="${sessionScope.typeList}">
 		<tbody>
 			<tr>
-				<td><p style="margin-top: 10px;">${t.type}</p></td>
+				<td><p style="margin-top: 10px;"><a href = "show_review.jsp?room_type=${t.type}">${t.type}</a></p></td>
 				<td><p style="margin-top: 10px;">￥${t.price}</p></td>
 				<td><input type="submit" class="reserveBtn" name="reserveBtn" value="预订 " onclick="this.form.action='user/reservation.jsp?type=${t.type}';this.form.submit()"/></td>		
 			</tr>

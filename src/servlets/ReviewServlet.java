@@ -55,18 +55,18 @@ public class ReviewServlet extends HttpServlet {
 		
 		String comment = request.getParameter("comment");
 		String rate = request.getParameter("rate");
-		
-		Review r = new Review();
-		r.setOrder_id(order);
-		r.setAccount_id(account);
-		r.setRoom_type(type);
-		r.setComment(comment);
-		r.setRate(Integer.parseInt(rate));
-		r.setReview_time(new Timestamp(Calendar.getInstance().getTime().getTime()));
-		ReviewDao dao = new ReviewDao();
-		dao.addReview(r);
-		RequestDispatcher rd = request.getRequestDispatcher("/web/user/personal_homepage.jsp");
-		rd.forward(request, response);
+		if (comment != "" && rate != "") {
+			Review r = new Review();
+			r.setOrder_id(order);
+			r.setAccount_id(account);
+			r.setRoom_type(type);
+			r.setComment(comment);
+			r.setRate(Integer.parseInt(rate));
+			r.setReview_time(new Timestamp(Calendar.getInstance().getTime().getTime()));
+			ReviewDao dao = new ReviewDao();
+			dao.addReview(r);
+		}
+		response.sendRedirect("web/user/personal_homepage.jsp");
 	}
 
 }
