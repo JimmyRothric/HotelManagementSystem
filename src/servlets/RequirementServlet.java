@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 
 import javax.servlet.RequestDispatcher;
@@ -62,8 +63,13 @@ public class RequirementServlet extends HttpServlet {
 		String checkin = (String) session.getAttribute("checkin");
 		String checkout = (String) session.getAttribute("checkout");
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-		Date checkin_date = null;
-		Date checkout_date = null;
+		//today & tomorrow
+		Calendar c = Calendar.getInstance();
+		Date today = c.getTime();
+		c.add(Calendar.DATE, 1);
+		Date tomorrow = c.getTime();
+		Date checkin_date = today;
+		Date checkout_date = tomorrow;
 		try {
 			checkin_date = sdf.parse(checkin);
 			checkout_date = sdf.parse(checkout);

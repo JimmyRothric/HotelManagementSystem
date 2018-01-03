@@ -14,25 +14,7 @@
 <title>${account.name} Homepage</title>
 </head>
 <body>
-<nav class="navbar navbar-default navbar-fixed-top" role="navigation"> 
-<div class="container-fluid"> 
-    <div class="navbar-header" style="margin-top:-14px"> 
-        <a class="navbar-brand" href="../main.jsp"><img src="../../img/logo-S.png"/></a> 
-    </div> 
-    <div>
-    <form class="navbar-form navbar-right">
-		<div id="head" class="btn-group">
-			<button type="button" class="btn btn-default btn-sm" onclick="window.location.href='/HotelManagementSystem/web/user/personal_homepage.jsp'">
-		  	<span class="glyphicon glyphicon-user"></span> ${account.name}
-			</button>
-			<button type="button" class="btn btn-warning btn-sm" onclick="window.location.href='/HotelManagementSystem/web/login.jsp?logout=true'">
-				注销
-			</button>
-		</div>
-	</form>
-    </div>
-</div>
-</nav>
+<%@ include file="../head.jsp" %>
 <form action="" method="post">
 <div style="margin-top: 60px; margin-left: 150px; margin-right: 150px;">
 <%

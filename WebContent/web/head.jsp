@@ -4,10 +4,10 @@
 <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">  
 <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<nav class="navbar navbar-inverse" role="navigation"> 
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation"> 
 <div class="container-fluid"> 
     <div class="navbar-header" style="margin-top:-14px"> 
-        <a class="navbar-brand" href="main.jsp"><img src="/HotelManagementSystem/img/logo-S.png"/></a> 
+        <a class="navbar-brand" href="/HotelManagementSystem/web/main.jsp"><img src="/HotelManagementSystem/img/logo-S.png"/></a> 
     </div> 
     <div>
     <form class="navbar-form navbar-right">

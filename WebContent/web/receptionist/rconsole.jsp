@@ -22,7 +22,7 @@
 %>
 <div style="margin-top: 100px; margin-left: 150px; margin-right: 150px;">
 <c:if test="${orderList ne null}">
-<h3>订单表：</h3><br/>
+<h3>订单表</h3><br/>
 <table class="table table-bordered table-hover" style="text-align:center">
 	<thead>
 		<tr>

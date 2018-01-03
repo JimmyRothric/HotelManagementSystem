@@ -32,9 +32,9 @@
 		<div class="col-md-2">
 			<div class="row">
 				入住时间<br/>
-				<input type="date" name="checkin" value=${checkin} readonly="true"><br/>
+				<input type="date" name="checkin" class="form-control" value=${checkin} readonly="true"><br/>
 				离店时间<br/>
-				<input type="date" name="checkout" value=${checkout} readonly="true"><br/>
+				<input type="date" name="checkout" class="form-control" value=${checkout} readonly="true"><br/>
 				房间类型<br/>
 				<input type="text" name="room_type" class="form-control" style="width: 150px; text-align:center;" value=<%=request.getParameter("type")%> readonly="true"></p>
 				<c:if test = "${account.group ne 'User'}"> 
@@ -54,8 +54,7 @@
 			<input type="radio" name="floor" value="低楼层">低楼层</p>
 			<input type="radio" name="orientation" value="朝南" checked>朝南<br/>
 			<input type="radio" name="orientation" value="不朝南">不朝南<br/>
-			备注
-			<input type="text" name="demand" class="form-control" style="width: 200px;"/></p>
+			<input type="text" name="demand" placeholder="备注" class="form-control" style="width: 200px;"/></p>
 			<button class="reserveBtn" style="vertical-align:middle; width: 150px; height: 35px; padding-top: 5px;"><span>提交</span></button>
 		</div>
 	</div>

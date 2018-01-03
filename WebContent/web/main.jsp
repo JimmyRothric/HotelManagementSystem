@@ -58,7 +58,7 @@ function isValid() {
 		<div class="col-md-2">
 			<div class="row">
 			<h5>离店时间</h5>
-			<input id="checkout_time" type="date" name="checkout" style="height: 30px; width: 175px;" value=<%=tomorrow%> min=<%=tomorrow%>>
+			<input id="checkout_time" class="form-control" type="date" name="checkout" style="height: 30px; width: 175px;" value=<%=tomorrow%> min=<%=tomorrow%>>
 			</div>
 		</div>
 		<div class="col-md-2">

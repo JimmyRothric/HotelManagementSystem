@@ -31,6 +31,8 @@
 	<div class="row">
 		<div class="col-md-2">
 			<div class="row">
+				入住时间<br/>
+				<input type="date" name="checkin" class="form-control" style="width: 150px;" value=${checkin} readonly="true"><br/>
 				房间类型
 				<select class="form-control" style="width: 150px;" name="type">
 					<option value="">ALL</option>
@@ -49,6 +51,8 @@
 		</div>
 		<div class="col-md-2">
 			<div class="row">
+				离店时间<br/>
+				<input type="date" name="checkout" class="form-control" style="width: 150px;" value=${checkout} readonly="true"><br/>
 				价格
 				<select class="form-control" style="width: 150px;" name="price">
 					<option value="0">ALL</option>
@@ -61,7 +65,10 @@
 		</div>
 		<div class="col-md-2">
 			<div class="row">
-				<input type="submit" name="searchBtn" class="reserveBtn" style="border-radius: 2px; height: 33px; width: 150px; margin-top: 20px" value="查询">
+				<input type="text" class="form-control" value="0" style="width: 50px; margin-top:20px;" readonly="true"/> <br/>
+				<button type="submit" name="searchBtn" class="searchBtn" style="border-radius: 2px; height: 33px; width: 150px; margin-top: 20px">
+					<span class="glyphicon glyphicon-search"></span> 查询
+				</button>
 			</div>
 		</div>
 	</div>
@@ -75,6 +82,19 @@
 				<td></td>
 			</tr>
 		</thead>
+		<c:if test="${sessionScope.typeList eq null }">
+			<%	
+				Calendar c = Calendar.getInstance();
+				Date today = c.getTime();
+				c.add(Calendar.DATE, 1);
+				Date tomorrow = c.getTime();
+				RoomTypeDao dao = new RoomTypeDao();
+				ArrayList<RoomType> typesList = dao.selectByTime(today, tomorrow);
+				session.setAttribute("checkin", today);
+				session.setAttribute("checkout", tomorrow);
+				session.setAttribute("typeList", typesList);
+			%>
+		</c:if>
 		<c:forEach var="t" varStatus="i" items="${sessionScope.typeList}">
 		<tbody>
 			<tr>
