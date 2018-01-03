@@ -44,6 +44,28 @@
 	right: 0;
 }
 
+.searchBtn {
+	display: inline-block;
+	border-radius: 4px;
+	background-color: #e7b94b;
+	border: none;
+	color: white;
+	text-align: center;
+	font-size: 16px;
+	padding: 20px;
+	width: 100px;
+	height: 30px;
+	transition: all 0.5s;
+	cursor: pointer;
+	margin: 5px;
+	style="vertical-align:middle";
+	padding-top: 5px;
+}
+.searchBtn:hover {
+	background-color: #e8b336;
+	color: white;
+}
+
 a:link,a:visited {color:#080808;text-decoration:none;}
 a:hover,a:active {color:#A0A0A0;text-decoration:none;} 
 

@@ -12,7 +12,7 @@
 </head>
 <body>
 <form action="../RegisterServlet" method="post">
-<div style="float:right; margin-top:-100px;">
+<div id="back" style="float:right; margin-top:-100px;">
 <button class="btn btn-link" onclick="this.form.action='login.jsp';this.form.submit()">返回登录页面</button>
 </div>
 <!--  
@@ -39,28 +39,33 @@
 	   data-slide="next">&rsaquo;</a>
 </div>
 -->
-<div class="mycenter">
-<div class="mysign">
-   	<div class="col-lg-10">
-       	<input type="text" class="form-control" name="username" placeholder="身份证号" required autofocus/>
-   	</div>
-   	  	<div class="col-lg-10"></div>
-   	<div class="col-lg-10">
-       	<input type="text" class="form-control" name="name" placeholder="姓名" required autofocus/>
-   	</div>
-   	  	<div class="col-lg-10"></div>
-   	<div class="col-lg-10">
-       	<input type="password" class="form-control" name="password0" placeholder="密码" required autofocus/>
-   	</div>
-   	<div class="col-lg-10"></div>
-   	<div class="col-lg-10">
-       	<input type="password" class="form-control" name="password1" placeholder="确认密码" required autofocus/>
-   	</div>
-   	<div class="col-lg-10"></div>
-   	<div class="col-lg-10">
-       	<input type="submit" class="btn btn-primary col-lg-12" value="注册  "/></td>
-   	</div>
-</div>
+<div class="container-fluid" style="margin-top: 50px; margin-left: 50px; margin-right: 50px;">
+	<div class="row-fluid">
+		<div class="col-md-8">
+			
+		</div>
+		<div class="col-md-4">
+		   	<div class="col-md-4">
+		       	<input type="text" class="form-control" name="username" placeholder="身份证号" required autofocus/>
+		   	</div>
+		   	<div class="col-md-4"></div>
+		   	<div class="col-md-4">
+		       	<input type="text" class="form-control" name="name" placeholder="姓名" required autofocus/>
+		   	</div>
+		   	<div class="col-md-4"></div>
+		   	<div class="col-md-4">
+		       	<input type="password" class="form-control" name="password0" placeholder="密码" required autofocus/>
+		   	</div>
+		   	<div class="col-md-4"></div>
+		   	<div class="col-md-4">
+		       	<input type="password" class="form-control" name="password1" placeholder="确认密码" required autofocus/>
+		   	</div>
+		   	<div class="col-md-4"></div>
+		   	<div class="col-md-4">
+		       	<input type="submit" class="btn btn-primary col-md-8" value="注册  "/></td>
+		   	</div>
+		</div>
+	</div>
 </div>
 </form>
 

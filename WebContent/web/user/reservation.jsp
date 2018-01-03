@@ -15,6 +15,7 @@
 <title>Reservation</title>
 </head>
 <body>
+<c:if test="${account.group eq 'User'}">
 <nav class="navbar navbar-default navbar-fixed-top" role="navigation"> 
 <div class="container-fluid"> 
     <div class="navbar-header" style="margin-top:-14px"> 
@@ -34,6 +35,10 @@
     </div>
 </div>
 </nav>
+</c:if>
+<c:if test="${account.group eq 'Receptionist'}">
+<%@ include file="../receptionist/rhead.jsp" %>
+</c:if>
 <form action="../../ReservationServlet" method="post">
 <div style="margin-top: 100px; margin-left: 150px; margin-right: 150px;">
 <div class="container">

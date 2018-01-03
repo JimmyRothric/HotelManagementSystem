@@ -4,19 +4,30 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="css/element_style.css" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="../../css/element_style.css" />
+<script src="../../js/isvalid.js"></script>
 <title>Reservations Check In</title>
 </head>
 <body>
 <%@ include file="rhead.jsp" %>
-<form action = "../../CheckinServlet" method = "post">
+<form action = "../../CheckinServlet" onsubmit="return isValid();" method="post">
 <div style="margin-top: 100px; margin-left: 150px; margin-right: 150px;">
 <h3>预订入住</h3>
 <p>
-身份证号：
-<input type = "text"  name = "id">
-<input type = "submit" name = "rsearchBtn" value = "查询">
+<div class="container">
+	<div class="row" style="margin-top: 5px">
+		<div class="col-md-2">
+			<h4>身份证号：</h4>
+			<input type="text" class="form-control" style="height: 33px; width: 200px;" name="id" id="number">
+		</div>
+		<div class="col-md-2">
+			<button type="submit" name="rsearchBtn" class="searchBtn" style="margin-left: 20px;margin-top: 40px;">
+				<span class="glyphicon glyphicon-search"></span> 查询
+			</button>
+		</div>
+	</div>
+</div>
 </p>
 
 <c:if test = "${orderList ne null}"> 
@@ -36,13 +47,13 @@
 	<c:forEach items="${orderList}" var="item"> 
 	<tbody>  
 		  <tr>  
-		    <td>${item.id}</td>  
-		    <td>${item.account_id}</td>  
-		    <td>${item.room_type}</td>
-		    <td>${item.checkin}</td>  
-		    <td>${item.checkout}</td>
-		    <td>${item.demand}</td>
-		    <td> <button type="submit" name="deleteBtn" class="btn btn-danger" onclick="this.form.action='../../CheckinServlet?oid=${item.id}';this.form.submit()">
+		    <td><p style="margin-top: 10px;">${item.id}</p></td>  
+		    <td><p style="margin-top: 10px;">${item.account_id}</p></td>  
+		    <td><p style="margin-top: 10px;">${item.room_type}</p></td>
+		    <td><p style="margin-top: 10px;">${item.checkin}</p></td>  
+		    <td><p style="margin-top: 10px;">${item.checkout}</p></td>
+		    <td><p style="margin-top: 10px;">${item.demand}</p></td>
+		    <td><button type="submit" name="deleteBtn" class="btn btn-danger" style="margin-top: 3px;" onclick="this.form.action='../../CheckinServlet?oid=${item.id}';this.form.submit()">
 		   			<span class="glyphicon glyphicon-remove"></span>
 		   		</button>
 		    </td>
@@ -65,12 +76,12 @@
 	<c:forEach items="${roomList}" var="item">  
 	<tbody>
 		  <tr>  
-		    <td>${item.id}</td>  
-		    <td>${item.type}</td>  
-		    <td>${item.floor}</td>
-		    <td>${item.orientation}</td>
-		    <td>${item.description}</td>
-		    <td><input type="submit" name="allocateBtn" class="btn btn-default" value="分配" onclick="this.form.action='../../CheckinServlet?oid=${orderList[0].id}&rid=${item.id}';this.form.submit()"></td> 
+		    <td><p style="margin-top: 10px;">${item.id}</p></td>  
+		    <td><p style="margin-top: 10px;">${item.type}</p></td>  
+		    <td><p style="margin-top: 10px;">${item.floor}</p></td>
+		    <td><p style="margin-top: 10px;">${item.orientation}</p></td>
+		    <td><p style="margin-top: 10px;">${item.description}</p></td>
+		    <td><input type="submit" name="allocateBtn" class="btn btn-default" value="分配" style="height: 30px; width: 120px; margin-top: 3px; padding-top: 3px" onclick="this.form.action='../../CheckinServlet?oid=${orderList[0].id}&rid=${item.id}';this.form.submit()"></td> 
 		  </tr>  
 	</tbody>
 	</c:forEach>

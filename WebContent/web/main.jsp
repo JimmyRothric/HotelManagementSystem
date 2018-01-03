@@ -29,7 +29,12 @@ function isValid() {
 	}
 }
 </script>
+<c:if test="${account.group ne 'Receptionist'}">
 <%@ include file="head.jsp" %>
+</c:if>
+<c:if test="${account.group eq 'Receptionist'}">
+<%@ include file="receptionist/rhead.jsp" %>
+</c:if>
 <form action="../QueryServlet" onsubmit="return isValid();" method="post">
 
 <%

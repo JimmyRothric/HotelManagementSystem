@@ -12,7 +12,13 @@
 <title>Details</title>
 </head>
 <body>
+<c:if test="${account.group ne 'Receptionist'}">
 <%@ include file="head.jsp" %>
+</c:if>
+<c:if test="${account.group eq 'Receptionist'}">
+<%@ include file="receptionist/rhead.jsp" %>
+</c:if>
+
 <form action="../RequirementServlet" method="post">
 <div style="margin-top: 60px; margin-left: 150px; margin-right: 150px;">
 <div class="container">
@@ -74,7 +80,6 @@
 		</tbody>
 	</c:forEach>
 	</table>
-	
 </div>
 </form>
 </body>

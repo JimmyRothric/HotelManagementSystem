@@ -4,7 +4,7 @@
 <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation"> 
+<nav class="navbar navbar-inverse" role="navigation"> 
     <div class="container-fluid"> 
     <div class="navbar-header"> 
         <a class="navbar-brand" href="mconsole.jsp">经理</a> 
