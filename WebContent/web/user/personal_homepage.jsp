@@ -40,6 +40,22 @@
 	OrderDao dao = new OrderDao();
 	ArrayList<Order> orderList = dao.displayMyOwnOrder(account.getId());
 	request.setAttribute("orderList", orderList);
+	ReviewDao rdao = new ReviewDao();
+	ArrayList<Boolean> reviewList = new ArrayList<Boolean>();
+	for (int i = 0; i < orderList.size(); i++){
+		Order o = orderList.get(i);
+		if (o.getOrder_type().equals("F")){
+			ArrayList<Review> tmp = rdao.selectReviewsByRequirement(o.getId(), o.getAccount_id(), o.getRoom_type());
+			if (tmp.size() > 0){
+				reviewList.add(i, true);
+			}else{
+				reviewList.add(i, false);
+			}
+		}else{
+			reviewList.add(i, false);
+		}
+	}
+	request.setAttribute("reviewList", reviewList);
 %>
 	<c:if test="${orderList ne null}">
 		<h3>所有订单</h3><br/>
@@ -56,7 +72,7 @@
 					<td>评论</td>
 				</tr>
 			</thead>
-			<c:forEach items="${orderList}" var="item">  
+			<c:forEach items="${orderList}" var="item" varStatus="status">  
 			<tbody>
 				  <tr>  
 				    <td>${item.id}</td>  
@@ -68,7 +84,12 @@
 				    <td>￥${item.price}</td>
 				    <td>
 				    <c:if test = "${item.order_type eq 'F'}">
+				   		<c:if test = "${reviewList[status.index] eq false}">
 				    	<button name="btn" class="btn btn-default" style="height: 20px; padding-top: 0px;" onclick="this.form.action='review.jsp?oid=${item.id}&acc_id=${item.account_id}&type=${item.room_type}';this.form.submit()">评论</button>
+				    	</c:if>
+				    	<c:if test = "${reviewList[status.index] eq true}">
+				    	<button name="btn" class="btn btn-default" style="height: 20px; padding-top: 0px;" onclick="this.form.action='../show_review.jsp?room_type=${item.room_type}';this.form.submit()">查看评论</button>
+				    	</c:if>
 				    </c:if> 
 				    </td>
 				  </tr>  
