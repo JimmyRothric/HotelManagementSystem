@@ -6,7 +6,7 @@ as
 begin
 
 with tmp(type,cnt) as
-(select type,count(*) as cnt from Room group by (type) where state != 'N')
+(select type,count(*) as cnt from Room where state != 'N' group by (type) )
 update RoomType set rest = tmp.cnt
 from RoomType,tmp
 where RoomType.type = tmp.type
