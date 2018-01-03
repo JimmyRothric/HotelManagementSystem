@@ -11,12 +11,15 @@
 <link rel="stylesheet" type="text/css" href="../css/element_style.css" />
 <title>Details</title>
 </head>
-<body>
-<c:if test="${account.group ne 'Receptionist'}">
+<body background="../img/grey-bg.png">
+<c:if test="${account.group ne 'Receptionist' && account.group ne 'Manager'}">
 <%@ include file="head.jsp" %>
 </c:if>
 <c:if test="${account.group eq 'Receptionist'}">
 <%@ include file="receptionist/rhead.jsp" %>
+</c:if>
+<c:if test="${account.group eq 'Manager'}">
+<%@ include file="u-mhead.jsp" %>
 </c:if>
 
 <form action="../RequirementServlet" method="post">

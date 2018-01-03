@@ -10,7 +10,12 @@
 <title>Insert title here</title>
 </head>
 <body>
+<c:if test="${account.group eq 'Manager'}">
+<%@ include file="r-mhead.jsp" %>
+</c:if>
+<c:if test="${account.group eq 'Receptionist'}">
 <%@ include file="rhead.jsp" %>
+</c:if>
 <%
 	OrderDao dao = new OrderDao();
 	request.setAttribute("orderList", dao.getAllOrder());

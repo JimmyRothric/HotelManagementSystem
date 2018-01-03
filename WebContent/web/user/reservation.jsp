@@ -14,30 +14,15 @@
 <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <title>Reservation</title>
 </head>
-<body>
+<body background="../../img/grey-bg.png">
 <c:if test="${account.group eq 'User'}">
-<nav class="navbar navbar-default navbar-fixed-top" role="navigation"> 
-<div class="container-fluid"> 
-    <div class="navbar-header" style="margin-top:-14px"> 
-        <a class="navbar-brand" href="../main.jsp"><img src="../../img/logo-S.png"/></a> 
-    </div> 
-    <div>
-    <form class="navbar-form navbar-right">
-		<div id="head" class="btn-group">
-			<button type="button" class="btn btn-default btn-sm" onclick="window.location.href='/HotelManagementSystem/web/user/personal_homepage.jsp'">
-		  	<span class="glyphicon glyphicon-user"></span> ${account.name}
-			</button>
-			<button type="button" class="btn btn-warning btn-sm" onclick="window.location.href='/HotelManagementSystem/web/login.jsp?logout=true'">
-				注销
-			</button>
-		</div>
-	</form>
-    </div>
-</div>
-</nav>
+<%@ include file="../head.jsp" %>
 </c:if>
 <c:if test="${account.group eq 'Receptionist'}">
 <%@ include file="../receptionist/rhead.jsp" %>
+</c:if>
+<c:if test="${account.group eq 'Manager'}">
+<%@ include file="../u-mhead.jsp" %>
 </c:if>
 <form action="../../ReservationServlet" method="post">
 <div style="margin-top: 100px; margin-left: 150px; margin-right: 150px;">
@@ -52,14 +37,15 @@
 				<input type="date" name="checkout" value=${checkout} readonly="true"><br/>
 				房间类型<br/>
 				<input type="text" name="room_type" class="form-control" style="width: 150px; text-align:center;" value=<%=request.getParameter("type")%> readonly="true"></p>
-			</div>
-		</div>
-		<div class="col-md-2">
-			<div class="row">
 				<c:if test = "${account.group ne 'User'}"> 
 					证件号：<input type="text" name="user_id" class="form-control"/><br/>
 					姓名：<input type="text" name="user_name" class="form-control"/><br/>
 				</c:if>
+			</div>
+		</div>
+		<div class="col-md-2">
+			<div class="row">
+				
 			</div>
 		</div>
 		<div class="col-md-2">
@@ -75,23 +61,6 @@
 	</div>
 </div>
 
-<!-- <div style="text-align:center">
-		入住时间<input type="date" name="checkin" value=${checkin} readonly="true">
-		离店时间<input type="date" name="checkout" value=${checkout} readonly="true">
-		房间类型：<input type="text" name="room_type" class="form-control" style="width: 150px; text-align:center;" value=<%=request.getParameter("type")%> readonly="true"></p>
-		<c:if test = "${account.group ne 'User'}"> 
-			证件号：<input type="text" name="user_id" class="form-control"/><br/>
-			姓名：<input type="text" name="user_name" class="form-control"/><br/>
-		</c:if>
-	
-		其他要求：<br/>
-		<input type="radio" name="floor" value="高楼层" checked>高楼层<br/>
-		<input type="radio" name="floor" value="低楼层">低楼层</p>
-		<input type="radio" name="orientation" value="朝南" checked>朝南<br/>
-		<input type="radio" name="orientation" value="不朝南">不朝南<br/>
-		备注：<input type="text" name="demand" class="form-control" style="width: 200px;"/></p>
-		<button class="reserveBtn" style="vertical-align:middle"><span>提交</span></button>
-	</div> -->	
 </div>
 
 </form>

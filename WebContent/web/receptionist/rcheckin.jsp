@@ -10,7 +10,12 @@
 <title>Reservations Check In</title>
 </head>
 <body>
+<c:if test="${account.group eq 'Manager'}">
+<%@ include file="r-mhead.jsp" %>
+</c:if>
+<c:if test="${account.group eq 'Receptionist'}">
 <%@ include file="rhead.jsp" %>
+</c:if>
 <form action = "../../CheckinServlet" onsubmit="return isValid();" method="post">
 <div style="margin-top: 100px; margin-left: 150px; margin-right: 150px;">
 <h3>预订入住</h3>

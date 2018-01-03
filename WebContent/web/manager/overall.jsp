@@ -5,7 +5,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="css/element_style.css" />
+<link rel="stylesheet" type="text/css" href="../../css/element_style.css" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <script type="text/javascript">
@@ -25,8 +25,8 @@ function changeSt(){
 	pageContext.setAttribute("roomList", dao.displayAll());
 %>
 <div style="margin-top: 100px; margin-left: 150px; margin-right: 150px;">
-<form action = "../../RoomServlet" method = "post">	
-<input id="str" type="hidden" name= "c_state">
+<form action="../../RoomServlet" method="post">	
+<input id="str" type="hidden" name="c_state">
 	<table class="table table-bordered table-hover" style="text-align:center">
 
 	<thead>
@@ -49,7 +49,7 @@ function changeSt(){
 			<td>${r.orientation}</td>
 			<td>${r.description}</td>
 			<td>${r.state}</td>
-			<td><input type = "submit" name = "changeBtn" value = "修改状态" onclick="changeSt();this.form.action='../../RoomServlet?rid=${r.id}';this.form.submit()"></td>
+			<td><input type="submit" name="changeBtn" class="managerBtn" value="修改状态" onclick="changeSt();this.form.action='../../RoomServlet?rid=${r.id}';this.form.submit()"></td>
 		</tr>
 	</tbody>
 	</c:forEach>

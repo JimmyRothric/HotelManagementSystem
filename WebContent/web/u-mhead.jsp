@@ -18,11 +18,8 @@
     </div> 
     <div> 
     	<ul class="nav navbar-nav"> 
-    		<li><a href="/HotelManagementSystem/web/manager/accmgr.jsp">账号管理</a></li>
-			<li><a href="/HotelManagementSystem/web/manager/addRooms.jsp">添加客房</a></li> 
-         	<li><a href="/HotelManagementSystem/web/manager/addRoomTypes.jsp">添加客房类型</a></li> 
-          	<li><a href="/HotelManagementSystem/web/manager/overall.jsp">房态统计</a></li>
           	<li><a href="/HotelManagementSystem/web/receptionist/rconsole.jsp">前台界面</a></li>
+          	<li><a href="/HotelManagementSystem/web/main.jsp">快速预订</a></li>
         </ul> 
 		<ul class="nav navbar-nav navbar-right">
 			<!--  <li><a href="#">未处理订单 <span class="badge">3</span></a></li>-->

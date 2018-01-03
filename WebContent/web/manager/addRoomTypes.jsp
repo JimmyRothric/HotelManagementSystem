@@ -4,6 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="../../css/element_style.css" />
 <title>Add RoomType</title>
 </head>
 <body>
@@ -13,19 +14,23 @@
 	<table class="table table-bordered table-hover" style="text-align:center">
 		<tr>
 			<td>房间类型：</td>
-			<td><input type="text" name="room_type"/></td>
+			<td><input type="text" name="room_type" class="form-control" style="margin-left: 300px; width: 200px;"/></td>
 		</tr>
 		<tr>
 			<td>价格：</td>
-			<td><input type="text" name="room_price"/></td>
+			<td><input type="text" name="room_price" class="form-control" style="margin-left: 300px; width: 200px;"/></td>
 		</tr>
 		<tr>
 			<td>余量：</td>
-			<td><input type="text" name="room_rest"/> </td>
+			<td><input type="text" name="room_rest" class="form-control" style="margin-left: 300px; width: 200px;"/> </td>
 		</tr>
 	</table>
-	<input type="submit" name="addButton" value="添加" style="font-size:20px">
-	<input type="reset" value="清空" style="font-size:20px">
+	<div style="float:right">
+		<input type="reset" value="清空" class="btn btn-default" style="margin-top: -5px; height: 30px; width: 100px;">
+		<button type="submit" name="addButton" class="managerBtn">
+			<span class="glyphicon glyphicon-plus"></span> 添加
+		</button>
+	</div>
 </div>
 </form>
 

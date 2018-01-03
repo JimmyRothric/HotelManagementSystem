@@ -29,11 +29,14 @@ function isValid() {
 	}
 }
 </script>
-<c:if test="${account.group ne 'Receptionist'}">
+<c:if test="${account.group ne 'Receptionist' && account.group ne 'Manager'}">
 <%@ include file="head.jsp" %>
 </c:if>
 <c:if test="${account.group eq 'Receptionist'}">
 <%@ include file="receptionist/rhead.jsp" %>
+</c:if>
+<c:if test="${account.group eq 'Manager'}">
+<%@ include file="u-mhead.jsp" %>
 </c:if>
 <form action="../QueryServlet" onsubmit="return isValid();" method="post">
 
@@ -44,7 +47,7 @@ function isValid() {
 	c.add(Calendar.DATE, 1);
 	String tomorrow = sdf.format(c.getTime());
 %>
-<div class="container" style="margin-top: 350px;margin-left: 350px; margin-right: 150px;">
+<div class="container" style="margin-top: 300px;margin-left: 350px; margin-right: 150px;">
 	<div class="row" style="margin-top: 60px">
 		<div class="col-md-2">
 			<div class="row">

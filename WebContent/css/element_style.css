@@ -66,7 +66,29 @@
 	color: white;
 }
 
-a:link,a:visited {color:#080808;text-decoration:none;}
+.managerBtn {
+	display: inline-block;
+	border-radius: 4px;
+	background-color: #000000;
+	border: none;
+	color: white;
+	text-align: center;
+	font-size: 16px;
+	padding: 20px;
+	width: 100px;
+	height: 30px;
+	transition: all 0.5s;
+	cursor: pointer;
+	margin: 5px;
+	style="vertical-align:middle";
+	padding-top: 5px;
+}
+.managerBtn:hover {
+	background-color: #4c4c4c;
+	color: white;
+}
+
+a:link,a:visited {color:000000;text-decoration:none;}
 a:hover,a:active {color:#A0A0A0;text-decoration:none;} 
 
 .mycenter{

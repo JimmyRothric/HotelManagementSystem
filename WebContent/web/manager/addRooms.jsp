@@ -9,8 +9,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="css/element_style.css" />
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="../../css/element_style.css" />
+<meta http-equiv="Content-Typt/html; charset=UTF-8">
 <title>Room Management</title>
 </head>
 <body>
@@ -21,12 +21,12 @@
 	<table class="table table-bordered table-hover" style="text-align:center">
 		<tr>
 			<td>房号：</td>
-			<td><input type="text" name="room_id"/></td>
+			<td><input type="text" name="room_id" class="form-control" style="margin-left: 300px; width: 200px;"/></td>
 		</tr>
 		<tr>
 			<td>房间类型：</td>
 			<td>
-			<select name="room_type">
+			<select name="room_type" class="form-control" style="margin-left: 300px; width: 200px;">
 			<%
 				RoomTypeDao rtd = new RoomTypeDao();
 				ArrayList<RoomType> rtList = rtd.getRoomTypes();
@@ -42,19 +42,23 @@
 		</tr>
 		<tr>
 			<td>楼层：</td>
-			<td><input type="text" name="room_floor"/> </td>
+			<td><input type="text" name="room_floor" class="form-control" style="margin-left: 300px; width: 200px;"/> </td>
 		</tr>
 		<tr>
 			<td>朝向：</td>
-			<td><input type="text" name="room_ort"/></td>
+			<td><input type="text" name="room_ort" class="form-control" style="margin-left: 300px; width: 200px;"/></td>
 		</tr>
 		<tr>
 			<td>描述：</td>
-			<td><input type="text" name="room_dspt"/></td>
+			<td><input type="text" name="room_dspt" class="form-control" style="margin-left: 300px; width: 200px;"/></td>
 		</tr>
 	</table>
-<input type="submit" name="addButton" value="添加" style="font-size:20px">
-<input type="reset" value="清空" style="font-size:20px">
+	<div style="float:right">
+		<input type="reset" value="清空" class="btn btn-default" style="margin-top: -5px; height: 30px; width: 100px;">
+		<button type="submit" name="addButton" class="managerBtn">
+			<span class="glyphicon glyphicon-plus"></span> 添加
+		</button>
+	</div>
 
 <%	String errorInfo = (String)request.getAttribute("addRoomInfo");
 	if (errorInfo != null) {

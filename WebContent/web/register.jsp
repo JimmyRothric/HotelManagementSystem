@@ -5,16 +5,21 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="../css/element_style.css" />
-<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="../css/bootstrap.min.css" />
 <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
 <title>Register</title>
 </head>
-<body>
-<form action="../RegisterServlet" method="post">
-<div id="back" style="float:right; margin-top:-100px;">
-<button class="btn btn-link" onclick="this.form.action='login.jsp';this.form.submit()">返回登录页面</button>
+<body background="../img/grey-bg.png">
+<nav class="navbar navbar-inverse" role="navigation" style="background-color: #000000;"> 
+<div class="container-fluid"> 
+    <div class="navbar-header" style="margin-top:-5px"> 
+        <a class="navbar-brand" href="/HotelManagementSystem/web/main.jsp"><img src="/HotelManagementSystem/img/logo-S.png"/></a> 
+    </div> 
 </div>
+</nav>
+<form action="../RegisterServlet" method="post">
+
 <!--  
 <div style="float:left;">
 	<ol class="carousel-indicators">
@@ -39,31 +44,29 @@
 	   data-slide="next">&rsaquo;</a>
 </div>
 -->
-<div class="container-fluid" style="margin-top: 50px; margin-left: 50px; margin-right: 50px;">
-	<div class="row-fluid">
-		<div class="col-md-8">
-			
+
+
+<div style="margin-left: 15%">
+<div class="container">
+	<div class="row">
+		<div class="col-md-3">
 		</div>
-		<div class="col-md-4">
-		   	<div class="col-md-4">
-		       	<input type="text" class="form-control" name="username" placeholder="身份证号" required autofocus/>
-		   	</div>
-		   	<div class="col-md-4"></div>
-		   	<div class="col-md-4">
-		       	<input type="text" class="form-control" name="name" placeholder="姓名" required autofocus/>
-		   	</div>
-		   	<div class="col-md-4"></div>
-		   	<div class="col-md-4">
-		       	<input type="password" class="form-control" name="password0" placeholder="密码" required autofocus/>
-		   	</div>
-		   	<div class="col-md-4"></div>
-		   	<div class="col-md-4">
-		       	<input type="password" class="form-control" name="password1" placeholder="确认密码" required autofocus/>
-		   	</div>
-		   	<div class="col-md-4"></div>
-		   	<div class="col-md-4">
-		       	<input type="submit" class="btn btn-primary col-md-8" value="注册  "/></td>
-		   	</div>
+		<div class="col-md-4" style="height: 475px; background-image: url('/HotelManagementSystem/img/login.png');">
+			<div style="margin-top: 5px; margin-left: 115px;">
+				<!-- LOGO -->
+				<img src="../img/logo-M.png" alt="logo" class="img-circle"/>
+			</div>
+			<div style="margin-top: 60px">
+				<input type="text" class="form-control" name="username" placeholder="身份证号" required autofocus/><br/>
+				<input type="text" class="form-control" name="name" placeholder="姓名" required autofocus/><br/>
+				<input type="password" class="form-control" name="password0" placeholder="密码" required autofocus/><br/>
+				<input type="password" class="form-control" name="password1" placeholder="确认密码" required autofocus/><br/>
+				<button type="submit" class="searchBtn" style="height: 40px; width: 332px; margin-left: 0px; padding-top: 7px;" >
+		   			注册
+		   		</button>
+	   		</div>
+		</div>
+		<div class="col-md-3">
 		</div>
 	</div>
 </div>

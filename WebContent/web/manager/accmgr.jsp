@@ -18,17 +18,17 @@ function changeNm(){
 }
 
 </script>
-<link rel="stylesheet" type="text/css" href="css/element_style.css" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="../../css/element_style.css" />
 <title>Account Management</title>
 </head>
 <body>
 <%@ include file="mhead.jsp" %>
 
-<form action = "../../AccountManagementServlet" method = "post">
+<form action = "../../AccountManagementServlet" method="post">
 <div style="margin-top: 100px; margin-left: 150px; margin-right: 150px;">
-<input id="str" type="hidden" name= "targetString">
-<input id="uid" type="hidden" name= "targetId">
+<input id="str" type="hidden" name="targetString">
+<input id="uid" type="hidden" name="targetId">
 
 <%
 	AccountDao dao = new AccountDao();
@@ -57,9 +57,9 @@ function changeNm(){
 		    <td>${item.password}</td>  
 		    <td>${item.name}</td>  
 		    <td>${item.group}</td> 
-		    <td><input type="submit" name = "cp" value="修改密码" onclick = "changePw();document.getElementById('uid').value = ${item.id}"></td>
-		    <td><input type="submit" name = "cn" value="修改姓名" onclick = "changeNm();document.getElementById('uid').value = ${item.id}"></td>
-		    <td><input type="submit" name = "dl" value="删除账号" onclick = "document.getElementById('uid').value = ${item.id}"></td>
+		    <td><input type="submit" name="cp" value="修改密码" class="managerBtn" onclick="changePw();document.getElementById('uid').value = ${item.id}"></td>
+		    <td><input type="submit" name="cn" value="修改姓名" class="managerBtn" onclick="changeNm();document.getElementById('uid').value = ${item.id}"></td>
+		    <td><input type="submit" name="dl" value="删除账号" class="btn btn-danger" style="margin-top: 4px; height: 30px; width: 100px;" onclick="document.getElementById('uid').value = ${item.id}"></td>
 		  </tr>  
 		  </tbody>
 		</c:forEach> 
