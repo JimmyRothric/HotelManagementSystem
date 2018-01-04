@@ -82,13 +82,14 @@ public class ReservationServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		if (success) {
-			request.setAttribute("order", o);
-			request.setAttribute("ReservationInfo", "预订成功");
-			RequestDispatcher rd = request.getRequestDispatcher("/web/user/order.jsp");
-			rd.forward(request, response);
+			session.setAttribute("order", o);
+			session.setAttribute("ReservationInfo", "预订成功");
+//			RequestDispatcher rd = request.getRequestDispatcher("/web/user/order.jsp");
+//			rd.forward(request, response);
+			response.sendRedirect("web/user/order.jsp");
 		} else {
 			request.setAttribute("ReservationInfo", "预订失败");
-			RequestDispatcher rd = request.getRequestDispatcher("/web/user/displayroom.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("/web/displayroom.jsp");
 			rd.forward(request, response);
 		}
 

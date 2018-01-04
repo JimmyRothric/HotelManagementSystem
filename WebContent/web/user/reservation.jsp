@@ -38,8 +38,8 @@
 				房间类型<br/>
 				<input type="text" name="room_type" class="form-control" style="width: 150px; text-align:center;" value=<%=request.getParameter("type")%> readonly="true"></p>
 				<c:if test = "${account.group ne 'User'}"> 
-					证件号：<input type="text" name="user_id" class="form-control"/><br/>
-					姓名：<input type="text" name="user_name" class="form-control"/><br/>
+					证件号<input type="text" name="user_id" class="form-control"/><br/>
+					姓名<input type="text" name="user_name" class="form-control"/><br/>
 				</c:if>
 			</div>
 		</div>

@@ -23,7 +23,7 @@
 <div class="container">
 	<div class="row" style="margin-top: 5px">
 		<div class="col-md-2">
-			<h4>身份证号：</h4>
+			<h4>身份证号</h4>
 			<input type="text" class="form-control" style="height: 33px; width: 200px;" name="id" id="number">
 		</div>
 		<div class="col-md-2">
@@ -36,7 +36,7 @@
 </p>
 
 <c:if test = "${orderList ne null}"> 
-订单表：<br/>
+订单表<br/>
 <table class="table table-bordered table-hover" style="text-align:center">
 	<thead>
 		<tr>

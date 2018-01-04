@@ -11,13 +11,23 @@
 <title>Review</title>
 </head>
 <body>
+<c:if test="${account.group ne 'Receptionist' && account.group ne 'Manager'}">
+<%@ include file="head.jsp" %>
+</c:if>
+<c:if test="${account.group eq 'Receptionist'}">
+<%@ include file="receptionist/rhead.jsp" %>
+</c:if>
+<c:if test="${account.group eq 'Manager'}">
+<%@ include file="u-mhead.jsp" %>
+</c:if>
 <%
 	String room_type = request.getParameter("room_type");
 	ReviewDao dao = new ReviewDao();
 	ArrayList<Review> list = dao.selectReviewsByType(room_type);
 	request.setAttribute("reviewList", list);
 %>
-<h3><%=room_type%></h3>
+<div style="margin-top: 100px; margin-left: 150px; margin-right: 150px;">
+	<h3><%=room_type%></h3>
 	<c:if test = "${reviewList != null && !reviewList.isEmpty()}">
 		<table class="table table-bordered table-hover" style="text-align:center">
 		<thead>
@@ -37,7 +47,7 @@
 		  </tbody>
 		</c:forEach> 
 		</table>
-		</c:if>
-
+	</c:if>
+</div>
 </body>
 </html>

@@ -20,11 +20,11 @@
 <div style="margin-top: 100px; margin-left: 150px; margin-right: 150px;">
 	<table class="table table-bordered table-hover" style="text-align:center">
 		<tr>
-			<td>房号：</td>
+			<td>房号</td>
 			<td><input type="text" name="room_id" class="form-control" style="margin-left: 300px; width: 200px;"/></td>
 		</tr>
 		<tr>
-			<td>房间类型：</td>
+			<td>房间类型</td>
 			<td>
 			<select name="room_type" class="form-control" style="margin-left: 300px; width: 200px;">
 			<%
@@ -41,15 +41,15 @@
 			</td>
 		</tr>
 		<tr>
-			<td>楼层：</td>
+			<td>楼层</td>
 			<td><input type="text" name="room_floor" class="form-control" style="margin-left: 300px; width: 200px;"/> </td>
 		</tr>
 		<tr>
-			<td>朝向：</td>
+			<td>朝向</td>
 			<td><input type="text" name="room_ort" class="form-control" style="margin-left: 300px; width: 200px;"/></td>
 		</tr>
 		<tr>
-			<td>描述：</td>
+			<td>描述</td>
 			<td><input type="text" name="room_dspt" class="form-control" style="margin-left: 300px; width: 200px;"/></td>
 		</tr>
 	</table>

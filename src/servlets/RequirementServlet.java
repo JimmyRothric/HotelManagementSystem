@@ -25,7 +25,7 @@ import data.RoomType;
 public class RequirementServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 //	static String[] type = {"单人间", "双人间", "商务间", "套间", "总统套房"};
-	static int[] price = {0, 200, 500, 1000, 2000};
+	static int[] priceList = {0, 200, 500, 1000, 2000};
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -51,25 +51,23 @@ public class RequirementServlet extends HttpServlet {
 		response.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession(true);
 		String type = request.getParameter("type");
-		int price_index = Integer.parseInt(request.getParameter("price"));
+		String price = request.getParameter("price");
+		int price_index = Integer.parseInt(price);
 		int price0, price1;
 		if (price_index == 0) {
 			price0 = 0;
 			price1 = 2000;
 		} else {
-			price0 = price[price_index - 1] + 1;
-			price1 = price[price_index];
+			price0 = priceList[price_index - 1] + 1;
+			price1 = priceList[price_index];
 		}
 		String checkin = (String) session.getAttribute("checkin");
 		String checkout = (String) session.getAttribute("checkout");
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		//today & tomorrow
-		Calendar c = Calendar.getInstance();
-		Date today = c.getTime();
-		c.add(Calendar.DATE, 1);
-		Date tomorrow = c.getTime();
-		Date checkin_date = today;
-		Date checkout_date = tomorrow;
+
+		Date checkin_date = null;
+		Date checkout_date = null;
 		try {
 			checkin_date = sdf.parse(checkin);
 			checkout_date = sdf.parse(checkout);
@@ -82,6 +80,8 @@ public class RequirementServlet extends HttpServlet {
 		roomtypesList = typedao.selectByRequirement(type, price0, price1, checkin_date, checkout_date);
 		if (roomtypesList != null) {
 			session.setAttribute("typeList", roomtypesList);
+			session.setAttribute("type",type);
+			session.setAttribute("price", price);
 			response.sendRedirect("web/displayroom.jsp");
 		} else {
 			request.setAttribute("queryErrorinfo", "NOT FOUND");

@@ -13,15 +13,15 @@
 <div style="margin-top: 100px; margin-left: 150px; margin-right: 150px;">
 	<table class="table table-bordered table-hover" style="text-align:center">
 		<tr>
-			<td>房间类型：</td>
+			<td>房间类型</td>
 			<td><input type="text" name="room_type" class="form-control" style="margin-left: 300px; width: 200px;"/></td>
 		</tr>
 		<tr>
-			<td>价格：</td>
+			<td>价格</td>
 			<td><input type="text" name="room_price" class="form-control" style="margin-left: 300px; width: 200px;"/></td>
 		</tr>
 		<tr>
-			<td>余量：</td>
+			<td>余量</td>
 			<td><input type="text" name="room_rest" class="form-control" style="margin-left: 300px; width: 200px;"/> </td>
 		</tr>
 	</table>

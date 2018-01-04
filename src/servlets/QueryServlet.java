@@ -63,7 +63,8 @@ public class QueryServlet extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+		int days = Order.calDays(checkin_date, checkout_date);
+		session.setAttribute("days", days);
 		session.setAttribute("checkin", checkin);
 		session.setAttribute("checkout", checkout);
 		RoomTypeDao typedao = new RoomTypeDao();
