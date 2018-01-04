@@ -47,8 +47,12 @@ function isValid() {
 	c.add(Calendar.DATE, 1);
 	String tomorrow = sdf.format(c.getTime());
 %>
-<div class="container" style="margin-top: 300px;margin-left: 350px; margin-right: 150px;">
+<div class="container" style="margin-top: 200px;margin-left: 350px; margin-right: 150px;">
 	<div class="row" style="margin-top: 60px">
+		<div style="margin-right: 600px; margin-bottom: 100px;font-family: Calisto MT;">
+			<h1 style="text-align: center">MARIO HOTELS</h1>
+			<h4 style="text-align: center">NEVER SETTLE</h4>
+		</div>
 		<div class="col-md-2">
 			<div class="row">
 			<h5>入住时间</h5>

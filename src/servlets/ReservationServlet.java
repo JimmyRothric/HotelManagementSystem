@@ -55,6 +55,12 @@ public class ReservationServlet extends HttpServlet {
 			acc_id = request.getParameter("user_id");
 			acc_name = request.getParameter("user_name");
 			AccountDao dao = new AccountDao();
+			System.out.println(acc_id);
+			if (!acc_id.matches("[0-9]{1,18}")) {
+				//session.setAttribute("ReservationInfo", "预订失败");
+				response.sendRedirect("web/displayroom.jsp");
+				return;
+			}
 			if (!dao.isValidUsername(acc_id)) {
 				dao.addAccount(new Account(acc_id, acc_name, "Alpha", "User"));
 			}

@@ -19,6 +19,25 @@ public class OrderDao extends BaseDao {
 	public OrderDao() {
 		// TODO Auto-generated constructor stub
 	}
+	public int getPreOrderNumber() {
+ 		String sql = "select count(*) from Reservation where order_type = 'R'";
+ 		try {
+ 			Connection con = super.getConnection();
+ 			PreparedStatement stmt = con.prepareStatement(sql);
+ 			ResultSet rs = stmt.executeQuery();
+ 			int count = 0;
+ 			while (rs.next()) {
+ 				count = rs.getInt(1);
+ 			}
+ 			stmt.close();
+ 			con.close();
+ 			return count;
+ 		} catch (SQLException e) {
+ 			// TODO Auto-generated catch block
+ 			e.printStackTrace();
+ 		}
+ 		return 0;
+ 	}
 	public Order getOrder(String oid) {
  		String sql = "select * from Reservation where Oid = ?";
  		try {
