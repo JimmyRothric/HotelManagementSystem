@@ -95,6 +95,12 @@
 </c:if>
 <c:remove var="orderList"/>
 </div>
+<c:if test="${errorInfo ne null}">
+	<script language="javascript">
+		alert('${errorInfo}');
+	</script>
+	<c:remove var = "errorInfo"/>
+</c:if>
 </form>
 </body>
 </html>

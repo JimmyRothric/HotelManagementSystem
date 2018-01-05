@@ -56,13 +56,16 @@ function isValid() {
 		<div class="col-md-2">
 			<div class="row">
 			<h5>入住时间</h5>
-			<input id="checkin_time" class="form-control" type="date" name="checkin" style="height: 30px; width: 175px;" value=<%=today%> min=<%=today%>>
+			
+			<!-- should set max time -->
+			
+			<input id="checkin_time" class="form-control" type="date" name="checkin" style="height: 30px; width: 175px;" value=<%=today%> min=<%=today%> max="2019-01-05">
 			</div>
 		</div>
 		<div class="col-md-2">
 			<div class="row">
 			<h5>离店时间</h5>
-			<input id="checkout_time" class="form-control" type="date" name="checkout" style="height: 30px; width: 175px;" value=<%=tomorrow%> min=<%=tomorrow%>>
+			<input id="checkout_time" class="form-control" type="date" name="checkout" style="height: 30px; width: 175px;" value=<%=tomorrow%> min=<%=tomorrow%> max="2019-01-06">
 			</div>
 		</div>
 		<div class="col-md-2">

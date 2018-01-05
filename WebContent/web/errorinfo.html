@@ -1,0 +1,6 @@
+<c:if test="${errorInfo ne null}">
+	<script language="javascript">
+		alert('${errorInfo}');
+	</script>
+	<c:remove var = "errorInfo"/>
+</c:if>

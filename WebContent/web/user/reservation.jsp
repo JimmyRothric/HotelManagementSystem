@@ -59,9 +59,8 @@
 		</div>
 	</div>
 </div>
-
 </div>
-
+<%@ include file="../errorinfo.html" %>
 </form>
 </body>
 </html>

@@ -18,6 +18,10 @@
 <c:if test="${account.group eq 'Manager'}">
 <%@ include file="../u-mhead.jsp" %>
 </c:if>
+
+<c:if test="${order eq null}">
+	<c:redirect url = "../main.jsp"/>
+</c:if>
 <div style="margin-top: 100px; margin-left: 150px; margin-right: 150px; ">
 <h5><big>订单号：</big>${order.id }</h5>
 <h5><big>身份证号：</big>${order.account_id }</h5>
@@ -27,5 +31,7 @@
 <h5><big>备注：</big>${order.demand }</h5>
 <h3><b>总计：</b>￥${order.price }</h3>
 </div>
+<c:remove var = "order"/>
+<%@ include file="../errorinfo.html" %>
 </body>
 </html>

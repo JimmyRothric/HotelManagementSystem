@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import dao.AccountDao;
 import data.*;
+import data.Error;
 
 /**
  * Servlet implementation class LoginServlet
@@ -45,7 +46,8 @@ public class LoginServlet extends HttpServlet {
 		response.setCharacterEncoding("UTF-8");
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
-
+		
+		String url = "web/login.jsp";
 		HttpSession session = request.getSession(true);
 //		AccountManager am = new AccountManager();
 		AccountDao dao = new AccountDao();
@@ -62,9 +64,8 @@ public class LoginServlet extends HttpServlet {
 				response.sendRedirect("web/manager/mconsole.jsp");
 			}
 			return;
-		}else {
-			session.setAttribute("loginError", "Wrong username or password.");
-			response.sendRedirect("web/login.jsp");
+		} else {
+			Error.gotoError(request, response, url, "Wrong username or password.");
 		}
 	}
 

@@ -6,7 +6,7 @@ as
 begin
 
 with tmp(type,cnt) as
-(select type,count(*) as cnt from Room where state != 'N' group by (type) )
+(select type,count(*) as cnt from Room where state == 'E' or state == 'F' group by (type) )
 update RoomType set rest = tmp.cnt
 from RoomType,tmp
 where RoomType.type = tmp.type
@@ -14,12 +14,12 @@ where RoomType.type = tmp.type
 end
 go
 
-insert into RoomType values ('µ¥ÈË¼ä', 300, 0)
-insert into RoomType values ('Ë«ÈË¼ä', 500, 0)
-insert into Room values ('0000', 'µ¥ÈË¼ä', 1, 'S', 'Õâ¸ö·¿¼ä´ú±í·¿¼äÎ´·ÖÅä', 'N')
-insert into Room values ('101', 'µ¥ÈË¼ä', 1, 'S', null, 'E')
-insert into Room values ('102', 'µ¥ÈË¼ä', 1, 'S', null, 'E')
-insert into Room values ('201', 'Ë«ÈË¼ä', 2, 'S', null, 'E')
-insert into Room values ('202', 'Ë«ÈË¼ä', 2, 'S', null, 'E')
+insert into RoomType values ('ï¿½ï¿½ï¿½Ë¼ï¿½', 300, 0)
+insert into RoomType values ('Ë«ï¿½Ë¼ï¿½', 500, 0)
+insert into Room values ('0000', 'ï¿½ï¿½ï¿½Ë¼ï¿½', 1, 'S', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î´ï¿½ï¿½ï¿½ï¿½', 'N')
+insert into Room values ('101', 'ï¿½ï¿½ï¿½Ë¼ï¿½', 1, 'S', null, 'E')
+insert into Room values ('102', 'ï¿½ï¿½ï¿½Ë¼ï¿½', 1, 'S', null, 'E')
+insert into Room values ('201', 'Ë«ï¿½Ë¼ï¿½', 2, 'S', null, 'E')
+insert into Room values ('202', 'Ë«ï¿½Ë¼ï¿½', 2, 'S', null, 'E')
 insert into Account values ('admin','admin','admin','Manager')
 insert into Account values ('recept','recept','recept','Receptionist')

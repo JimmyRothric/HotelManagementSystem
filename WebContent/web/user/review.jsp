@@ -27,6 +27,7 @@
 			<h3>评价</h3>
 			<textarea name="comment" class="form-control" rows="3" style="height: 100px; width: 400px; resize: none;" /></textarea>
 				<select class="form-control" style="width: 150px;" name="rate">
+					<option value="1">1</option>
 					<option value="2">2</option>
 					<option value="3">3</option>
 					<option value="4">4</option>

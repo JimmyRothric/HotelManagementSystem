@@ -17,7 +17,7 @@ import javax.servlet.http.HttpSession;
 
 import dao.RoomTypeDao;
 import data.RoomType;
-
+import data.Error;
 /**
  * Servlet implementation class RequirementServlet
  */
@@ -78,15 +78,16 @@ public class RequirementServlet extends HttpServlet {
 		RoomTypeDao typedao = new RoomTypeDao();
 		ArrayList<RoomType> roomtypesList;
 		roomtypesList = typedao.selectByRequirement(type, price0, price1, checkin_date, checkout_date);
-		if (roomtypesList != null) {
+		if (roomtypesList != null && !roomtypesList.isEmpty()) {
 			session.setAttribute("typeList", roomtypesList);
 			session.setAttribute("type",type);
 			session.setAttribute("price", price);
 			response.sendRedirect("web/displayroom.jsp");
 		} else {
-			request.setAttribute("queryErrorinfo", "NOT FOUND");
-			RequestDispatcher rd = request.getRequestDispatcher("/web/displayroom.jsp");
-			rd.forward(request, response);
+			Error.gotoError(request, response, "web/displayroom.jsp", "NOT FOUND");
+//			request.setAttribute("queryErrorinfo", "NOT FOUND");
+//			RequestDispatcher rd = request.getRequestDispatcher("/web/displayroom.jsp");
+//			rd.forward(request, response);
 		}
 	}
 

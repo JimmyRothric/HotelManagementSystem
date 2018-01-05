@@ -16,6 +16,7 @@ import javax.servlet.http.HttpSession;
 import dao.AccountDao;
 import dao.OrderDao;
 import data.*;
+import data.Error;
 
 /**
  * Servlet implementation class ReservationServlet
@@ -48,6 +49,8 @@ public class ReservationServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession(true);
+		String url = "web/displayroom.jsp";
+		
 		String acc_id = null;
 		String acc_name = null;
 		Account account = (Account)session.getAttribute("account");
@@ -55,14 +58,15 @@ public class ReservationServlet extends HttpServlet {
 			acc_id = request.getParameter("user_id");
 			acc_name = request.getParameter("user_name");
 			AccountDao dao = new AccountDao();
-			System.out.println(acc_id);
+//			System.out.println(acc_id);
 			if (!acc_id.matches("[0-9]{1,18}")) {
+				Error.gotoError(request, response, url, "预订失败");
 				//session.setAttribute("ReservationInfo", "预订失败");
-				response.sendRedirect("web/displayroom.jsp");
+				//response.sendRedirect("web/displayroom.jsp");
 				return;
 			}
 			if (!dao.isValidUsername(acc_id)) {
-				dao.addAccount(new Account(acc_id, acc_name, "Alpha", "User"));
+				dao.addAccount(new Account("tmp"+acc_id, acc_id, acc_name, "User"));
 			}
 		}else {
 			acc_id = account.getId();
@@ -78,6 +82,7 @@ public class ReservationServlet extends HttpServlet {
 		OrderDao dao = new OrderDao();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		String type = request.getParameter("room_type");
+	
 		boolean success = false;
 		Order o = null;
 		try {
@@ -89,14 +94,16 @@ public class ReservationServlet extends HttpServlet {
 		}
 		if (success) {
 			session.setAttribute("order", o);
-			session.setAttribute("ReservationInfo", "预订成功");
+			Error.gotoError(request, response, "web/user/order.jsp", "预订成功");
+//			session.setAttribute("ReservationInfo", "预订成功");
 //			RequestDispatcher rd = request.getRequestDispatcher("/web/user/order.jsp");
 //			rd.forward(request, response);
-			response.sendRedirect("web/user/order.jsp");
+//			response.sendRedirect("web/user/order.jsp");
 		} else {
-			request.setAttribute("ReservationInfo", "预订失败");
-			RequestDispatcher rd = request.getRequestDispatcher("/web/displayroom.jsp");
-			rd.forward(request, response);
+			Error.gotoError(request, response, url, "预订失败");
+//			request.setAttribute("ReservationInfo", "预订失败");
+//			RequestDispatcher rd = request.getRequestDispatcher("/web/displayroom.jsp");
+//			rd.forward(request, response);
 		}
 
 		
