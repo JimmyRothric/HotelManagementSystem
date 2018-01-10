@@ -6,8 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" href="../css/bootstrap.min.css" />
-<link rel="stylesheet" type="text/css" href="../css/element_style.css" />
+<link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
 <link href="https://cdn.bootcss.com/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css" rel="stylesheet">  
 <script src="https://cdn.bootcss.com/moment.js/2.18.1/moment-with-locales.min.js"></script>  
 <script src="https://cdn.bootcss.com/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
@@ -24,40 +23,49 @@
 %>
 <title>Login</title>
 </head>
-<body background="../img/grey-bg.png">
-<nav class="navbar navbar-inverse" role="navigation" style="background-color: #000000;"> 
+<body style="background-image: url(../img/grey-bg.png); background-repeat: repeat-x;">
+<!-- navigation bar -->
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" style="background-color: #000000;">
 <div class="container-fluid"> 
-    <div class="navbar-header" style="margin-top:-5px"> 
-        <a class="navbar-brand" href="/HotelManagementSystem/web/main.jsp"><img src="/HotelManagementSystem/img/logo-S.png"/></a> 
+	<!-- LOGO go to main.jsp -->
+    <div class="navbar-header" style="padding-left: 3%"> 
+        <a class="navbar-brand" href="/HotelManagementSystem/web/main.jsp" style="padding-top: 3%">
+        	<img src="/HotelManagementSystem/img/logo-S.png" alt="logo"/>
+        </a> 
     </div> 
 </div>
 </nav>
+
 <form action="../LoginServlet" method="post">
-<div style="margin-left: 15%">
+<div style="position: relative; top: 50px">
 <div class="container">
-	<div class="row">
-		<div class="col-md-3">
+	<div class="row" style="padding-left: 6%">
+		<div class="col-md-4">
 		</div>
-		<div class="col-md-4" style="height: 475px; background-image: url('/HotelManagementSystem/img/login.png');">
-			<div style="margin-top: 5px; margin-left: 115px;">
+		<div class="col-md-3" style="height: 475px; width: 300px; background-image: url('/HotelManagementSystem/img/login.png');">
+			<div style="text-align: center; padding-top: 2%;">
 				<!-- LOGO -->
 				<img src="../img/logo-M.png" alt="logo" class="img-circle"/>
 			</div>
-			<div style="margin-top: 60px">
-				
+			<div style="padding-top: 25%">
+				<!-- user-name & password -->
 				<input type="text" class="form-control" name="username" placeholder="请输入身份证号" required autofocus/><br/>
 				<input type="password" class="form-control" name="password" placeholder="请输入密码" required autofocus/><br/>
-				<button type="button" class="btn .btn-default col-md-12" style="color: white; margin-left: 0px" onclick="this.form.action='register.jsp';this.form.submit()">
+				<label class="form-inline"> 
+					<input type="checkbox"/> 记住我
+				</label> 
+				<button type="button" class="btn .btn-default col-md-12" style="height: 40px; font-size: 16px;color: white; margin-left: 0%;" onclick="this.form.action='register.jsp';this.form.submit()">
 		   			注册
 		   		</button>
-		   		<button type="submit" class="searchBtn" style="height: 40px; width: 332px; margin-left: 0px; padding-top: 7px;">
+		   		<button type="submit" class="btn .btn-default col-md-12" style="height: 40px; font-size: 16px; color: white; background-color: #e7b94b; margin-left: 0%; margin-top: 5%">
 		   			登录
 		   		</button>
 	   		</div>
 		</div>
-		<div class="col-md-3">
+		<div class="col-md-4">
 		</div>
 	</div>
+</div>
 </div>
 <%@ include file="errorinfo.html" %>
 </form>

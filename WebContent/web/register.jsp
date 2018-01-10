@@ -6,17 +6,26 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="../css/element_style.css" />
-<link rel="stylesheet" href="../css/bootstrap.min.css" />
+<link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
 <title>Register</title>
 </head>
-<body background="../img/grey-bg.png">
-<nav class="navbar navbar-inverse" role="navigation" style="background-color: #000000;"> 
+<body style="background-image: url(../img/grey-bg.png); background-repeat: repeat-x;">
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" style="background-color: #000000;"> 
 <div class="container-fluid"> 
-    <div class="navbar-header" style="margin-top:-5px"> 
-        <a class="navbar-brand" href="/HotelManagementSystem/web/main.jsp"><img src="/HotelManagementSystem/img/logo-S.png"/></a> 
+    <div class="navbar-header" style="padding-left: 3%"> 
+        <a class="navbar-brand" href="/HotelManagementSystem/web/main.jsp" style="padding-top: 3%">
+        	<img src="/HotelManagementSystem/img/logo-S.png" alt="logo"/>
+        </a> 
     </div> 
+    <div>
+   		<form class="navbar-form navbar-right">
+			<button type="button" class="btn btn-default btn-sm" onclick="window.location.href='/HotelManagementSystem/web/login.jsp'">
+				<span class="glyphicon glyphicon-log-in"></span> 登录
+			</button>
+		</form>
+	</div>
 </div>
 </nav>
 <form action="../RegisterServlet" method="post">
@@ -47,27 +56,27 @@
 -->
 
 
-<div style="margin-left: 15%">
+<div style="position: relative; top: 50px">
 <div class="container">
-	<div class="row">
-		<div class="col-md-3">
+	<div class="row" style="padding-left: 6%">
+		<div class="col-md-4">
 		</div>
-		<div class="col-md-4" style="height: 475px; background-image: url('/HotelManagementSystem/img/login.png');">
-			<div style="margin-top: 5px; margin-left: 115px;">
+		<div class="col-md-3" style="height: 475px; width: 300px; background-image: url('/HotelManagementSystem/img/login.png');">
+			<div style="text-align: center; padding-top: 2%;">
 				<!-- LOGO -->
 				<img src="../img/logo-M.png" alt="logo" class="img-circle"/>
 			</div>
-			<div style="margin-top: 60px">
+			<div style="padding-top: 20%">
 				<input type="text" class="form-control" name="username" placeholder="身份证号" required autofocus/><br/>
 				<input type="text" class="form-control" name="name" placeholder="姓名" required autofocus/><br/>
 				<input type="password" class="form-control" name="password0" placeholder="密码" required autofocus/><br/>
 				<input type="password" class="form-control" name="password1" placeholder="确认密码" required autofocus/><br/>
-				<button type="submit" class="searchBtn" style="height: 40px; width: 332px; margin-left: 0px; padding-top: 7px;" >
+				<button type="submit" class="btn .btn-default col-md-12" style="height: 40px; font-size: 16px; color: white; background-color: #e7b94b; margin-left: 0%" >
 		   			注册
 		   		</button>
 	   		</div>
 		</div>
-		<div class="col-md-3">
+		<div class="col-md-4">
 		</div>
 	</div>
 </div>

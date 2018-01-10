@@ -16,7 +16,7 @@
 <script src="https://cdn.bootcss.com/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
 <title>Mario Hotel</title>
 </head>
-<body background="../img/grey-bg.png">
+<body style="background-image: url(../img/grey-bg.png); background-repeat: repeat-x;">
 <script>
 function isValid() {
 	var checkin = document.getElementById("checkin_time").value;

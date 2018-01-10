@@ -6,8 +6,10 @@
 <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation"> 
 <div class="container-fluid"> 
-    <div class="navbar-header" style="margin-top:-14px"> 
-        <a class="navbar-brand" href="/HotelManagementSystem/web/main.jsp"><img src="/HotelManagementSystem/img/logo-S.png"/></a> 
+    <div class="navbar-header" style="padding-left: 3%"> 
+        <a class="navbar-brand" href="/HotelManagementSystem/web/main.jsp" style="padding-top: 3%">
+        	<img src="/HotelManagementSystem/img/logo-S.png" alt="logo"/>
+        </a> 
     </div> 
     <div>
     <form class="navbar-form navbar-right">
