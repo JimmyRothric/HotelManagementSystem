@@ -46,31 +46,34 @@ function isValid() {
 	String today = sdf.format(c.getTime());
 	c.add(Calendar.DATE, 1);
 	String tomorrow = sdf.format(c.getTime());
+	c.add(Calendar.DATE, 364);
+	String max_today = sdf.format(c.getTime());
+	c.add(Calendar.DATE, 1);
+	String max_tomorrow = sdf.format(c.getTime());
 %>
-<div class="container" style="margin-top: 200px;margin-left: 350px; margin-right: 150px;">
-	<div class="row" style="margin-top: 60px">
-		<div style="margin-right: 600px; margin-bottom: 100px;font-family: Calisto MT;">
+<div class="container">
+	<div class="row" style="padding-top: 20%">
+	
+		<!-- title -->
+		<div style="font-family: Calisto MT">
 			<h1 style="text-align: center">MARIO HOTELS</h1>
 			<h4 style="text-align: center">NEVER SETTLE</h4>
 		</div>
-		<div class="col-md-2">
-			<div class="row">
-			<h5>入住时间</h5>
-			
-			<!-- should set max time -->
-			
-			<input id="checkin_time" class="form-control" type="date" name="checkin" style="height: 30px; width: 175px;" value=<%=today%> min=<%=today%> max="2019-01-05">
+		
+		<!-- check-in & checkout -->
+		<div style="padding-top: 5%; padding-left: 3%;">
+			<div class="col-md-2">
 			</div>
-		</div>
-		<div class="col-md-2">
-			<div class="row">
-			<h5>离店时间</h5>
-			<input id="checkout_time" class="form-control" type="date" name="checkout" style="height: 30px; width: 175px;" value=<%=tomorrow%> min=<%=tomorrow%> max="2019-01-06">
+			<div class="col-md-2" style="margin-left: 3%">
+				<h5>入住时间</h5>
+				<input id="checkin_time" class="form-control" type="date" name="checkin" style="height: 33px; width: 175px;" value=<%=today%> min=<%=today%> max=<%=max_today%>>	
 			</div>
-		</div>
-		<div class="col-md-2">
-			<div class="row">
-				<input type="submit" name="searchButton" class="reserveBtn" style="border-radius: 2px; height: 33px; width: 175px; margin-top: 33px;" value="查询">
+			<div class="col-md-2" style="margin-left: 3%">
+				<h5>离店时间</h5>
+				<input id="checkout_time" class="form-control" type="date" name="checkout" style="height: 33px; width: 175px;" value=<%=tomorrow%> min=<%=tomorrow%> max=<%=max_tomorrow%>>
+			</div>
+			<div class="col-md-2" style="margin-left: 3%; padding-top: 30px;">
+				<input type="submit" name="searchButton" class="reserveBtn" style="border-radius: 2px; height: 33px; width: 175px;" value="查询">
 			</div>
 		</div>
 	</div>

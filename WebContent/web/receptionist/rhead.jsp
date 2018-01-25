@@ -7,7 +7,7 @@
 <nav class="navbar navbar-default navbar-fixed-top" role="navigation" style="background-color: #dad9c7;">
     <div class="container-fluid">
     <div class="navbar-header" style="padding-left: 3%"> 
-    	<a class="navbar-brand" href="/HotelManagementSystem/web/receptionist/rconsole.jsp" style="padding-top: 3%">
+    	<a class="navbar-brand" href="/HotelManagementSystem/web/receptionist/rconsole.jsp" style="padding-top: 0%">
     		<img src="/HotelManagementSystem/img/logo-S.png" alt="logo"/>
     	</a>  
     </div>

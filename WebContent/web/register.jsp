@@ -15,7 +15,7 @@
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" style="background-color: #000000;"> 
 <div class="container-fluid"> 
     <div class="navbar-header" style="padding-left: 3%"> 
-        <a class="navbar-brand" href="/HotelManagementSystem/web/main.jsp" style="padding-top: 3%">
+        <a class="navbar-brand" href="/HotelManagementSystem/web/main.jsp" style="padding-top: 0%">
         	<img src="/HotelManagementSystem/img/logo-S.png" alt="logo"/>
         </a> 
     </div> 
@@ -71,7 +71,7 @@
 				<input type="text" class="form-control" name="name" placeholder="姓名" required autofocus/><br/>
 				<input type="password" class="form-control" name="password0" placeholder="密码" required autofocus/><br/>
 				<input type="password" class="form-control" name="password1" placeholder="确认密码" required autofocus/><br/>
-				<button type="submit" class="btn .btn-default col-md-12" style="height: 40px; font-size: 16px; color: white; background-color: #e7b94b; margin-left: 0%" >
+				<button type="submit" class="btn .btn-default col-md-12" style="height: 40px; width: 270px; font-size: 16px; color: white; background-color: #e7b94b; margin-left: 0%" >
 		   			注册
 		   		</button>
 	   		</div>

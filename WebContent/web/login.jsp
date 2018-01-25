@@ -29,7 +29,7 @@
 <div class="container-fluid"> 
 	<!-- LOGO go to main.jsp -->
     <div class="navbar-header" style="padding-left: 3%"> 
-        <a class="navbar-brand" href="/HotelManagementSystem/web/main.jsp" style="padding-top: 3%">
+        <a class="navbar-brand" href="/HotelManagementSystem/web/main.jsp" style="padding-top: 0%">
         	<img src="/HotelManagementSystem/img/logo-S.png" alt="logo"/>
         </a> 
     </div> 
@@ -54,12 +54,14 @@
 				<label class="form-inline"> 
 					<input type="checkbox"/> 记住我
 				</label> 
-				<button type="button" class="btn .btn-default col-md-12" style="height: 40px; font-size: 16px;color: white; margin-left: 0%;" onclick="this.form.action='register.jsp';this.form.submit()">
+				
+				<button type="button" class="btn .btn-default col-md-12" style="height: 40px; width: 270px; font-size: 16px;color: white; margin-left: 0%;" onclick="this.form.action='register.jsp';this.form.submit()">
 		   			注册
 		   		</button>
-		   		<button type="submit" class="btn .btn-default col-md-12" style="height: 40px; font-size: 16px; color: white; background-color: #e7b94b; margin-left: 0%; margin-top: 5%">
+		   		<button type="submit" class="btn .btn-default col-md-12" style="height: 40px; width: 270px; font-size: 16px; color: white; background-color: #e7b94b; margin-left: 0%; margin-top: 5%">
 		   			登录
 		   		</button>
+		   
 	   		</div>
 		</div>
 		<div class="col-md-4">

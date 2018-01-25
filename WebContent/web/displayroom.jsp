@@ -12,7 +12,7 @@
 <link rel="stylesheet" type="text/css" href="../css/element_style.css" />
 <title>Details</title>
 </head>
-<body background="../img/grey-bg.png">
+<body style="background-image: url(../img/grey-bg.png); background-repeat: repeat-x;">
 <c:if test="${account.group ne 'Receptionist' && account.group ne 'Manager'}">
 <%@ include file="head.jsp" %>
 </c:if>

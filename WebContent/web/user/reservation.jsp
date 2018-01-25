@@ -14,7 +14,7 @@
 <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <title>Reservation</title>
 </head>
-<body background="../../img/grey-bg.png">
+<body style="background-image: url(../img/grey-bg.png); background-repeat: repeat-x;">
 <c:if test="${account.group eq 'User'}">
 <%@ include file="../head.jsp" %>
 </c:if>

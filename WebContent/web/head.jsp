@@ -7,7 +7,7 @@
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation"> 
 <div class="container-fluid"> 
     <div class="navbar-header" style="padding-left: 3%"> 
-        <a class="navbar-brand" href="/HotelManagementSystem/web/main.jsp" style="padding-top: 3%">
+        <a class="navbar-brand" href="/HotelManagementSystem/web/main.jsp" style="padding-top: 0%">
         	<img src="/HotelManagementSystem/img/logo-S.png" alt="logo"/>
         </a> 
     </div> 
